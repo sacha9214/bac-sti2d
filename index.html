@@ -2021,6 +2021,9 @@
   let _bgAudio = null;
   let _wakeLock = null;
   let _resumeKick = null;
+  let _noSleepVideo = null;
+  let _noSleepCanvas = null;
+  let _noSleepTimer = null;
   const _isAndroid = /Android/i.test(navigator.userAgent);
 
   function _wordsToMin(text, rate) {
@@ -2221,6 +2224,7 @@
       player.idx = -1;
       document.getElementById('spProgressFill').style.width = '0%';
       _stopSilentAudio();
+      _stopNoSleep();
       _releaseWakeLock();
       _clearMediaSession();
       _hideStickyPlayer();
@@ -2245,6 +2249,7 @@
       _showStickyPlayer();
       _updatePlayerUI();
       _startSilentAudio();
+      _startNoSleep();
       _requestWakeLock();
       _setupMediaSession();
       synth.cancel();
@@ -2272,6 +2277,7 @@
       currentUtterance = null;
       synth.cancel();
       _stopSilentAudio();
+      _stopNoSleep();
       _releaseWakeLock();
       player.playing = false;
       if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'paused';
@@ -2318,6 +2324,7 @@
     currentUtterance = null;
     synth.cancel();
     _stopSilentAudio();
+    _stopNoSleep();
     _releaseWakeLock();
     player.playing = false;
     player.idx = -1;
@@ -2375,6 +2382,41 @@
     _bgAudio.pause();
     try { URL.revokeObjectURL(_bgAudio.src); } catch(e) {}
     _bgAudio = null;
+  }
+
+  /* --- NoSleep video trick (NoSleep.js technique) ---
+     Un canvas 1×1 px qui change de couleur à 1 fps est capturé comme flux vidéo
+     et joué dans un <video> muet. L'OS Android voit une "vidéo active" et ne
+     coupe jamais l'écran automatiquement, même si le Wake Lock échoue. */
+  function _startNoSleep() {
+    if (_noSleepVideo) return;
+    try {
+      _noSleepCanvas = document.createElement('canvas');
+      _noSleepCanvas.width = 1; _noSleepCanvas.height = 1;
+      var ctx = _noSleepCanvas.getContext('2d');
+      var frame = 0;
+      _noSleepTimer = setInterval(function() {
+        ctx.fillStyle = (frame++ % 2) ? '#000001' : '#000000';
+        ctx.fillRect(0, 0, 1, 1);
+      }, 800);
+      _noSleepVideo = document.createElement('video');
+      _noSleepVideo.setAttribute('playsinline', '');
+      _noSleepVideo.setAttribute('muted', '');
+      _noSleepVideo.muted = true;
+      _noSleepVideo.loop = true;
+      _noSleepVideo.srcObject = _noSleepCanvas.captureStream(1);
+      _noSleepVideo.play().catch(function() {});
+    } catch(e) {}
+  }
+
+  function _stopNoSleep() {
+    if (_noSleepTimer) { clearInterval(_noSleepTimer); _noSleepTimer = null; }
+    if (_noSleepVideo) {
+      _noSleepVideo.pause();
+      try { _noSleepVideo.srcObject = null; } catch(e) {}
+      _noSleepVideo = null;
+    }
+    _noSleepCanvas = null;
   }
 
   /* --- Screen Wake Lock : LA solution fiable sur Android ---
