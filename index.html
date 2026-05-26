@@ -760,6 +760,39 @@
       transition: background 0.15s;
     }
     .annot-active { background: rgba(255,255,255,0.09); border-radius: 3px; }
+
+    /* ── Tooltip procédé name on hover ── */
+    .annot[data-tooltip] { position: relative; }
+    .annot[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(16,16,36,0.97);
+      color: #c8caff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      white-space: nowrap;
+      padding: 4px 9px;
+      border-radius: 5px;
+      border: 1px solid rgba(108,140,255,0.35);
+      pointer-events: none;
+      z-index: 200;
+      letter-spacing: 0.02em;
+    }
+    .annot[data-tooltip]:hover::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 3px);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid transparent;
+      border-top-color: rgba(108,140,255,0.35);
+      pointer-events: none;
+      z-index: 200;
+    }
     .procede-tag { transition: background 0.15s, transform 0.15s, box-shadow 0.15s; }
     .procede-tag.annot-tag-active {
       transform: translateX(4px);
@@ -3166,11 +3199,20 @@ Je le dis, vous pouvez vous confier, madame,
         tag.style.borderLeftColor = color;
       });
 
-      // Assign matching border-bottom color to annot spans
+      // Build p -> procédé name map for tooltips
+      const nameMap = {};
+      tags.forEach((tag, i) => {
+        const nom = tag.querySelector('.pt-nom');
+        if (nom) nameMap[i + 1] = nom.textContent.trim();
+      });
+
+      // Assign matching border-bottom color + tooltip to annot spans
       if (extrait) {
         extrait.querySelectorAll('.annot[data-p]').forEach(annot => {
           const idx = parseInt(annot.dataset.p) - 1;
           if (idx >= 0) annot.style.borderBottomColor = C[idx % C.length];
+          const name = nameMap[parseInt(annot.dataset.p)];
+          if (name) annot.dataset.tooltip = name;
         });
       }
 
