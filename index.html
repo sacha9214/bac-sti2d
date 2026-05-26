@@ -181,6 +181,66 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
+    /* ── Quiz ── */
+    #panel-quiz { min-height: 70vh; display: none; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 10px; }
+    #panel-quiz.active { display: flex; }
+
+    /* Setup */
+    .quiz-setup { text-align: center; max-width: 480px; margin: 60px auto 0; padding: 0 16px; }
+    .quiz-setup-icon { font-size: 3rem; margin-bottom: 14px; }
+    .quiz-setup-title { font-size: 1.8rem; font-weight: 800; margin: 0 0 10px; color: var(--text); }
+    .quiz-setup-sub { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 28px; }
+    .quiz-filter-row { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 24px; }
+    .quiz-filter-row label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+    .quiz-select { background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 8px 12px; font-size: 0.85rem; font-family: inherit; cursor: pointer; }
+    .quiz-start-btn { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 14px 36px; font-size: 1rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: opacity 0.2s; }
+    .quiz-start-btn:hover { opacity: 0.85; }
+
+    /* Card area */
+    .quiz-card-area { width: 100%; max-width: 640px; margin: 0 auto; padding: 0 16px; }
+    .quiz-top-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 0 8px; gap: 10px; }
+    .quiz-quit-btn { background: none; border: none; color: var(--muted); font-size: 0.85rem; cursor: pointer; font-family: inherit; padding: 4px 0; }
+    .quiz-quit-btn:hover { color: var(--text); }
+    .quiz-counter { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+    .quiz-score-live { font-size: 0.82rem; color: var(--accent3); font-weight: 700; }
+    .quiz-progress-bar { width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 20px; overflow: hidden; }
+    .quiz-progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.35s ease; }
+
+    .quiz-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; min-height: 260px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; transition: border-color 0.3s; }
+    .quiz-texte-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: rgba(108,140,255,0.1); border-radius: 20px; padding: 4px 12px; }
+    .quiz-cite { font-size: 1.05rem; line-height: 1.7; color: var(--text); font-style: italic; flex: 1; display: flex; align-items: center; }
+    .quiz-reveal-btn { background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 12px 28px; font-size: 0.92rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+    .quiz-reveal-btn:hover { background: rgba(108,140,255,0.12); border-color: var(--accent); }
+
+    .quiz-answer { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; animation: fadeInUp 0.25s ease; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .quiz-nom { font-size: 1.3rem; font-weight: 800; color: var(--accent); letter-spacing: 0.01em; }
+    .quiz-effet { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 460px; }
+    .quiz-verdict-btns { display: flex; gap: 12px; margin-top: 4px; }
+    .quiz-btn-no { background: rgba(255,100,100,0.12); border: 1px solid rgba(255,100,100,0.35); color: #ff7070; border-radius: 10px; padding: 11px 28px; font-size: 0.92rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: background 0.2s; }
+    .quiz-btn-no:hover { background: rgba(255,100,100,0.22); }
+    .quiz-btn-yes { background: rgba(108,255,184,0.12); border: 1px solid rgba(108,255,184,0.35); color: #6cffb8; border-radius: 10px; padding: 11px 28px; font-size: 0.92rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: background 0.2s; }
+    .quiz-btn-yes:hover { background: rgba(108,255,184,0.22); }
+
+    /* End screen */
+    .quiz-end { text-align: center; max-width: 480px; margin: 50px auto 0; padding: 0 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .quiz-end-icon { font-size: 3.5rem; }
+    .quiz-end-score { font-size: 2.4rem; font-weight: 900; color: var(--text); }
+    .quiz-end-msg { font-size: 1rem; color: var(--muted); }
+    .quiz-end-missed { width: 100%; text-align: left; margin-top: 8px; }
+    .quiz-end-missed-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #ff7070; margin-bottom: 8px; }
+    .quiz-missed-item { font-size: 0.82rem; color: var(--muted); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+    .quiz-missed-item strong { color: var(--text); }
+    .quiz-end-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+    .quiz-btn-retry { background: rgba(255,100,100,0.12); border: 1px solid rgba(255,100,100,0.35); color: #ff7070; border-radius: 10px; padding: 12px 24px; font-size: 0.9rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+    .quiz-btn-restart { background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 12px 24px; font-size: 0.9rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+    @media (max-width: 600px) {
+      .quiz-card { padding: 24px 18px; }
+      .quiz-cite { font-size: 0.95rem; }
+      .quiz-verdict-btns { flex-direction: column; width: 100%; }
+      .quiz-btn-no, .quiz-btn-yes { width: 100%; }
+    }
+
     /* MAIN */
     main {
       max-width: 900px;
@@ -1311,6 +1371,7 @@
   <button class="tab-btn active" data-tab="epreuve">L'épreuve</button>
   <button class="tab-btn" data-tab="textes">Mes textes</button>
   <button class="tab-btn" data-tab="livre">Mon livre</button>
+  <button class="tab-btn" data-tab="quiz">Quiz</button>
 </nav>
 
 <main>
@@ -2606,6 +2667,58 @@ Je le dis, vous pouvez vous confier, madame,
 
   </div><!-- /panel-livre -->
 
+  <!-- QUIZ -->
+  <div class="tab-panel" id="panel-quiz">
+
+    <!-- Setup screen -->
+    <div id="quizSetup" class="quiz-setup">
+      <div class="quiz-setup-icon">🎯</div>
+      <h2 class="quiz-setup-title">Quiz Procédés</h2>
+      <p class="quiz-setup-sub">Une citation s'affiche — retrouve le procédé, révèle la réponse, marque si tu savais ou non.</p>
+      <div class="quiz-filter-row">
+        <label for="quizFilter">Texte :</label>
+        <select id="quizFilter" class="quiz-select"></select>
+      </div>
+      <button class="quiz-start-btn" onclick="startQuiz()">Démarrer le quiz</button>
+    </div>
+
+    <!-- Card screen -->
+    <div id="quizCardArea" class="quiz-card-area" style="display:none">
+      <div class="quiz-top-bar">
+        <button class="quiz-quit-btn" onclick="quitQuiz()">← Quitter</button>
+        <span id="quizCounter" class="quiz-counter"></span>
+        <span id="quizScoreLive" class="quiz-score-live"></span>
+      </div>
+      <div class="quiz-progress-bar"><div id="quizProgressFill" class="quiz-progress-fill"></div></div>
+      <div class="quiz-card" id="quizCard">
+        <div id="quizTexteLabel" class="quiz-texte-label"></div>
+        <div id="quizCite" class="quiz-cite"></div>
+        <button class="quiz-reveal-btn" id="quizRevealBtn" onclick="revealQuiz()">👁 Révéler le procédé</button>
+        <div id="quizAnswer" class="quiz-answer" style="display:none">
+          <div id="quizNom" class="quiz-nom"></div>
+          <div id="quizEffet" class="quiz-effet"></div>
+          <div class="quiz-verdict-btns">
+            <button class="quiz-btn-no" onclick="nextQuiz(false)">✗ À revoir</button>
+            <button class="quiz-btn-yes" onclick="nextQuiz(true)">✓ Je savais</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div id="quizEnd" class="quiz-end" style="display:none">
+      <div id="quizEndIcon" class="quiz-end-icon"></div>
+      <div id="quizEndScore" class="quiz-end-score"></div>
+      <div id="quizEndMsg" class="quiz-end-msg"></div>
+      <div id="quizEndMissed" class="quiz-end-missed"></div>
+      <div class="quiz-end-btns">
+        <button class="quiz-btn-retry" id="quizRetryBtn" onclick="retryMissed()">🔄 Refaire les ratés</button>
+        <button class="quiz-btn-restart" onclick="startQuiz()">↩ Tout recommencer</button>
+      </div>
+    </div>
+
+  </div><!-- /panel-quiz -->
+
 </main>
 
 <!-- STICKY PLAYER -->
@@ -3339,6 +3452,118 @@ Je le dis, vous pouvez vous confier, madame,
       a.classList.toggle('sub-active', a.getAttribute('href') === '#' + current);
     });
   });
+
+  // ── Quiz ──
+  (function() {
+    // Build card pool from existing DOM procédé tags
+    const allCards = [];
+    document.querySelectorAll('.texte-card').forEach(card => {
+      const titre = card.querySelector('.texte-titre')?.textContent.trim() || '?';
+      const auteur = card.querySelector('.texte-auteur')?.textContent.trim() || '';
+      card.querySelectorAll('.procede-tag').forEach(tag => {
+        const nom = tag.querySelector('.pt-nom')?.textContent.trim();
+        const cite = tag.querySelector('.pt-cite')?.textContent.trim();
+        const effet = tag.querySelector('.pt-effet')?.textContent.trim();
+        if (nom && cite) allCards.push({ titre, auteur, nom, cite, effet: effet || '' });
+      });
+    });
+
+    // Populate filter select
+    const sel = document.getElementById('quizFilter');
+    sel.innerHTML = '<option value="all">Tous les textes (' + allCards.length + ' procédés)</option>';
+    const seen = new Set();
+    allCards.forEach(c => {
+      if (!seen.has(c.titre)) {
+        seen.add(c.titre);
+        const opt = document.createElement('option');
+        opt.value = c.titre;
+        opt.textContent = c.titre;
+        sel.appendChild(opt);
+      }
+    });
+
+    let deck = [], idx = 0, score = 0, missed = [];
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    window.startQuiz = function() {
+      const filter = document.getElementById('quizFilter').value;
+      deck = shuffle(filter === 'all' ? [...allCards] : allCards.filter(c => c.titre === filter));
+      idx = 0; score = 0; missed = [];
+      document.getElementById('quizSetup').style.display = 'none';
+      document.getElementById('quizEnd').style.display = 'none';
+      document.getElementById('quizCardArea').style.display = 'block';
+      showCard();
+    };
+
+    window.retryMissed = function() {
+      if (!missed.length) return;
+      deck = shuffle([...missed]);
+      idx = 0; score = 0; missed = [];
+      document.getElementById('quizEnd').style.display = 'none';
+      document.getElementById('quizCardArea').style.display = 'block';
+      showCard();
+    };
+
+    window.quitQuiz = function() {
+      document.getElementById('quizCardArea').style.display = 'none';
+      document.getElementById('quizEnd').style.display = 'none';
+      document.getElementById('quizSetup').style.display = 'block';
+    };
+
+    function showCard() {
+      const c = deck[idx];
+      document.getElementById('quizTexteLabel').textContent = c.titre + ' — ' + c.auteur.split('·')[0].trim();
+      document.getElementById('quizCite').textContent = c.cite;
+      document.getElementById('quizNom').textContent = c.nom;
+      document.getElementById('quizEffet').textContent = c.effet;
+      document.getElementById('quizAnswer').style.display = 'none';
+      document.getElementById('quizRevealBtn').style.display = 'inline-block';
+      document.getElementById('quizCounter').textContent = (idx + 1) + ' / ' + deck.length;
+      document.getElementById('quizScoreLive').textContent = '✓ ' + score;
+      document.getElementById('quizProgressFill').style.width = (idx / deck.length * 100) + '%';
+    }
+
+    window.revealQuiz = function() {
+      document.getElementById('quizRevealBtn').style.display = 'none';
+      document.getElementById('quizAnswer').style.display = 'flex';
+    };
+
+    window.nextQuiz = function(knew) {
+      if (knew) score++;
+      else missed.push(deck[idx]);
+      idx++;
+      if (idx >= deck.length) { showEnd(); return; }
+      showCard();
+    };
+
+    function showEnd() {
+      document.getElementById('quizCardArea').style.display = 'none';
+      document.getElementById('quizEnd').style.display = 'flex';
+      document.getElementById('quizProgressFill').style.width = '100%';
+      const pct = Math.round(score / deck.length * 100);
+      const icon = pct >= 80 ? '🏆' : pct >= 55 ? '💪' : '📚';
+      document.getElementById('quizEndIcon').textContent = icon;
+      document.getElementById('quizEndScore').textContent = score + ' / ' + deck.length;
+      const msg = pct >= 80 ? 'Excellent — tu maîtrises !' : pct >= 55 ? 'Bien joué, continue !' : 'Encore un peu de révision…';
+      document.getElementById('quizEndMsg').textContent = msg + ' (' + pct + '%)';
+      const retryBtn = document.getElementById('quizRetryBtn');
+      retryBtn.style.display = missed.length ? 'inline-block' : 'none';
+      const missedEl = document.getElementById('quizEndMissed');
+      if (missed.length) {
+        missedEl.innerHTML = '<div class="quiz-end-missed-title">À revoir (' + missed.length + ')</div>' +
+          missed.map(c => '<div class="quiz-missed-item"><strong>' + c.nom + '</strong> — ' + c.titre + '</div>').join('');
+      } else {
+        missedEl.innerHTML = '<div style="color:var(--accent3);font-weight:700;font-size:0.9rem">Zéro raté 🎉</div>';
+      }
+    }
+  })();
 </script>
 
 </body>
