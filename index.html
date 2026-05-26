@@ -177,6 +177,124 @@
     .subnav a:hover { color: var(--text); border-bottom-color: var(--accent); }
     .subnav a.sub-active { color: var(--text); border-bottom-color: var(--accent); }
 
+    /* ── Timer ── */
+    .timer-card {
+      margin-top: 22px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      text-align: center;
+    }
+    .timer-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .timer-phases {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+    .timer-phase {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: all 0.3s;
+    }
+    .timer-phase.active {
+      background: rgba(108,140,255,0.12);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .timer-phase.done {
+      background: rgba(108,255,184,0.08);
+      border-color: rgba(108,255,184,0.3);
+      color: #6cffb8;
+    }
+    .tp-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+    .timer-phase.active .tp-dot { background: var(--accent); }
+    .timer-phase.done .tp-dot { background: #6cffb8; }
+    .tp-dur { font-weight: 700; }
+
+    .timer-display {
+      font-size: 5rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+    .timer-display.warning { color: #ffb86c; }
+    .timer-display.urgent  { color: #ff7070; }
+
+    .timer-phase-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .timer-bar-wrap {
+      width: 100%;
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .timer-bar {
+      height: 100%;
+      width: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 1s linear, background 0.5s;
+    }
+
+    .timer-controls { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .timer-btn {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 10px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .timer-btn:hover { background: rgba(108,140,255,0.1); border-color: var(--accent); }
+    .timer-btn-main {
+      padding: 12px 36px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .timer-btn-reset, .timer-btn-skip {
+      padding: 12px 16px;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 480px) {
+      .timer-display { font-size: 3.8rem; }
+      .timer-phases { gap: 4px; }
+      .timer-phase { padding: 5px 10px; font-size: 0.72rem; }
+    }
+
     /* ── Tab panels ── */
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
@@ -1405,6 +1523,36 @@
       <p style="font-size:0.92rem; color:#aab0cc;">
         <strong style="color:var(--accent3)">Comment ça se passe :</strong> L'examinateur a devant lui un document récapitulatif où ton œuvre est notée. Tu fais d'abord une courte présentation (~2 min), puis il lance une discussion (~6 min). Il peut poser des questions sur le livre, sur les thèmes, mais aussi élargir à d'autres œuvres vues dans l'année.
       </p>
+    </div>
+
+    <!-- TIMER -->
+    <div class="timer-card" id="timerCard">
+      <div class="timer-title">⏱ Simulateur d'oral</div>
+      <div class="timer-phases" id="timerPhases">
+        <div class="timer-phase active" data-phase="0">
+          <span class="tp-dot"></span>
+          <span class="tp-label">Préparation</span>
+          <span class="tp-dur">30 min</span>
+        </div>
+        <div class="timer-phase" data-phase="1">
+          <span class="tp-dot"></span>
+          <span class="tp-label">Explication linéaire</span>
+          <span class="tp-dur">12 min</span>
+        </div>
+        <div class="timer-phase" data-phase="2">
+          <span class="tp-dot"></span>
+          <span class="tp-label">Entretien œuvre</span>
+          <span class="tp-dur">8 min</span>
+        </div>
+      </div>
+      <div class="timer-display" id="timerDisplay">30:00</div>
+      <div class="timer-phase-label" id="timerPhaseLabel">Préparation seul(e)</div>
+      <div class="timer-bar-wrap"><div class="timer-bar" id="timerBar"></div></div>
+      <div class="timer-controls">
+        <button class="timer-btn timer-btn-reset" onclick="timerReset()" title="Recommencer">↺</button>
+        <button class="timer-btn timer-btn-main" id="timerMainBtn" onclick="timerToggle()">▶ Démarrer</button>
+        <button class="timer-btn timer-btn-skip" onclick="timerSkip()" title="Passer à la phase suivante">⏭</button>
+      </div>
     </div>
   </section>
 
@@ -3452,6 +3600,104 @@ Je le dis, vous pouvez vous confier, madame,
       a.classList.toggle('sub-active', a.getAttribute('href') === '#' + current);
     });
   });
+
+  // ── Timer ──
+  (function() {
+    const PHASES = [
+      { label: 'Préparation seul(e)', secs: 30 * 60 },
+      { label: 'Explication linéaire + grammaire', secs: 12 * 60 },
+      { label: 'Entretien œuvre choisie', secs: 8 * 60 },
+    ];
+    let phase = 0, remaining = PHASES[0].secs, running = false, interval = null;
+
+    const display   = document.getElementById('timerDisplay');
+    const phaseLabel= document.getElementById('timerPhaseLabel');
+    const bar       = document.getElementById('timerBar');
+    const mainBtn   = document.getElementById('timerMainBtn');
+    const phaseDots = document.querySelectorAll('.timer-phase');
+
+    function fmt(s) {
+      const m = Math.floor(s / 60), sec = s % 60;
+      return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+    }
+
+    function beep(freq, dur) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.4, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+        osc.start(); osc.stop(ctx.currentTime + dur);
+      } catch(e) {}
+    }
+
+    function alertPhaseEnd() {
+      beep(880, 0.25);
+      setTimeout(() => beep(880, 0.25), 320);
+      setTimeout(() => beep(1100, 0.5), 640);
+    }
+
+    function render() {
+      display.textContent = fmt(remaining);
+      const total = PHASES[phase].secs;
+      const pct = remaining / total * 100;
+      bar.style.width = pct + '%';
+      bar.style.background = pct < 15 ? '#ff7070' : pct < 30 ? '#ffb86c' : 'var(--accent)';
+      display.className = 'timer-display' + (pct < 15 ? ' urgent' : pct < 30 ? ' warning' : '');
+      phaseLabel.textContent = PHASES[phase].label;
+      phaseDots.forEach((el, i) => {
+        el.classList.toggle('active', i === phase);
+        el.classList.toggle('done', i < phase);
+      });
+    }
+
+    function tick() {
+      if (remaining > 0) { remaining--; render(); return; }
+      alertPhaseEnd();
+      if (phase < PHASES.length - 1) {
+        phase++;
+        remaining = PHASES[phase].secs;
+        render();
+      } else {
+        clearInterval(interval); running = false;
+        mainBtn.textContent = '✓ Terminé';
+        mainBtn.disabled = true;
+        beep(660, 0.4);
+        setTimeout(() => beep(880, 0.6), 450);
+      }
+    }
+
+    window.timerToggle = function() {
+      if (running) {
+        clearInterval(interval); running = false;
+        mainBtn.textContent = '▶ Reprendre';
+      } else {
+        running = true;
+        mainBtn.textContent = '⏸ Pause';
+        interval = setInterval(tick, 1000);
+      }
+    };
+
+    window.timerReset = function() {
+      clearInterval(interval); running = false;
+      phase = 0; remaining = PHASES[0].secs;
+      mainBtn.textContent = '▶ Démarrer';
+      mainBtn.disabled = false;
+      render();
+    };
+
+    window.timerSkip = function() {
+      if (phase < PHASES.length - 1) {
+        phase++; remaining = PHASES[phase].secs;
+        render(); beep(660, 0.2);
+      }
+    };
+
+    render();
+  })();
 
   // ── Quiz ──
   (function() {
