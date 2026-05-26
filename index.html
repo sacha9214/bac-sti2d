@@ -775,9 +775,34 @@
     .texte-inline-analysis .texte-section-title { margin-top: 0; }
     .texte-inline-analysis .axes-list + .texte-section-title { margin-top: 18px; }
 
-    .texte-extrait.poeme {
+    .texte-extrait.poeme .mouvement-texte {
       white-space: pre-wrap;
     }
+
+    .mvt-header {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border-top: 1px solid rgba(108,140,255,0.25);
+      padding-top: 10px;
+      margin: 14px 0 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      white-space: normal;
+    }
+    .mvt-header::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .mvt-header:first-child { border-top: none; margin-top: 0; padding-top: 0; }
 
     .texte-extrait.prose p {
       margin-bottom: 14px;
@@ -1256,26 +1281,29 @@
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t1">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t1')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait poeme">Souvent, pour s'amuser, les hommes d'équipage
-<span class="annot" data-p="3">Prennent</span> des albatros, <span class="annot" data-p="4">vastes oiseaux des mers</span>,
-Qui suivent, <span class="annot" data-p="4">indolents compagnons de voyage</span>,
-Le navire glissant sur les gouffres amers.
-
-À peine les ont-ils déposés sur <span class="annot" data-p="9">les planches</span>,
-Que ces rois de l'azur, maladroits et honteux,
-Laissent piteusement leurs grandes ailes blanches
+            <div class="texte-extrait poeme">
+<div class="mvt-header">Mvt 1 — L'albatros en vol : majesté (v.1-4)</div>
+<div class="mouvement-texte">Souvent, pour s'amuser, <span class="annot" data-p="2">les hommes d'équipage</span>
+<span class="annot" data-p="3">Prennent</span> des albatros, <span class="annot" data-p="5">vastes</span> <span class="annot" data-p="4">oiseaux des mers</span>,
+Qui <span class="annot" data-p="3">suivent</span>, <span class="annot" data-p="8">indolents</span> <span class="annot" data-p="4">compagnons de voyage</span>,
+Le navire glissant sur les gouffres amers.</div>
+<div class="mvt-header">Mvt 2 — L'albatros sur le pont : déchéance (v.5-12)</div>
+<div class="mouvement-texte"><span class="annot" data-p="6">À peine les ont-ils déposés</span> sur <span class="annot" data-p="9">les planches</span>,
+Que ces rois de l'azur, <span class="annot" data-p="8">maladroits et honteux</span>,
+<span class="annot" data-p="7">Laissent piteusement leurs grandes ailes blanches</span>
 Comme des avirons traîner à côté d'eux.
 
 Ce voyageur ailé, comme il est gauche et veule !
 Lui, naguère si beau, qu'il est comique et laid !
 L'un agace son bec avec un brûle-gueule,
-L'autre mime, en boitant, l'infirme qui volait !
-
-<span class="annot" data-p="1">Le Poète</span> est semblable au prince <span class="annot" data-p="10">des nuées</span>
+L'autre mime, en boitant, l'infirme qui volait !</div>
+<div class="mvt-header">Mvt 3 — Allégorie du Poète (v.13-16)</div>
+<div class="mouvement-texte"><span class="annot" data-p="1">Le Poète</span> est semblable au prince <span class="annot" data-p="10">des nuées</span>
 Qui hante la tempête et se rit de l'archer ;
 Exilé sur le sol au milieu <span class="annot" data-p="10">des huées</span>,
 <span class="annot" data-p="11">Ses ailes de géant l'empêchent de marcher.</span>
 <span class="texte-extrait-source">Charles Baudelaire, Les Fleurs du Mal, « Spleen et Idéal », 1857.</span></div>
+</div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Charles Baudelaire</p></div>
@@ -1323,24 +1351,27 @@ Exilé sur le sol au milieu <span class="annot" data-p="10">des huées</span>,
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t2">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t2')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait poeme"><span class="annot" data-p="2">C'est</span> un trou de verdure où <span class="annot" data-p="3">chante une rivière</span>
-Accrochant follement aux herbes des haillons
-D'argent ; où le soleil, de <span class="annot" data-p="3">la montagne fière</span>,
-Luit : <span class="annot" data-p="2">c'est</span> un petit val qui <span class="annot" data-p="4">mousse</span> de rayons.
-
-Un soldat jeune, bouche ouverte, tête nue,
+            <div class="texte-extrait poeme">
+<div class="mvt-header">Mvt 1 — Un décor trompeur : hypotypose d'une nature vivante (v.1-4)</div>
+<div class="mouvement-texte"><span class="annot" data-p="2">C'est</span> un trou de verdure où <span class="annot" data-p="3">chante une rivière</span>
+<span class="annot" data-p="1">Accrochant follement</span> aux herbes des haillons
+<span class="annot" data-p="6">D'argent</span> ; où le soleil, de <span class="annot" data-p="3">la montagne fière</span>,
+Luit : <span class="annot" data-p="2">c'est</span> un petit val qui <span class="annot" data-p="4">mousse</span> de rayons.</div>
+<div class="mvt-header">Mvt 2 — Le soldat jeune euphémisé par « dort » (v.5-8)</div>
+<div class="mouvement-texte">Un soldat jeune, bouche ouverte, tête nue,
 Et la nuque baignant dans le frais cresson bleu,
 <span class="annot" data-p="7">Dort</span> ; il est étendu dans l'herbe, sous la nue,
-Pâle dans son lit vert où <span class="annot" data-p="5">la lumière pleut</span>.
-
-Les pieds dans les glaïeuls, <span class="annot" data-p="7">il dort</span>. Souriant comme
+Pâle dans son lit vert où <span class="annot" data-p="5">la lumière pleut</span>.</div>
+<div class="mvt-header">Mvt 3 — L'ombre de la mort : Nature allégorique (v.9-11)</div>
+<div class="mouvement-texte">Les pieds dans les glaïeuls, <span class="annot" data-p="7">il dort</span>. Souriant comme
 Sourirait un enfant malade, <span class="annot" data-p="7">il fait un somme</span> :
-<span class="annot" data-p="3">Nature</span>, berce-le chaudement : il a froid.
-
-Les parfums ne font pas frissonner sa narine ;
-Il dort dans le soleil, la main sur sa poitrine
-Tranquille. Il a deux trous rouges <span class="annot" data-p="9">au côté droit</span>.
+<span class="annot" data-p="3">Nature</span>, berce-le chaudement : il a froid.</div>
+<div class="mvt-header">Mvt 4 — Chute cruelle : révélation finale, acrostiche LIT (v.12-14)</div>
+<div class="mouvement-texte"><span class="annot" data-p="8">L</span>es parfums ne font pas frissonner sa narine ;
+<span class="annot" data-p="8">I</span>l dort dans le soleil, la main sur sa poitrine
+<span class="annot" data-p="8">T</span>ranquille. Il a deux trous rouges <span class="annot" data-p="9">au côté droit</span>.
 <span class="texte-extrait-source">Arthur Rimbaud, Cahiers de Douai, 7 octobre 1870.</span></div>
+</div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Arthur Rimbaud</p></div>
@@ -1387,23 +1418,25 @@ Tranquille. Il a deux trous rouges <span class="annot" data-p="9">au côté droi
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t3">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t3')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait poeme"><span class="annot" data-p="1">Je m'en allais</span>, les poings dans mes poches <span class="annot" data-p="2">crevées</span> ;
+            <div class="texte-extrait poeme">
+<div class="mvt-header">Mvt 1 — Le départ : liberté du vagabond-poète (v.1-4)</div>
+<div class="mouvement-texte"><span class="annot" data-p="1">Je m'en allais</span>, les poings dans mes poches <span class="annot" data-p="2">crevées</span> ;
 Mon paletot aussi <span class="annot" data-p="3">devenait idéal</span> ;
 J'allais sous le ciel, <span class="annot" data-p="4">Muse ! et j'étais ton féal</span> ;
-<span class="annot" data-p="9">Oh ! là là !</span> que d'amours splendides j'ai rêvées !
-
-Mon unique culotte avait un large trou.
+<span class="annot" data-p="9">Oh ! là là !</span> que d'amours splendides j'ai rêvées !</div>
+<div class="mvt-header">Mvt 2 — Le rêve cosmique : fusion avec la nature (v.5-8)</div>
+<div class="mouvement-texte">Mon unique culotte avait un large trou.
 — <span class="annot" data-p="5">Petit Poucet rêveur</span>, j'égrenais dans ma course
 Des rimes. Mon auberge était à <span class="annot" data-p="6">la Grande-Ourse</span> ;
-— Mes étoiles au ciel avaient un <span class="annot" data-p="7">doux frou-frou</span>.
-
-Et je les écoutais, assis au bord des routes,
+— Mes étoiles au ciel avaient un <span class="annot" data-p="7">doux frou-frou</span>.</div>
+<div class="mvt-header">Mvt 3 — L'expérience sensorielle et créatrice (v.9-14)</div>
+<div class="mouvement-texte">Et je les écoutais, assis au bord des routes,
 Ces bons soirs de septembre où je sentais des gouttes
 De rosée à mon front, comme un vin de vigueur ;
 
 Où, rimant au milieu des ombres fantastiques,
 <span class="annot" data-p="8">Comme des lyres</span>, je tirais les élastiques
-De mes souliers blessés, un pied près de mon cœur !
+De mes souliers blessés, un pied près de mon cœur !</div>
 <span class="texte-extrait-source">Arthur Rimbaud, Cahiers de Douai, 1870.</span></div>
           </div>
           <div class="texte-grid">
@@ -1450,19 +1483,23 @@ De mes souliers blessés, un pied près de mon cœur !
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t4">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t4')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait poeme"><span class="annot" data-p="1">Un Loup</span> n'avait que les os et la peau,
+            <div class="texte-extrait poeme">
+<div class="mvt-header">Mvt 1 — Portrait contrasté : loup maigre / chien gras (v.1-4)</div>
+<div class="mouvement-texte"><span class="annot" data-p="1">Un Loup</span> n'avait que les os et la peau,
 Tant les chiens faisaient <span class="annot" data-p="5">bonne garde</span>.
-<span class="annot" data-p="1">Ce Loup</span> rencontre un Dogue aussi puissant que beau,
-Gras, poli, qui s'était fourvoyé par <span class="annot" data-p="5">mégarde</span>.
-<span class="annot" data-p="2">L'attaquer, le mettre en quartiers,
+<span class="annot" data-p="1">Ce Loup</span> <span class="annot" data-p="7">rencontre</span> un Dogue aussi puissant que beau,
+Gras, poli, qui s'était fourvoyé par <span class="annot" data-p="5">mégarde</span>.</div>
+<div class="mvt-header">Mvt 2 — Le loup renonce à attaquer et s'abaisse à flatter (v.5-12)</div>
+<div class="mouvement-texte"><span class="annot" data-p="2"><span class="annot" data-p="3">L'attaquer</span>, le mettre en <span class="annot" data-p="3">quartiers</span>,
 Sire Loup l'eût fait volontiers ;</span>
 Mais il fallait livrer bataille,
-Et le Mâtin était de taille
+<span class="annot" data-p="8">Et le Mâtin était de taille</span>
 À se défendre hardiment.
 Le Loup donc l'aborde humblement,
 <span class="annot" data-p="4">Entre en propos, et lui fait compliment</span>
-Sur son embonpoint, qu'il admire.
-« Il ne tiendra qu'à vous beau sire,
+Sur son embonpoint, qu'il admire.</div>
+<div class="mvt-header">Mvt 3 — L'argumentation du chien : rhétorique de la servitude (v.13-28)</div>
+<div class="mouvement-texte">« Il ne tiendra qu'à vous beau sire,
 D'être aussi gras que moi, lui repartit le Chien.
 Quittez les bois, vous ferez bien :
 Vos pareils y sont misérables,
@@ -1478,8 +1515,9 @@ Flatter ceux du logis, à son Maître complaire :
 Moyennant quoi votre salaire
 Sera force reliefs de toutes les façons :
 Os de poulets, os de pigeons,
-Sans parler de mainte caresse. »
-Le Loup déjà se forge une félicité
+Sans parler de mainte caresse. »</div>
+<div class="mvt-header">Mvt 4 — Révélation du collier, refus du loup : morale implicite (v.29-fin)</div>
+<div class="mouvement-texte">Le Loup déjà se forge une félicité
 Qui le fait pleurer de tendresse.
 Chemin faisant, il vit le col du Chien pelé.
 « Qu'est-ce là ? lui dit-il. — Rien. — Quoi ? rien ? — Peu de chose.
@@ -1492,6 +1530,7 @@ Je ne veux en aucune sorte,
 <span class="annot" data-p="9">Et ne voudrais pas même à ce prix un trésor. »
 Cela dit, maître Loup s'enfuit, et court encor.</span>
 <span class="texte-extrait-source">Jean de La Fontaine, Les Fables, Livre I, 5, 1668.</span></div>
+</div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Jean de La Fontaine</p></div>
@@ -1538,7 +1577,14 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t5">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t5')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p><span class="annot" data-p="8">Mais ô grand Dieu !</span> <span class="annot" data-p="1">qu'est donc cela ? Comment appellerons-nous <span class="annot" data-p="2">ce vice, cet horrible vice</span> ? N'est-ce pas honteux</span>, de voir <span class="annot" data-p="6">un nombre infini d'hommes</span> <span class="annot" data-p="3">non seulement obéir mais ramper, non pas être gouvernés mais tyrannisés</span>, n'ayant ni biens ni parents ni enfants, ni leur vie même qui soient à eux ? Souffrir les rapines, les brigandages, les cruautés, non d'une armée, non d'une horde de barbares, contre lesquels chacun devrait défendre sa vie au prix de tout son sang, <span class="annot" data-p="6">mais d'un seul</span> ; non d'un Hercule ou d'un Samson, mais d'un vrai Mirmidon, <span class="annot" data-p="7">souvent le plus lâche, le plus vil et le plus efféminé de la nation</span>, qui n'a jamais flairé la poudre des batailles, mais à peine foulé le sable des tournois ; qui est inhabile, non seulement à commander aux hommes, mais aussi à satisfaire la moindre femmelette !</p><p><span class="annot" data-p="1">Nommerons-nous cela lâcheté ? Appellerons-nous vils et couards les hommes soumis à un tel joug ?</span> Si deux, si trois, si quatre cèdent à <span class="annot" data-p="6">un seul</span>, c'est étrange, mais toutefois possible ; peut-être avec raison, pourrait-on dire : c'est faute de cœur. Mais si cent, si mille se laissent opprimer par <span class="annot" data-p="6">un seul</span>, dira-t-on encore que c'est de la couardise, qu'ils n'osent s'en prendre à lui, ou plutôt que, par mépris et dédain, ils ne veulent lui résister ? Enfin, si l'on voit <span class="annot" data-p="4">non pas cent, non pas mille, mais cent pays, mille villes, un million d'hommes</span> ne pas assaillir, ne pas écraser celui qui, sans ménagement aucun, les traite tous comme autant de serfs et d'esclaves : <span class="annot" data-p="1">comment qualifierons-nous cela ?</span></p><p>Est-ce lâcheté ? Mais pour tous les vices, il est des bornes qu'ils ne peuvent dépasser. Deux hommes et même dix peuvent bien en craindre un, mais que mille, un million, mille villes ne se défendent pas contre un seul homme ! Oh ! Ce n'est pas seulement couardise, elle ne va pas jusque-là ; de même que la vaillance n'exige pas qu'un seul homme escalade une forteresse, attaque une armée, conquière un royaume ! <span class="annot" data-p="1">Quel monstrueux vice est donc celui-là que le mot de couardise ne peut rendre, pour lequel toute expression manque, que la nature désavoue et la langue refuse de nommer ?</span></p><span class="texte-extrait-source">Étienne de La Boétie, Discours de la servitude volontaire, v. 1548.</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — Un premier constat : l'obéissance qualifiée de vice monstrueux</div>
+<p><span class="annot" data-p="8">Mais ô grand Dieu !</span> <span class="annot" data-p="1">qu'est donc cela ? Comment appellerons-nous <span class="annot" data-p="2">ce vice, cet horrible vice</span> ? N'est-ce pas honteux</span>, de voir <span class="annot" data-p="6">un nombre infini d'hommes</span> <span class="annot" data-p="3">non seulement obéir mais ramper, non pas être gouvernés mais tyrannisés</span>, n'ayant ni biens ni parents ni enfants, ni leur vie même qui soient à eux ? <span class="annot" data-p="5">Souffrir les rapines, les brigandages, les cruautés</span>, non d'une armée, non d'une horde de barbares, contre lesquels chacun devrait défendre sa vie au prix de tout son sang, <span class="annot" data-p="6">mais d'un seul</span> ; non d'un Hercule ou d'un Samson, mais d'un vrai Mirmidon, <span class="annot" data-p="7">souvent le plus lâche, le plus vil et le plus efféminé de la nation</span>, qui n'a jamais flairé la poudre des batailles, mais à peine foulé le sable des tournois ; qui est inhabile, non seulement à commander aux hommes, mais aussi à satisfaire la moindre femmelette !</p>
+<div class="mvt-header">Mvt 2 — Une passivité inqualifiable : gradation numérique</div>
+<p><span class="annot" data-p="1">Nommerons-nous cela lâcheté ? Appellerons-nous vils et couards les hommes soumis à un tel joug ?</span> Si deux, si trois, si quatre cèdent à <span class="annot" data-p="6">un seul</span>, c'est étrange, mais toutefois possible ; peut-être avec raison, pourrait-on dire : c'est faute de cœur. Mais si cent, si mille se laissent opprimer par <span class="annot" data-p="6">un seul</span>, dira-t-on encore que c'est de la couardise, qu'ils n'osent s'en prendre à lui, ou plutôt que, par mépris et dédain, ils ne veulent lui résister ? Enfin, si l'on voit <span class="annot" data-p="4">non pas cent, non pas mille, mais cent pays, mille villes, un million d'hommes</span> ne pas assaillir, ne pas écraser celui qui, sans ménagement aucun, les traite tous comme autant de serfs et d'esclaves : <span class="annot" data-p="1">comment qualifierons-nous cela ?</span></p>
+<div class="mvt-header">Mvt 3 — Un vice innommable : ce mal dépasse la langue et la raison</div>
+<p>Est-ce lâcheté ? Mais pour tous les vices, il est des bornes qu'ils ne peuvent dépasser. Deux hommes et même dix peuvent bien en craindre un, mais que mille, un million, mille villes ne se défendent pas contre un seul homme ! <span class="annot" data-p="9">Oh ! Ce n'est pas seulement couardise, elle ne va pas jusque-là ; de même que la vaillance n'exige pas qu'un seul homme escalade une forteresse, attaque une armée, conquière un royaume !</span> <span class="annot" data-p="1">Quel monstrueux vice est donc celui-là que le mot de couardise ne peut rendre, pour lequel toute expression manque, que la nature désavoue et la langue refuse de nommer ?</span></p>
+<span class="texte-extrait-source">Étienne de La Boétie, Discours de la servitude volontaire, v. 1548.</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Étienne de La Boétie</p></div>
@@ -1584,7 +1630,12 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t6">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t6')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p><span class="annot" data-p="1">Nul doute</span> que ce ne soit <span class="annot" data-p="2">la nature</span> qui nous dirige d'abord suivant les penchants bons ou mauvais qu'elle nous a donnés ; mais aussi faut-il convenir qu'elle a encore moins de pouvoir sur nous que <span class="annot" data-p="2">l'habitude</span> ; car, si bon que soit le naturel, il se perd s'il n'est entretenu ; et <span class="annot" data-p="3">la nourriture nous façonne toujours à sa façon, de quelque manière que ce soit</span>, malgré la nature. Les semences de bien que la nature met en nous sont si frêles et si minces qu'elles ne peuvent résister au moindre heurt d'une nourriture qui les contrarie. Elles ne se conservent pas si facilement qu'elles s'abâtardissent, dégénèrent même et disparaissent, <span class="annot" data-p="4">comme il arrive à ces arbres fruitiers qui, ayant tous leur espèce propre, la conservent tant qu'on les laisse venir naturellement, mais la perdent, pour porter des fruits tout à fait différents des leurs, dès qu'on les a greffés.</span> <span class="annot" data-p="4">Les herbes ont aussi chacune leur propriété, leur naturel, leur singularité</span> : mais toutefois, le gel, le temps, le terroir ou la main du jardinier, améliorent ou détériorent sensiblement leur qualité ; la plante qu'on a vue dans un pays n'est souvent plus reconnaissable dans un autre.</p><p><span class="annot" data-p="7">On raconte que Lycurgue, législateur de Sparte, avait nourri deux chiens, tous deux frères, tous deux allaités du même lait, l'un engraissé à la cuisine et l'autre habitué à courir les champs, au son de la trompe et du huchet. Voulant montrer aux Lacédémoniens que les hommes sont tels que la nourriture les fait, il exposa les deux chiens sur la place publique et mit entre eux une soupe et un lièvre : l'un courut au plat et l'autre au lièvre et pourtant, dit-il, ils sont frères !</span> Donc ce législateur avec ses lois et sa police éduqua si bien les Lacédémoniens que chacun d'eux eut préféré mourir de mille morts, plutôt que de reconnaître autre seigneur que la loi et la raison.</p><span class="texte-extrait-source">Étienne de La Boétie, Discours de la servitude volontaire, v. 1548.</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — L'humain entre nature et habitude : métaphore filée des végétaux</div>
+<p><span class="annot" data-p="1">Nul doute</span> que ce ne soit <span class="annot" data-p="2">la nature</span> qui nous dirige d'abord suivant les penchants bons ou mauvais qu'elle nous a donnés ; <span class="annot" data-p="8">mais</span> aussi faut-il convenir qu'elle a encore moins de pouvoir sur nous que <span class="annot" data-p="2">l'habitude</span> ; <span class="annot" data-p="8">car</span>, si bon que soit le naturel, il se perd s'il n'est entretenu ; et <span class="annot" data-p="3">la nourriture nous façonne toujours à sa façon, de quelque manière que ce soit</span>, malgré la nature. Les semences de bien que la nature met en nous sont si frêles et si minces qu'elles ne peuvent résister au moindre heurt d'une nourriture qui les contrarie. Elles ne se conservent pas si facilement qu'elles s'abâtardissent, dégénèrent même et disparaissent, <span class="annot" data-p="5"><span class="annot" data-p="4">comme il arrive à ces arbres fruitiers qui, ayant tous leur espèce propre, la conservent tant qu'on les laisse venir naturellement, mais la perdent, pour porter des fruits tout à fait différents des leurs, dès qu'on les a greffés.</span></span> <span class="annot" data-p="4">Les herbes ont aussi chacune leur propriété, leur naturel, leur singularité</span> : <span class="annot" data-p="8">mais</span> toutefois, le gel, le temps, le terroir ou la main du jardinier, améliorent ou détériorent sensiblement leur qualité ; la plante qu'on a vue dans un pays n'est souvent plus reconnaissable dans un autre.</p>
+<div class="mvt-header">Mvt 2 — La parabole de Lycurgue : deux chiens, deux destins</div>
+<p><span class="annot" data-p="7">On raconte que Lycurgue, législateur de Sparte, avait nourri deux chiens, tous deux frères, tous deux allaités du même lait, <span class="annot" data-p="6">l'un engraissé à la cuisine et l'autre habitué à courir les champs</span>, au son de la trompe et du huchet. Voulant montrer aux Lacédémoniens que les hommes sont tels que la nourriture les fait, il exposa les deux chiens sur la place publique et mit entre eux une soupe et un lièvre : <span class="annot" data-p="6">l'un courut au plat et l'autre au lièvre</span> et pourtant, dit-il, ils sont frères !</span> Donc ce législateur avec ses lois et sa police éduqua si bien les Lacédémoniens que chacun d'eux eut préféré mourir de mille morts, plutôt que de reconnaître autre seigneur que la loi et la raison.</p>
+<span class="texte-extrait-source">Étienne de La Boétie, Discours de la servitude volontaire, v. 1548.</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Étienne de La Boétie</p></div>
@@ -1629,7 +1680,14 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t7">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t7')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p><span class="annot" data-p="4">J'avais marqué</span> le temps de mon départ d'Amiens. <span class="annot" data-p="2">Hélas !</span> que ne le marquais-je un jour plus tôt ! <span class="annot" data-p="3">j'aurais porté chez mon père toute mon innocence.</span> La veille même de celui que je devais quitter cette ville, <span class="annot" data-p="5">étant à me promener avec mon ami, qui s'appelait Tiberge,</span> nous vîmes arriver le coche d'Arras, et nous le suivîmes jusqu'à l'hôtellerie où ces voitures descendent. Nous n'avions pas d'autre motif que la curiosité. Il en sortit quelques femmes, qui se retirèrent aussitôt. Mais il en resta une, fort jeune, qui s'arrêta seule dans la cour, pendant qu'un homme d'un âge avancé, qui paraissait lui servir de conducteur, s'empressait pour faire tirer son équipage des paniers.</p><p>Elle me parut si charmante que <span class="annot" data-p="7">moi, qui n'avais jamais pensé à la différence des sexes, ni regardé une fille avec un peu d'attention, moi, dis-je, dont tout le monde admirait la sagesse et la retenue</span>, je me trouvai <span class="annot" data-p="8">enflammé tout d'un coup jusqu'au transport</span>. J'avais le défaut d'être excessivement timide et facile à déconcerter ; mais loin d'être arrêté alors par cette faiblesse, je m'avançai vers la maîtresse de mon cœur. Quoiqu'elle fût encore moins âgée que moi, elle reçut mes politesses sans paraître embarrassée. Je lui demandai ce qui l'amenait à Amiens et si elle y avait quelques personnes de connaissance. Elle me répondit ingénument qu'elle y était envoyée par ses parents pour être religieuse.</p><p>L'amour me rendait déjà si éclairé, depuis un moment qu'il était dans mon cœur, que je regardai ce dessein comme un coup mortel pour mes désirs. Je lui parlai d'une manière qui lui fit comprendre mes sentiments, car elle était bien plus expérimentée que moi. C'était malgré elle qu'on l'envoyait au couvent, pour arrêter sans doute son penchant au plaisir, <span class="annot" data-p="6">qui s'était déjà déclaré et qui a causé, dans la suite, tous ses malheurs et les miens.</span></p><span class="texte-extrait-source">Abbé Prévost, Manon Lescaut, 1731 (première partie, pp. 32-33, éd. Hatier).</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — Le concours de circonstances : hasard ou fatalité ?</div>
+<p><span class="annot" data-p="4">J'avais marqué</span> le temps de mon départ d'Amiens. <span class="annot" data-p="2">Hélas !</span> que ne le marquais-je un jour plus tôt ! <span class="annot" data-p="2">j'aurais porté chez mon père toute mon innocence.</span> La veille même de celui que je devais quitter cette ville, <span class="annot" data-p="3">étant à me promener avec mon ami, qui s'appelait Tiberge,</span> nous vîmes arriver le coche d'Arras, et nous le suivîmes jusqu'à l'hôtellerie où ces voitures descendent. Nous n'avions pas d'autre motif que la curiosité. Il en sortit quelques femmes, qui se retirèrent aussitôt. Mais il en resta une, fort jeune, qui s'arrêta seule dans la cour, pendant qu'un homme d'un âge avancé, qui paraissait lui servir de conducteur, s'empressait pour faire tirer son équipage des paniers.</p>
+<div class="mvt-header">Mvt 2 — Le coup de foudre : focalisation interne, antithèse sagesse/passion</div>
+<p><span class="annot" data-p="1">Elle me parut si charmante</span> que moi, qui n'avais jamais pensé à la différence des sexes, ni regardé une fille avec un peu d'attention, <span class="annot" data-p="6">moi, dis-je, dont tout le monde admirait la sagesse et la retenue</span>, je me trouvai <span class="annot" data-p="7">enflammé tout d'un coup jusqu'au transport</span>. J'avais le défaut d'être excessivement timide et facile à déconcerter ; mais loin d'être arrêté alors par cette faiblesse, je m'avançai vers la maîtresse de mon cœur. Quoiqu'elle fût encore moins âgée que moi, elle reçut mes politesses sans paraître embarrassée. Je lui demandai ce qui l'amenait à Amiens et si elle y avait quelques personnes de connaissance. Elle me répondit ingénument qu'elle y était envoyée par ses parents pour être religieuse.</p>
+<div class="mvt-header">Mvt 3 — L'échange : Manon expérimentée, Des Grieux naïf</div>
+<p>L'amour me rendait déjà si éclairé, depuis un moment qu'il était dans mon cœur, que je regardai ce dessein comme un coup mortel pour mes désirs. Je lui parlai d'une manière qui lui fit comprendre mes sentiments, car elle était bien plus expérimentée que moi. C'était malgré elle qu'on l'envoyait au couvent, pour arrêter sans doute son penchant au plaisir, <span class="annot" data-p="5">qui s'était déjà déclaré et qui a causé, dans la suite, tous ses malheurs et les miens.</span></p>
+<span class="texte-extrait-source">Abbé Prévost, Manon Lescaut, 1731 (première partie, pp. 32-33, éd. Hatier).</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Abbé Prévost</p></div>
@@ -1673,7 +1731,15 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t8">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t8')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p><span class="annot" data-p="1">N'exigez point de moi que je vous décrive mes sentiments, ni que je vous rapporte ses dernières expressions.</span> <span class="annot" data-p="3">Je la perdis</span> ; je reçus d'elle des marques d'amour au moment même qu'elle expirait. C'est tout ce que j'ai la force de vous apprendre de ce <span class="annot" data-p="5">fatal et déplorable évènement</span>.</p><p><span class="annot" data-p="7">Mon âme ne suivit pas la sienne.</span> <span class="annot" data-p="6">Le Ciel</span> ne me trouva point, sans doute, assez rigoureusement <span class="annot" data-p="6">puni</span>. Il a voulu que j'aie trainé, depuis, une vie languissante et misérable. Je renonce volontairement à la mener jamais plus heureuse. <span class="annot" data-p="4">Je demeurai plus de vingt-quatre heures la bouche attachée sur le visage et sur les mains de ma chère Manon.</span> <span class="annot" data-p="4">Mon dessein était d'y mourir</span> mais je fis réflexion, au commencement du second jour, que son corps serait exposé, après mon trépas, à devenir la pâture des bêtes sauvages. Je formai la résolution de l'enterrer, et d'attendre la mort sur sa fosse.</p><p>J'étais déjà si proche de ma fin, par l'affaiblissement que le jeûne et la douleur m'avaient causé, que j'eus besoin de quantité d'efforts pour me tenir debout. Je fus obligé de recourir aux liqueurs que j'avais apportées. Il ne m'était pas difficile d'ouvrir la terre, dans le lieu où je me trouvais. C'était une campagne couverte de sable. Je rompis mon épée, pour m'en servir à creuser, mais j'en tirai moins de secours que de mes mains.</p><p><span class="annot" data-p="4">J'ouvris une large fosse. J'y plaçai l'idole de mon cœur</span>, après avoir pris soin de l'envelopper de tous mes habits pour empêcher le sable de la toucher. Je ne la mis dans cet état qu'après l'avoir <span class="annot" data-p="8">embrassée mille fois, avec toute l'ardeur du plus parfait amour.</span> <span class="annot" data-p="4">Je m'assis encore près d'elle. Je la considérai longtemps. Je ne pouvais me résoudre à fermer sa fosse.</span> Enfin mes forces recommençant à s'affaiblir, et craignant d'en manquer tout-à-fait avant la fin de mon entreprise, j'ensevelis pour toujours dans le sein de la terre ce qu'elle avait porté de plus parfait et de plus aimable. Je me couchai ensuite sur la fosse, le visage tourné vers le sable, et fermant les yeux avec le dessein de ne les ouvrir jamais, j'invoquai le secours du <span class="annot" data-p="6">Ciel</span>, et j'attendis la mort avec impatience.</p><span class="texte-extrait-source">Abbé Prévost, Manon Lescaut, 1731 (p. 180, éd. Folio+ Lycée).</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — La mort sublimée : style laconique, euphémisme</div>
+<p><span class="annot" data-p="1"><span class="annot" data-p="2">N'exigez point</span> de moi que je vous décrive mes sentiments, <span class="annot" data-p="2">ni que je vous rapporte</span> ses dernières expressions.</span> <span class="annot" data-p="3">Je la perdis</span> ; je reçus d'elle des marques d'amour au moment même qu'elle expirait. <span class="annot" data-p="4">C'est tout ce que j'ai la force de vous apprendre</span> de ce <span class="annot" data-p="5">fatal et déplorable évènement</span>.</p>
+<div class="mvt-header">Mvt 2 — La solitude de Des Grieux : châtiment divin, renoncement</div>
+<p><span class="annot" data-p="7">Mon âme ne suivit pas la sienne.</span> <span class="annot" data-p="6">Le Ciel</span> ne me trouva point, sans doute, assez rigoureusement <span class="annot" data-p="6">puni</span>. Il a voulu que j'aie trainé, depuis, une vie languissante et misérable. Je renonce volontairement à la mener jamais plus heureuse. <span class="annot" data-p="4">Je demeurai plus de vingt-quatre heures la bouche attachée sur le visage et sur les mains de ma chère Manon.</span> <span class="annot" data-p="4">Mon dessein était d'y mourir</span> mais je fis réflexion, au commencement du second jour, que son corps serait exposé, après mon trépas, à devenir la pâture des bêtes sauvages. Je formai la résolution de l'enterrer, et d'attendre la mort sur sa fosse.</p>
+<p>J'étais déjà si proche de ma fin, par l'affaiblissement que le jeûne et la douleur m'avaient causé, que j'eus besoin de quantité d'efforts pour me tenir debout. Je fus obligé de recourir aux liqueurs que j'avais apportées. Il ne m'était pas difficile d'ouvrir la terre, dans le lieu où je me trouvais. C'était une campagne couverte de sable. Je rompis mon épée, pour m'en servir à creuser, mais j'en tirai moins de secours que de mes mains.</p>
+<div class="mvt-header">Mvt 3 — L'union par-delà la mort : enterrement sensuel, attente de la mort</div>
+<p><span class="annot" data-p="4">J'ouvris une large fosse. J'y plaçai l'idole de mon cœur</span>, après avoir pris soin de l'envelopper de tous mes habits pour empêcher le sable de la toucher. Je ne la mis dans cet état qu'après l'avoir <span class="annot" data-p="8">embrassée mille fois, avec toute l'ardeur du plus parfait amour.</span> <span class="annot" data-p="4">Je m'assis encore près d'elle. Je la considérai longtemps. Je ne pouvais me résoudre à fermer sa fosse.</span> Enfin mes forces recommençant à s'affaiblir, et craignant d'en manquer tout-à-fait avant la fin de mon entreprise, j'ensevelis pour toujours dans le sein de la terre ce qu'elle avait porté de plus parfait et de plus aimable. Je me couchai ensuite sur la fosse, le visage tourné vers le sable, et fermant les yeux avec le dessein de ne les ouvrir jamais, j'invoquai le secours du <span class="annot" data-p="6">Ciel</span>, et j'attendis la mort avec impatience.</p>
+<span class="texte-extrait-source">Abbé Prévost, Manon Lescaut, 1731 (p. 180, éd. Folio+ Lycée).</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Abbé Prévost</p></div>
@@ -1719,7 +1785,20 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t9">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t9')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p><strong>PERDICAN</strong> — Insensés que nous sommes ! <span class="annot" data-p="4">nous nous aimons.</span> <span class="annot" data-p="1">Quel songe avons-nous fait, Camille ? Quelles vaines paroles, quelles misérables folies ont passé comme un vent funeste entre nous deux ?</span> Lequel de nous a voulu tromper l'autre ? <span class="annot" data-p="5">Hélas !</span> cette vie est elle-même un si pénible rêve : pourquoi encore y mêler les nôtres ? <span class="annot" data-p="3">ô mon Dieu !</span> le bonheur est <span class="annot" data-p="2">une perle si rare dans cet océan d'ici-bas !</span> Tu nous l'avais donné, <span class="annot" data-p="3">pêcheur céleste</span>, tu l'avais tiré pour nous des profondeurs de l'abîme, cet inestimable joyau ; et nous, comme des enfants gâtés que nous sommes, nous en avons fait un jouet. <span class="annot" data-p="2">Le vert sentier qui nous amenait l'un vers l'autre</span> avait une pente si douce, il était entouré de buissons si fleuris, il se perdait dans un si tranquille horizon ! Il a bien fallu que la vanité, le bavardage et la colère vinssent jeter leurs rochers informes sur cette route céleste, qui nous aurait conduits à toi dans un baiser ! Il a bien fallu que nous nous fissions du mal, car nous sommes des hommes. Ô insensés ! <span class="annot" data-p="4">nous nous aimons.</span></p><p><em>Il la prend dans ses bras.</em></p><p><strong>CAMILLE</strong> — Oui, nous nous aimons, Perdican ; laisse-moi le sentir sur ton cœur. Ce Dieu qui nous regarde ne s'en offensera pas ; il veut bien que je t'aime ; il y a quinze ans qu'il le sait.</p><p><strong>PERDICAN</strong> — Chère créature, tu es à moi !</p><p><em>Il l'embrasse ; on entend un grand cri derrière l'autel.</em></p><p><strong>CAMILLE</strong> — C'est la voix de ma sœur de lait. — La pauvre enfant nous a sans doute épiés ; elle s'est encore évanouie ; viens, portons-lui secours ; hélas tout cela est cruel.</p><p><strong>PERDICAN</strong> — Non, en vérité, je n'entrerai pas ; je sens un froid mortel qui me paralyse. Vas-y, Camille, et tâche de la ramener. <em>(Camille sort.)</em> Je vous en supplie, mon Dieu ! ne faites pas de moi un meurtrier ! [...] Eh bien ! Camille, qu'y a-t-il ?</p><p><em>(Camille rentre.)</em></p><p><strong>CAMILLE</strong> — Elle est morte. Adieu, Perdican !</p><span class="texte-extrait-source">Alfred de Musset, On ne badine pas avec l'amour, Acte III, scène 8, 1834.</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — Le monologue de Perdican : aveu lyrique et rétrospectif</div>
+<p><strong>PERDICAN</strong> — <span class="annot" data-p="1">Insensés que nous sommes !</span> <span class="annot" data-p="4">nous nous aimons.</span> <span class="annot" data-p="5">Quel songe avons-nous fait, Camille ? Quelles vaines paroles, quelles misérables folies ont passé comme un vent funeste entre nous deux ?</span> Lequel de nous a voulu tromper l'autre ? <span class="annot" data-p="5">Hélas !</span> cette vie est elle-même un si pénible rêve : pourquoi encore y mêler les nôtres ? <span class="annot" data-p="3">ô mon Dieu !</span> le bonheur est <span class="annot" data-p="2">une perle si rare dans cet océan d'ici-bas !</span> Tu nous l'avais donné, <span class="annot" data-p="3">pêcheur céleste</span>, tu l'avais tiré pour nous des profondeurs de l'abîme, cet inestimable joyau ; et nous, comme des enfants gâtés que nous sommes, nous en avons fait un jouet. <span class="annot" data-p="2">Le vert sentier qui nous amenait l'un vers l'autre</span> avait une pente si douce, il était entouré de buissons si fleuris, il se perdait dans un si tranquille horizon ! Il a bien fallu que la vanité, le bavardage et la colère vinssent jeter leurs rochers informes sur cette route céleste, qui nous aurait conduits à toi dans un baiser ! Il a bien fallu que nous nous fissions du mal, car nous sommes des hommes. Ô insensés ! <span class="annot" data-p="4">nous nous aimons.</span></p>
+<div class="mvt-header">Mvt 2 — La réunion des amants : aveu réciproque</div>
+<p><em>Il la prend dans ses bras.</em></p>
+<p><strong>CAMILLE</strong> — Oui, nous nous aimons, Perdican ; laisse-moi le sentir sur ton cœur. Ce Dieu qui nous regarde ne s'en offensera pas ; il veut bien que je t'aime ; il y a quinze ans qu'il le sait.</p>
+<p><strong>PERDICAN</strong> — Chère créature, tu es à moi !</p>
+<div class="mvt-header">Mvt 3 — La catastrophe : ironie dramatique et chute tragique</div>
+<p><em>Il l'embrasse ; <span class="annot" data-p="6">on entend un grand cri derrière l'autel.</span></em></p>
+<p><strong>CAMILLE</strong> — C'est la voix de ma sœur de lait. — La pauvre enfant nous a sans doute épiés ; elle s'est encore évanouie ; viens, portons-lui secours ; hélas tout cela est cruel.</p>
+<p><strong>PERDICAN</strong> — Non, en vérité, je n'entrerai pas ; je sens un froid mortel qui me paralyse. Vas-y, Camille, et tâche de la ramener. <em>(Camille sort.)</em> Je vous en supplie, mon Dieu ! ne faites pas de moi un meurtrier ! [...] Eh bien ! Camille, qu'y a-t-il ?</p>
+<p><em>(Camille rentre.)</em></p>
+<p><strong>CAMILLE</strong> — Elle est morte. Adieu, Perdican !</p>
+<span class="texte-extrait-source">Alfred de Musset, On ne badine pas avec l'amour, Acte III, scène 8, 1834.</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Alfred de Musset</p></div>
@@ -1761,7 +1840,20 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t10">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t10')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p><span class="annot" data-p="1">Ce fut</span> <span class="annot" data-p="2">comme une apparition</span> :</p><p>Elle <span class="annot" data-p="3">était assise</span>, au milieu du banc, toute seule ; ou du moins il ne distingua personne, dans l'éblouissement que lui <span class="annot" data-p="1">envoyèrent</span> ses yeux. En même temps qu'il passait, elle <span class="annot" data-p="1">leva</span> la tête ; il <span class="annot" data-p="1">fléchit</span> involontairement les épaules ; et, quand il se fut mis plus loin, du même côté, il la <span class="annot" data-p="1">regarda</span>.</p><p>Elle <span class="annot" data-p="3">avait un large chapeau de paille, avec des rubans roses qui palpitaient au vent derrière elle.</span> Ses bandeaux noirs, contournant la pointe de ses grands sourcils, <span class="annot" data-p="3">descendaient très bas et semblaient presser amoureusement l'ovale de sa figure.</span> Sa robe de mousseline claire, tachetée de petits pois, se répandait à plis nombreux. Elle était en train de broder quelque chose ; et son nez droit, son menton, <span class="annot" data-p="6">toute sa personne</span> se découpait sur le fond de l'air bleu.</p><p>Comme elle gardait la même attitude, il fit plusieurs tours de droite et de gauche pour dissimuler sa manœuvre ; puis il se planta tout près de son ombrelle, posée contre le banc, et il affectait d'observer une chaloupe sur la rivière.</p><p><span class="annot" data-p="7">Jamais</span> il n'avait vu <span class="annot" data-p="6">cette splendeur de sa peau brune, la séduction de sa taille, ni cette finesse des doigts que la lumière traversait.</span> Il considérait son panier à ouvrage avec ébahissement, <span class="annot" data-p="5">comme une chose extraordinaire.</span> <span class="annot" data-p="5">Quels étaient son nom, sa demeure, sa vie, son passé ?</span> Il souhaitait connaître les meubles de sa chambre, toutes les robes qu'elle avait portées, les gens qu'elle fréquentait ; et le désir de la possession physique même disparaissait sous une envie plus profonde, dans <span class="annot" data-p="8">une curiosité douloureuse qui n'avait pas de limites.</span></p><p>Cependant, un long châle à bandes violettes était placé derrière son dos, sur le bordage de cuivre. <span class="annot" data-p="5">Elle avait dû, bien des fois, au milieu de la mer, durant les soirs humides, en envelopper sa taille, s'en couvrir les pieds, dormir dedans !</span> Mais, entraîné par les franges, il glissait peu à peu, il allait tomber dans l'eau ; Frédéric <span class="annot" data-p="1">fit un bond et le rattrapa.</span> Elle lui dit :</p><p>— Je vous remercie, monsieur.</p><p><span class="annot" data-p="1">Leurs yeux se rencontrèrent.</span></p><p>— Ma femme, es-tu prête ? cria le sieur Arnoux, apparaissant dans le capot de l'escalier.</p><span class="texte-extrait-source">Gustave Flaubert, L'Éducation sentimentale, chapitre I, première partie, 1869.</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — Rencontre et portrait : topos du coup de foudre (l.1-9)</div>
+<p><span class="annot" data-p="1">Ce fut</span> <span class="annot" data-p="2">comme une apparition</span> :</p>
+<p>Elle <span class="annot" data-p="3">était assise</span>, au milieu du banc, toute seule ; <span class="annot" data-p="4">ou du moins il ne distingua personne, dans l'éblouissement que lui <span class="annot" data-p="1">envoyèrent</span> ses yeux.</span> En même temps qu'il passait, elle <span class="annot" data-p="1">leva</span> la tête ; il <span class="annot" data-p="1">fléchit</span> involontairement les épaules ; et, quand il se fut mis plus loin, du même côté, il la <span class="annot" data-p="1">regarda</span>.</p>
+<p>Elle <span class="annot" data-p="3">avait un large chapeau de paille, avec des rubans roses qui palpitaient au vent derrière elle.</span> Ses bandeaux noirs, contournant la pointe de ses grands sourcils, <span class="annot" data-p="3">descendaient très bas et semblaient presser amoureusement l'ovale de sa figure.</span> Sa robe de mousseline claire, tachetée de petits pois, se répandait à plis nombreux. Elle était en train de broder quelque chose ; et son nez droit, son menton, <span class="annot" data-p="6">toute sa personne</span> se découpait sur le fond de l'air bleu.</p>
+<div class="mvt-header">Mvt 2 — La cristallisation : Frédéric idéalise, discours indirect libre (l.10-25)</div>
+<p>Comme elle gardait la même attitude, il fit plusieurs tours de droite et de gauche pour dissimuler sa manœuvre ; puis il se planta tout près de son ombrelle, posée contre le banc, et il affectait d'observer une chaloupe sur la rivière.</p>
+<p><span class="annot" data-p="7">Jamais</span> il n'avait vu <span class="annot" data-p="6">cette splendeur de sa peau brune, la séduction de sa taille, ni cette finesse des doigts que la lumière traversait.</span> Il considérait son panier à ouvrage avec ébahissement, <span class="annot" data-p="5">comme une chose extraordinaire.</span> <span class="annot" data-p="5">Quels étaient son nom, sa demeure, sa vie, son passé ?</span> Il souhaitait connaître les meubles de sa chambre, toutes les robes qu'elle avait portées, les gens qu'elle fréquentait ; et le désir de la possession physique même disparaissait sous une envie plus profonde, dans une curiosité douloureuse qui n'avait pas de limites.</p>
+<div class="mvt-header">Mvt 3 — Le franchissement déçu : contact bref, chute ironique (l.26-fin)</div>
+<p>Cependant, un long châle à bandes violettes était placé derrière son dos, sur le bordage de cuivre. <span class="annot" data-p="5">Elle avait dû, bien des fois, au milieu de la mer, durant les soirs humides, en envelopper sa taille, s'en couvrir les pieds, dormir dedans !</span> Mais, entraîné par les franges, il glissait peu à peu, il allait tomber dans l'eau ; Frédéric <span class="annot" data-p="1">fit un bond et le rattrapa.</span> Elle lui dit :</p>
+<p>— Je vous remercie, monsieur.</p>
+<p><span class="annot" data-p="1">Leurs yeux se rencontrèrent.</span></p>
+<p><span class="annot" data-p="8">— Ma femme, es-tu prête ? cria le sieur Arnoux, apparaissant dans le capot de l'escalier.</span></p>
+<span class="texte-extrait-source">Gustave Flaubert, L'Éducation sentimentale, chapitre I, première partie, 1869.</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Gustave Flaubert</p></div>
@@ -1806,7 +1898,9 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t11">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t11')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait poeme">RUY BLAS, seul.
+            <div class="texte-extrait poeme">
+<div class="mvt-header">Mvt 1 — L'ivresse de l'amour : ouverture lyrique</div>
+<div class="mouvement-texte"><span class="annot" data-p="1">RUY BLAS, seul.</span>
 Devant mes yeux <span class="annot" data-p="5">c'est le ciel que je voi !</span>
 De ma vie, <span class="annot" data-p="2">ô mon Dieu !</span> Cette heure est la première.
 Devant moi tout un monde, <span class="annot" data-p="5">un monde de lumière</span>,
@@ -1815,8 +1909,9 @@ S'entrouvre en m'inondant de vie et de rayons !
 <span class="annot" data-p="6">Partout en moi, hors moi, joie, extase et mystère,
 Et l'ivresse, et l'orgueil, et ce qui sur la terre
 Se rapproche le plus de la divinité,
-L'amour dans la puissance et dans la majesté !</span>
-<span class="annot" data-p="2">La reine m'aime ! Ô Dieu !</span> C'est bien vrai, c'est moi-même.
+L'amour dans la puissance et dans la majesté !</span></div>
+<div class="mvt-header">Mvt 2 — L'élévation paradoxale : le valet au-dessus du roi</div>
+<div class="mouvement-texte"><span class="annot" data-p="2">La reine m'aime ! Ô Dieu !</span> <span class="annot" data-p="3">C'est bien vrai, c'est moi-même.</span>
 <span class="annot" data-p="4">Je suis plus que le roi</span> puisque la reine m'aime !
 <span class="annot" data-p="2">Oh ! Cela m'éblouit.</span> Heureux, aimé, vainqueur !
 Duc d'Olmedo, l'Espagne à mes pieds, j'ai son cœur !
@@ -1827,18 +1922,20 @@ Oh ! oui, j'en suis bien sûr, elle m'a bien parlé.
 C'est bien elle. Elle avait un petit diadème
 En dentelle d'argent. Et je regardais même
 Pendant qu'elle parlait, je crois la voir encor,
-Un aigle ciselé sur son bracelet d'or.
-Elle se fie à moi, m'a-t-elle dit. Pauvre ange !
+Un aigle ciselé sur son bracelet d'or.</div>
+<div class="mvt-header">Mvt 3 — Le serment d'amour : anaphore « Moi », gradation ascendante</div>
+<div class="mouvement-texte">Elle se fie à moi, m'a-t-elle dit. Pauvre ange !
 Oh ! S'il est vrai que Dieu, par un prodige étrange,
 En nous donnant l'amour, voulut mêler en nous
 Ce qui fait l'homme grand à ce qui le fait doux,
-<span class="annot" data-p="4">Moi, qui ne crains plus rien maintenant qu'elle m'aime,
+<span class="annot" data-p="6">Moi, qui ne crains plus rien maintenant qu'elle m'aime,
 Moi qui suis tout-puissant, grâce à son choix suprême,
 Moi, dont le cœur gonflé ferait envie aux rois,</span>
 Devant Dieu qui m'entend, sans peur, à haute voix,
 Je le dis, vous pouvez vous confier, madame,
 À mon bras comme reine, à mon cœur comme femme !
 <span class="texte-extrait-source">Victor Hugo, Ruy Blas, Acte III, scène 4, 1838.</span></div>
+</div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Victor Hugo</p></div>
@@ -1880,7 +1977,15 @@ Je le dis, vous pouvez vous confier, madame,
         <div class="texte-body">
           <div class="texte-extrait-wrap" id="tw-t12">
             <button class="texte-extrait-toggle" onclick="toggleExtrait('tw-t12')">📜 Voir le texte <span class="texte-extrait-toggle-arrow">▼</span></button>
-            <div class="texte-extrait prose"><p>C'est <span class="annot" data-p="1">le « presque » qui compte, et le conditionnel.</span> Sur le coup, ça semble une folie. <span class="annot" data-p="4">On est tout juste au début de mars, la semaine n'a été que pluie, vent et giboulées.</span> Et puis voilà. <span class="annot" data-p="4">Depuis le matin, le soleil est venu avec une intensité mate, une force tranquille.</span> Le repas de midi est prêt, la table mise. Mais même à l'intérieur, tout est changé. La fenêtre entrouverte, la rumeur du dehors, quelque chose de léger qui flotte.</p><p>« On pourrait presque manger dehors. »</p><p><span class="annot" data-p="3">La phrase vient toujours au même instant.</span> Juste avant de passer à table, quand il semble qu'il est trop tard pour bousculer le temps, quand les crudités sont déjà posées sur la nappe. Trop tard ? <span class="annot" data-p="3">L'avenir sera ce que vous en ferez.</span></p><p>Ce qui compte, c'est le moment de la petite phrase. <span class="annot" data-p="1">On pourrait presque…</span> C'est bon, la vie au conditionnel, comme autrefois, dans les jeux enfantins : « On aurait dit que tu serais… » Une vie inventée, qui prend à contre-pied les certitudes. <span class="annot" data-p="5">Une vie presque : à portée de la main, cette fraîcheur. Un petit vent de folie sage qui change tout sans rien changer…</span> Parfois, on dit : « On aurait presque pu… » Là, c'est la phrase triste des adultes qui n'ont gardé en équilibre sur la boîte de Pandore que la nostalgie. Mais il y a des jours où l'on cueille le jour, au moment fragile d'une hésitation honnête, sans orienter à l'avance le fléau de la balance. Il y a des jours <span class="annot" data-p="1">où l'on pourrait… presque.</span></p><span class="texte-extrait-source">Philippe Delerm, « On pourrait presque manger dehors », La Première Gorgée de bière et autres plaisirs minuscules, 1997.</span></div>
+            <div class="texte-extrait prose">
+<div class="mvt-header">Mvt 1 — La situation : soleil de mars, tentation de manger dehors</div>
+<p>C'est <span class="annot" data-p="1">le « presque » qui compte, et le conditionnel.</span> Sur le coup, ça semble une folie. On est tout juste au début de mars, la semaine n'a été que pluie, vent et giboulées. Et puis voilà. Depuis le matin, le soleil est venu avec <span class="annot" data-p="2">une intensité mate, une force tranquille.</span> Le repas de midi est prêt, la table mise. Mais même à l'intérieur, tout est changé. <span class="annot" data-p="5">La fenêtre entrouverte, la rumeur du dehors, quelque chose de léger qui flotte.</span></p>
+<div class="mvt-header">Mvt 2 — La petite phrase et son instant rituel</div>
+<p><span class="annot" data-p="4">« On pourrait presque manger dehors. »</span></p>
+<p><span class="annot" data-p="3">La phrase vient toujours au même instant.</span> Juste avant de passer à table, quand il semble qu'il est trop tard pour bousculer le temps, quand les crudités sont déjà posées sur la nappe. Trop tard ? <span class="annot" data-p="3">L'avenir sera ce que vous en ferez.</span></p>
+<div class="mvt-header">Mvt 3 — Philosophie du « presque » : la vie au conditionnel</div>
+<p>Ce qui compte, c'est le moment de la petite phrase. <span class="annot" data-p="6">On pourrait presque…</span> C'est bon, la vie au conditionnel, comme autrefois, dans les jeux enfantins : « On aurait dit que tu serais… » Une vie inventée, qui prend à contre-pied les certitudes. Une vie presque : à portée de la main, cette fraîcheur. <span class="annot" data-p="2">Un petit vent de folie sage qui change tout sans rien changer…</span> Parfois, on dit : « On aurait presque pu… » Là, c'est la phrase triste des adultes qui n'ont gardé en équilibre sur la boîte de Pandore que la nostalgie. Mais il y a des jours où l'on cueille le jour, au moment fragile d'une hésitation honnête, sans orienter à l'avance le fléau de la balance. Il y a des jours <span class="annot" data-p="6">où l'on pourrait… presque.</span></p>
+<span class="texte-extrait-source">Philippe Delerm, « On pourrait presque manger dehors », La Première Gorgée de bière et autres plaisirs minuscules, 1997.</span></div>
           </div>
           <div class="texte-grid">
             <div class="texte-field"><label>Auteur</label><p>Philippe Delerm</p></div>
