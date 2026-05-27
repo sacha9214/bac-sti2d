@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Vague — Prépa Oral Bac Français</title>
+  <!-- Apply saved theme before paint to avoid flash -->
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
   <style>
     :root {
       --bg: #0f1117;
@@ -20,6 +22,21 @@
       --radius: 14px;
     }
 
+    /* ── Light theme ── */
+    [data-theme="light"] {
+      --bg: #f4f6fb;
+      --bg2: #e8ecf5;
+      --bg3: #dde3f0;
+      --accent: #4a6cf7;
+      --accent2: #e0436e;
+      --accent3: #0da86a;
+      --accent4: #c47e00;
+      --text: #1a1d2e;
+      --muted: #5a6480;
+      --border: #c8d0e8;
+      --card: #ffffff;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -28,11 +45,13 @@
       color: var(--text);
       line-height: 1.7;
       min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* HERO */
     .hero {
       background: linear-gradient(135deg, #0f1117 0%, #1a1030 50%, #0f1117 100%);
+      transition: background 0.3s;
       border-bottom: 1px solid var(--border);
       padding: 60px 20px 50px;
       text-align: center;
@@ -126,6 +145,10 @@
       display: flex;
       justify-content: center;
       gap: 0;
+      transition: background 0.3s;
+    }
+    [data-theme="light"] .tab-bar {
+      background: rgba(244,246,251,0.95);
     }
 
     .tab-btn {
@@ -154,6 +177,7 @@
       z-index: 90;
       background: rgba(15,17,23,0.92);
       backdrop-filter: blur(10px);
+      transition: background 0.3s;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: center;
@@ -176,6 +200,31 @@
     }
     .subnav a:hover { color: var(--text); border-bottom-color: var(--accent); }
     .subnav a.sub-active { color: var(--text); border-bottom-color: var(--accent); }
+    [data-theme="light"] .subnav { background: rgba(244,246,251,0.92); }
+    [data-theme="light"] .hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f0e8ff 50%, #eef2ff 100%);
+    }
+    [data-theme="light"] .hero::before {
+      background: radial-gradient(ellipse at 50% 0%, rgba(74,108,247,0.12) 0%, transparent 70%);
+    }
+
+    /* ── Theme toggle button ── */
+    .theme-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .theme-toggle:hover { color: var(--text); background: var(--bg3); }
 
     /* ── Timer ── */
     .timer-card {
@@ -1483,6 +1532,7 @@
   <button class="tab-btn" data-tab="textes">Mes textes</button>
   <button class="tab-btn" data-tab="livre">Mon livre</button>
   <button class="tab-btn" data-tab="quiz">Quiz</button>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Changer le thème">🌙</button>
 </nav>
 
 <main>
@@ -3803,6 +3853,30 @@ Je le dis, vous pouvez vous confier, madame,
       }
     }
   })();
+
+  /* ── Theme toggle ── */
+  (function() {
+    const saved = localStorage.getItem('theme') || 'dark';
+    if (saved === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    // DOM is already ready (script at bottom of body)
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = saved === 'light' ? '☀️' : '🌙';
+  })();
+
+  window.toggleTheme = function() {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const next = isLight ? 'dark' : 'light';
+    if (next === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    localStorage.setItem('theme', next);
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = next === 'light' ? '☀️' : '🌙';
+  };
 </script>
 
 </body>
