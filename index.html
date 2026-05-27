@@ -34,8 +34,8 @@
       --accent4: #c47e00;
       --accent5: #e84e1b;
       --text: #1a1d2e;
-      --muted: #5a6480;
-      --border: #c8d0e8;
+      --muted: #42495e;
+      --border: #b0bcd6;
       --card: #ffffff;
     }
 
@@ -410,6 +410,45 @@
     [data-theme="light"] .seq-num {
       box-shadow: 0 2px 8px -2px rgba(74,108,247,0.5);
     }
+
+    /* ── Light mode : override toutes les couleurs hardcodées dark ── */
+    [data-theme="light"] .resume-box,
+    [data-theme="light"] .resume-box p { color: var(--text); }
+
+    [data-theme="light"] .perso-desc,
+    [data-theme="light"] .theme-content p,
+    [data-theme="light"] .q-answer,
+    [data-theme="light"] .q-a,
+    [data-theme="light"] .angle-text p,
+    [data-theme="light"] .lien-col,
+    [data-theme="light"] .diff-item,
+    [data-theme="light"] .lien-quote,
+    [data-theme="light"] .texte-field p,
+    [data-theme="light"] .texte-field p.empty,
+    [data-theme="light"] .grammaire-box,
+    [data-theme="light"] .axe-item,
+    [data-theme="light"] .texte-intro,
+    [data-theme="light"] .prez-step p,
+    [data-theme="light"] .tip,
+    [data-theme="light"] .lien-desc { color: var(--muted); }
+
+    [data-theme="light"] .texte-extrait,
+    [data-theme="light"] .texte-extrait p,
+    [data-theme="light"] .mouvement-texte { color: var(--text); }
+
+    [data-theme="light"] .pt-cite { color: var(--accent); background: rgba(74,108,247,0.07); }
+    [data-theme="light"] .pt-effet { color: var(--muted); }
+
+    [data-theme="light"] .annot[data-tooltip]::after { background: rgba(30,35,60,0.95); color: #e8eaf6; }
+
+    /* Cards + séparateurs mieux visibles */
+    [data-theme="light"] .texte-card,
+    [data-theme="light"] .card,
+    [data-theme="light"] .perso-card,
+    [data-theme="light"] .theme-card,
+    [data-theme="light"] .angle-card,
+    [data-theme="light"] .q-item,
+    [data-theme="light"] .lien-block { box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
 
     [data-theme="light"] .subnav { background: rgba(244,246,251,0.92); }
     [data-theme="light"] .hero {
@@ -1856,7 +1895,7 @@
       </div>
     </div>
     <div class="card" style="margin-top:16px; background: rgba(108,255,184,0.05); border-color: rgba(108,255,184,0.25);">
-      <p style="font-size:0.92rem; color:#aab0cc;">
+      <p style="font-size:0.92rem; color:var(--muted);">
         <strong style="color:var(--accent3)">Comment ça se passe :</strong> L'examinateur a devant lui un document récapitulatif où ton œuvre est notée. Tu fais d'abord une courte présentation (~2 min), puis il lance une discussion (~6 min). Il peut poser des questions sur le livre, sur les thèmes, mais aussi élargir à d'autres œuvres vues dans l'année.
       </p>
     </div>
@@ -3175,7 +3214,7 @@ Je le dis, vous pouvez vous confier, madame,
       <br><br>
       <span style="opacity:.85; font-size:0.85rem;">💡 <strong>Sous Linux</strong>, la lecture audio dépend d'un moteur système (<code>speech-dispatcher</code>). Si aucun son ne sort, clique sur « Tester l'audio » : un message t'indiquera la commande exacte à lancer.</span>
     </div>
-    <div id="ttsStatus" style="margin-bottom:16px; padding:14px 18px; border-radius:10px; font-size:0.88rem; line-height:1.7; background:rgba(255,201,108,0.08); border:1px solid rgba(255,201,108,0.25); color:#aab0cc; display:none;"></div>
+    <div id="ttsStatus" style="margin-bottom:16px; padding:14px 18px; border-radius:10px; font-size:0.88rem; line-height:1.7; background:rgba(255,201,108,0.08); border:1px solid rgba(255,201,108,0.25); color:var(--muted); display:none;"></div>
     <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
       <button onclick="playTrack(0)" style="background:var(--accent); border:1px solid var(--accent); color:#fff; border-radius:8px; padding:8px 20px; font-size:0.85rem; cursor:pointer; font-weight:700;">▶ Tout écouter</button>
       <button id="loopToggleBtn" onclick="toggleLoop()" style="background:var(--bg3); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:8px 18px; font-size:0.85rem; cursor:pointer;">🔁 Boucle infinie — OFF</button>
