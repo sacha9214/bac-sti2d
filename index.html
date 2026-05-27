@@ -201,59 +201,143 @@
     .subnav a:hover { color: var(--text); border-bottom-color: var(--accent); }
     .subnav a.sub-active { color: var(--text); border-bottom-color: var(--accent); }
     /* ── Sequence blocks ── */
-    .seq-block { margin-bottom: 28px; }
+    .seq-block {
+      margin-bottom: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--card);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .seq-block.seq-open {
+      border-color: rgba(108,140,255,0.4);
+      box-shadow: 0 6px 22px -12px rgba(108,140,255,0.5);
+    }
     .seq-header {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px 18px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius) var(--radius) 0 0;
-      margin-bottom: 0;
+      gap: 14px;
+      padding: 16px 20px;
+      background:
+        linear-gradient(135deg, rgba(108,140,255,0.10), rgba(255,108,140,0.06));
       cursor: pointer;
       user-select: none;
-      transition: background 0.2s;
+      transition: background 0.25s;
     }
-    .seq-header:hover { background: var(--bg2); }
-    .seq-header .seq-arrow {
-      margin-left: auto;
-      color: var(--muted);
-      font-size: 0.85rem;
-      transition: transform 0.25s;
+    .seq-header::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      opacity: 0.85;
     }
-    .seq-block.seq-open .seq-header .seq-arrow { transform: rotate(180deg); }
-    .seq-block:not(.seq-open) .seq-cards { display: none; }
-    .seq-block.seq-open .seq-cards { display: flex; }
+    .seq-header:hover {
+      background:
+        linear-gradient(135deg, rgba(108,140,255,0.18), rgba(255,108,140,0.10));
+    }
+    .seq-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+      flex-shrink: 0;
+      filter: saturate(1.1);
+    }
     .seq-num {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(108,140,255,0.12);
-      border: 1px solid rgba(108,140,255,0.3);
-      padding: 3px 10px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), #8860ff);
+      padding: 4px 11px;
       border-radius: 99px;
       white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px -2px rgba(108,140,255,0.6);
+    }
+    .seq-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
     }
     .seq-name {
-      font-size: 1rem;
+      font-size: 1.04rem;
       font-weight: 700;
       color: var(--text);
+      line-height: 1.2;
     }
-    .seq-cards { display: flex; flex-direction: column; gap: 0; }
+    .seq-theme {
+      font-size: 0.76rem;
+      color: var(--muted);
+      letter-spacing: 0.01em;
+    }
+    .seq-header .seq-arrow {
+      margin-left: auto;
+      color: var(--accent);
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .seq-block.seq-open .seq-header .seq-arrow { transform: rotate(180deg); }
+
+    /* animation douce d'ouverture de la séquence */
+    .seq-cards {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+    .seq-block.seq-open .seq-cards { grid-template-rows: 1fr; }
+    .seq-cards-inner {
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
     .seq-cards .texte-card {
       border-radius: 0;
-      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
     }
-    .seq-cards .texte-card:last-child {
-      border-radius: 0 0 var(--radius) var(--radius);
+    .seq-cards .texte-card:first-child { border-top: none; }
+    .seq-cards .texte-card:hover { border-color: var(--border); }
+    .seq-cards .texte-card:not(:first-child) { border-top: 1px solid var(--border); }
+
+    /* fiche active = liseré d'accent à gauche */
+    .seq-cards .texte-card.open {
+      background: linear-gradient(90deg, rgba(108,140,255,0.05), transparent 220px);
+      box-shadow: inset 3px 0 0 0 var(--accent);
+    }
+    [data-theme="light"] .seq-cards .texte-card.open {
+      background: linear-gradient(90deg, rgba(74,108,247,0.05), transparent 220px);
     }
 
+    /* animation douce d'ouverture des fiches (max-height + opacity) */
+    .seq-cards .texte-body {
+      display: block;
+      border-top: none;
+      overflow: hidden;
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease,
+                  padding-top 0.4s ease, padding-bottom 0.4s ease;
+    }
+    .seq-cards .texte-card.open .texte-body {
+      max-height: 6000px;
+      padding-top: 22px;
+      padding-bottom: 22px;
+      opacity: 1;
+    }
+
+    [data-theme="light"] .seq-block.seq-open {
+      box-shadow: 0 6px 22px -12px rgba(74,108,247,0.45);
+    }
     [data-theme="light"] .seq-num {
-      background: rgba(74,108,247,0.1);
-      border-color: rgba(74,108,247,0.3);
+      box-shadow: 0 2px 8px -2px rgba(74,108,247,0.5);
     }
 
     [data-theme="light"] .subnav { background: rgba(244,246,251,0.92); }
@@ -3912,13 +3996,21 @@ Je le dis, vous pouvez vous confier, madame,
   /* ── Séquences : regroupe les fiches en 4 blocs ── */
   (function() {
     const sequences = [
-      { num: 1, name: 'Rimbaud',        ids: ['t1','t2','t3']    },
-      { num: 2, name: 'Manon Lescaut',  ids: ['t7','t8','t10']   },
-      { num: 3, name: 'La Boétie',      ids: ['t4','t5','t6']    },
-      { num: 4, name: 'Musset',         ids: ['t11','t12','t9']  },
+      { num: 1, name: 'Rimbaud',        icon: '🌿', theme: 'La poésie',      ids: ['t1','t2','t3']    },
+      { num: 2, name: 'Manon Lescaut',  icon: '💔', theme: 'Le roman',       ids: ['t7','t8','t10']   },
+      { num: 3, name: 'La Boétie',      icon: '⛓️', theme: 'L’argumentation', ids: ['t4','t5','t6'] },
+      { num: 4, name: 'Musset',         icon: '🎭', theme: 'Le théâtre',     ids: ['t11','t12','t9']  },
     ];
     const container = document.getElementById('textes-container');
     if (!container) return;
+
+    // ── FIX : on récupère TOUTES les fiches AVANT de vider le container.
+    // Sinon innerHTML = '' détache les éléments et getElementById renvoie null.
+    const cardRefs = {};
+    document.querySelectorAll('#textes-container .texte-card').forEach(function(c) {
+      cardRefs[c.id] = c;
+    });
+
     container.innerHTML = '';
     let n = 1;
     sequences.forEach(function(seq, i) {
@@ -3929,39 +4021,43 @@ Je le dis, vous pouvez vous confier, madame,
       const header = document.createElement('div');
       header.className = 'seq-header';
       header.innerHTML =
-        '<span class="seq-num">Séquence ' + seq.num + '</span>' +
-        '<span class="seq-name">' + seq.name + '</span>' +
+        '<span class="seq-icon">' + seq.icon + '</span>' +
+        '<span class="seq-num">Séq. ' + seq.num + '</span>' +
+        '<span class="seq-text">' +
+          '<span class="seq-name">' + seq.name + '</span>' +
+          '<span class="seq-theme">' + seq.theme + ' · ' + seq.ids.length + ' textes</span>' +
+        '</span>' +
         '<span class="seq-arrow">▼</span>';
+
+      const cards = document.createElement('div');
+      cards.className = 'seq-cards';
+      const cardsInner = document.createElement('div');
+      cardsInner.className = 'seq-cards-inner';
+      cards.appendChild(cardsInner);
 
       // clic sur le header → ouvre/ferme la séquence + toutes ses fiches
       header.addEventListener('click', function() {
         const isOpen = block.classList.toggle('seq-open');
-        block.querySelectorAll('.texte-card').forEach(function(c) {
-          if (isOpen) {
-            c.classList.add('open');
-          } else {
-            c.classList.remove('open');
-          }
+        cardsInner.querySelectorAll('.texte-card').forEach(function(c) {
+          c.classList.toggle('open', isOpen);
         });
       });
 
       block.appendChild(header);
 
-      const cards = document.createElement('div');
-      cards.className = 'seq-cards';
       seq.ids.forEach(function(id) {
-        const card = document.getElementById(id);
+        const card = cardRefs[id];
         if (!card) return;
         const numEl = card.querySelector('.texte-num');
         if (numEl) numEl.textContent = n++;
-        cards.appendChild(card);
+        cardsInner.appendChild(card);
       });
       block.appendChild(cards);
       container.appendChild(block);
 
       // séquence 1 : ouvre aussi toutes les fiches par défaut
       if (isFirst) {
-        cards.querySelectorAll('.texte-card').forEach(function(c) {
+        cardsInner.querySelectorAll('.texte-card').forEach(function(c) {
           c.classList.add('open');
         });
       }
