@@ -568,6 +568,18 @@
     .quiz-setup-icon { font-size: 3rem; margin-bottom: 14px; }
     .quiz-setup-title { font-size: 1.8rem; font-weight: 800; margin: 0 0 10px; color: var(--text); }
     .quiz-setup-sub { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 28px; }
+    /* Mode selector */
+    .quiz-mode-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 22px; }
+    .quiz-mode-btn {
+      background: var(--bg3); border: 1.5px solid var(--border); color: var(--muted);
+      border-radius: 10px; padding: 10px 22px; font-size: 0.9rem; font-weight: 700;
+      font-family: inherit; cursor: pointer; transition: all 0.2s;
+    }
+    .quiz-mode-btn:hover { color: var(--text); border-color: var(--accent); }
+    .quiz-mode-btn.active {
+      background: rgba(108,140,255,0.12); border-color: var(--accent);
+      color: var(--accent);
+    }
     .quiz-filter-row { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 24px; }
     .quiz-filter-row label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
     .quiz-select { background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 8px 12px; font-size: 0.85rem; font-family: inherit; cursor: pointer; }
@@ -4332,13 +4344,37 @@ Je le dis, vous pouvez vous confier, madame,
 
     <!-- Setup screen -->
     <div id="quizSetup" class="quiz-setup">
-      <div class="quiz-setup-icon">🎯</div>
-      <h2 class="quiz-setup-title">Quiz Procédés</h2>
-      <p class="quiz-setup-sub">Une citation s'affiche — retrouve le procédé, révèle la réponse, marque si tu savais ou non.</p>
-      <div class="quiz-filter-row">
+      <div class="quiz-setup-icon" id="quizSetupIcon">🎯</div>
+      <h2 class="quiz-setup-title" id="quizSetupTitle">Quiz Procédés</h2>
+      <p class="quiz-setup-sub" id="quizSetupSub">Une citation s'affiche — retrouve le procédé, révèle la réponse, marque si tu savais ou non.</p>
+
+      <!-- Sélecteur de mode -->
+      <div class="quiz-mode-row">
+        <button class="quiz-mode-btn active" id="modeProcedes" onclick="setQuizMode('procedes')">📝 Procédés</button>
+        <button class="quiz-mode-btn" id="modeAuteurs" onclick="setQuizMode('auteurs')">🧑‍🎨 Auteurs</button>
+      </div>
+
+      <!-- Filtre texte (mode procédés seulement) -->
+      <div class="quiz-filter-row" id="quizFilterRow">
         <label for="quizFilter">Texte :</label>
         <select id="quizFilter" class="quiz-select"></select>
       </div>
+      <!-- Filtre auteur (mode auteurs seulement) -->
+      <div class="quiz-filter-row" id="quizFilterAuteurRow" style="display:none">
+        <label for="quizFilterAuteur">Auteur :</label>
+        <select id="quizFilterAuteur" class="quiz-select">
+          <option value="all">Tous les auteurs</option>
+          <option value="Baudelaire">Baudelaire</option>
+          <option value="Rimbaud">Rimbaud</option>
+          <option value="La Fontaine">La Fontaine</option>
+          <option value="La Boétie">La Boétie</option>
+          <option value="Abbé Prévost">Abbé Prévost</option>
+          <option value="Musset">Musset</option>
+          <option value="Flaubert">Flaubert</option>
+          <option value="Victor Hugo">Victor Hugo</option>
+        </select>
+      </div>
+
       <button class="quiz-start-btn" onclick="startQuiz()">Démarrer le quiz</button>
     </div>
 
@@ -5269,6 +5305,81 @@ Je le dis, vous pouvez vous confier, madame,
       }
     });
 
+    // ── Données biographiques auteurs ──
+    const bioCards = [
+      // BAUDELAIRE
+      {auteur:'Baudelaire',q:'En quelle année Charles Baudelaire est-il né ?',r:'1821',ctx:'9 avril 1821, à Paris. Il meurt en 1867 à 46 ans.'},
+      {auteur:'Baudelaire',q:'Dans quelle ville Baudelaire est-il né et mort ?',r:'Paris',ctx:'Né et mort à Paris. Il a aussi vécu à Bruxelles en fin de vie.'},
+      {auteur:'Baudelaire',q:'Quel âge avait Baudelaire quand il est mort ?',r:'46 ans',ctx:'Mort le 31 août 1867. Syphilis et alcool l\'ont détruit progressivement.'},
+      {auteur:'Baudelaire',q:'Quel est le mouvement littéraire de Baudelaire ?',r:'Symbolisme / Parnasse',ctx:'Précurseur du symbolisme. Les Fleurs du Mal (1857) marquent la rupture avec le Romantisme.'},
+      {auteur:'Baudelaire',q:'Quelle œuvre majeure de Baudelaire a été censurée à sa parution ?',r:'Les Fleurs du Mal (1857)',ctx:'6 poèmes furent condamnés pour « outrage à la morale publique ». Baudelaire dut les supprimer.'},
+      {auteur:'Baudelaire',q:'Quelle était la relation de Baudelaire avec sa mère et son beau-père ?',r:'Conflictuelle — il détestait son beau-père le général Aupick',ctx:'Sa mère s\'est remariée quand il avait 6 ans. Ce rejet nourrit toute sa poésie du Spleen.'},
+      {auteur:'Baudelaire',q:'Qu\'est-ce que le « Spleen » chez Baudelaire ?',r:'Mélancolie profonde, ennui existentiel, écœurement de la vie',ctx:'Opposé à l\'Idéal. Les Fleurs du Mal alternent entre Spleen (horreur du monde) et Idéal (aspiration au beau).'},
+      // RIMBAUD
+      {auteur:'Rimbaud',q:'En quelle année Arthur Rimbaud est-il né ?',r:'1854',ctx:'20 octobre 1854, à Charleville (Ardennes). Il mourra à 37 ans.'},
+      {auteur:'Rimbaud',q:'Dans quelle ville Rimbaud a-t-il grandi ?',r:'Charleville (Ardennes)',ctx:'Il détestait cette ville de province qu\'il appelait « la super-idiote des petites villes ».'},
+      {auteur:'Rimbaud',q:'Quel âge avait Rimbaud quand il a écrit ses premiers grands poèmes ?',r:'15-17 ans',ctx:'Le Dormeur du Val (1870, à 16 ans), Ma Bohème (1870). Il cesse d\'écrire vers 20 ans.'},
+      {auteur:'Rimbaud',q:'Quelle est la relation célèbre de Rimbaud avec un autre poète ?',r:'Paul Verlaine — relation tumultueuse et scandaleuse',ctx:'Verlaine tire dessus à Bruxelles en 1873 et est emprisonné. Rimbaud avait 18 ans.'},
+      {auteur:'Rimbaud',q:'Que fait Rimbaud après avoir arrêté d\'écrire vers 20 ans ?',r:'Il devient commerçant en Afrique (Éthiopie)',ctx:'Il vend des armes et des marchandises en Abyssinie. Il mourra d\'un cancer osseux à 37 ans en 1891.'},
+      {auteur:'Rimbaud',q:'Quel recueil rassemble les premiers poèmes de Rimbaud étudiés au bac ?',r:'Cahiers de Douai (1870)',ctx:'Manuscrits retrouvés à Douai chez Georges Izambard, son prof de rhétorique.'},
+      // LA FONTAINE
+      {auteur:'La Fontaine',q:'En quelle année Jean de La Fontaine est-il né ?',r:'1621',ctx:'8 juillet 1621, à Château-Thierry (Champagne). Il meurt en 1695 à 73 ans.'},
+      {auteur:'La Fontaine',q:'Sous quel règne La Fontaine a-t-il vécu et écrit ?',r:'Louis XIV — le Roi-Soleil',ctx:'La Fontaine était proche de Nicolas Fouquet (disgracié) et de Mme de Sablé. Il s\'adapte à la cour.'},
+      {auteur:'La Fontaine',q:'À qui La Fontaine a-t-il dédié ses Fables ?',r:'Au Dauphin, fils de Louis XIV',ctx:'Le premier recueil (1668) est dédié au Dauphin de 7 ans. Les Fables servent à éduquer les princes.'},
+      {auteur:'La Fontaine',q:'Quelle est la source principale des Fables de La Fontaine ?',r:'Ésope (Antiquité grecque) et Phèdre (Rome)',ctx:'La Fontaine revendique Ésope et Phèdre. Il transforme des apologues courts en poèmes élaborés.'},
+      {auteur:'La Fontaine',q:'En combien de livres sont organisées les Fables de La Fontaine ?',r:'12 livres (1668-1694)',ctx:'Livres I-VI (1668), VII-XI (1678-1679), XII (1694). Plus de 240 fables au total.'},
+      // LA BOÉTIE
+      {auteur:'La Boétie',q:'En quelle année Étienne de La Boétie est-il né ?',r:'1530',ctx:'1er novembre 1530, à Sarlat (Périgord). Il mourra à seulement 32 ans.'},
+      {auteur:'La Boétie',q:'À quel âge La Boétie a-t-il écrit le Discours de la servitude volontaire ?',r:'Vers 18 ans (vers 1549)',ctx:'Texte écrit alors qu\'il était étudiant en droit à Orléans. Jamais publié de son vivant.'},
+      {auteur:'La Boétie',q:'Quelle était la grande amitié de La Boétie dans sa vie ?',r:'Michel de Montaigne',ctx:'Montaigne et La Boétie se lient d\'une amitié profonde. À la mort de La Boétie (1563), Montaigne est devasté.'},
+      {auteur:'La Boétie',q:'Quelle est la thèse centrale du Discours de la servitude volontaire ?',r:'Les peuples acceptent leur propre oppression — la tyrannie repose sur le consentement des opprimés',ctx:'Si les opprimés cessaient de collaborer, le tyran tomberait seul. Texte révolutionnaire pour l\'époque.'},
+      {auteur:'La Boétie',q:'Quel âge avait La Boétie à sa mort ?',r:'32 ans (mort en 1563)',ctx:'Il meurt d\'une épidémie. Montaigne lui consacre l\'essai « De l\'amitié ».'},
+      // ABBÉ PRÉVOST
+      {auteur:'Abbé Prévost',q:'En quelle année l\'Abbé Prévost est-il né ?',r:'1697',ctx:'1er avril 1697, à Hesdin (Pas-de-Calais). Il meurt en 1763 à 65 ans.'},
+      {auteur:'Abbé Prévost',q:'Quelle est la vie mouvementée de l\'Abbé Prévost ?',r:'Moine, soldat, fugitif, exilé en Angleterre et en Hollande',ctx:'Il entre dans les ordres, s\'enfuit, vit à Londres et Amsterdam. Son roman Manon Lescaut lui vaut la censure.'},
+      {auteur:'Abbé Prévost',q:'En quelle année Manon Lescaut a-t-il été publié ?',r:'1731',ctx:'D\'abord censuré et saisi, puis réhabilité. Sous-titre : Histoire du chevalier des Grieux et de Manon Lescaut.'},
+      {auteur:'Abbé Prévost',q:'Quel est le mouvement littéraire de Manon Lescaut ?',r:'Romanesque pré-romantique / Littérature des Lumières',ctx:'Le roman mêle l\'analyse psychologique des passions et la critique sociale — précurseur du roman sentimental.'},
+      {auteur:'Abbé Prévost',q:'Où se déroule la fin de Manon Lescaut ?',r:'En Louisiane (Nouvelle-Orléans), déportée avec des criminelles',ctx:'Manon est déportée en Amérique. Des Grieux la suit. Elle meurt dans le désert de Louisiane.'},
+      // MUSSET
+      {auteur:'Musset',q:'En quelle année Alfred de Musset est-il né ?',r:'1810',ctx:'11 décembre 1810, à Paris. Il meurt en 1857 à 46 ans.'},
+      {auteur:'Musset',q:'Quelle relation amoureuse célèbre Musset a-t-il vécue ?',r:'George Sand — 1833-1835, relation passionnelle et destructrice',ctx:'Sand et Musset voyagent en Italie. Leur rupture inspire la Nuit de Décembre et les Nuits de Musset.'},
+      {auteur:'Musset',q:'Quel est le mouvement littéraire de Musset ?',r:'Romantisme',ctx:'Génération Romantique avec Hugo, Lamartine, Vigny. Mais Musset a un style plus ironique et personnel.'},
+      {auteur:'Musset',q:'Quelle pièce célèbre Musset a-t-il écrite en 1834 ?',r:'On ne badine pas avec l\'amour',ctx:'Pièce en prose mêlant comédie et tragédie. Perdican, Camille et Rosette forment un triangle dramatique.'},
+      {auteur:'Musset',q:'Pourquoi on dit que Musset est le poète du « mal du siècle » ?',r:'Il incarne l\'enfant du siècle : né sous Napoléon, grandissant sous la Restauration, déçu et mélancolique',ctx:'Son roman autobiographique La Confession d\'un enfant du siècle (1836) décrit cette génération sans idéal.'},
+      // FLAUBERT
+      {auteur:'Flaubert',q:'En quelle année Gustave Flaubert est-il né ?',r:'1821',ctx:'12 décembre 1821, à Rouen. Il meurt en 1880 à 58 ans.'},
+      {auteur:'Flaubert',q:'Dans quelle ville Flaubert a-t-il passé la majeure partie de sa vie ?',r:'Croisset, près de Rouen (Normandie)',ctx:'Il vivait reclus dans sa maison de Croisset avec sa mère. Il sortait peu, travaillait la nuit.'},
+      {auteur:'Flaubert',q:'Quel roman de Flaubert a fait scandale à sa parution en 1857 ?',r:'Madame Bovary — procès pour « outrage à la morale publique »',ctx:'Flaubert est acquitté. Même année que les Fleurs du Mal de Baudelaire, condamnées elles. 1857 : année charnière.'},
+      {auteur:'Flaubert',q:'Quel est le style caractéristique de Flaubert ?',r:'Réalisme — travail obsessionnel de la phrase, le « mot juste »',ctx:'Il pouvait passer des jours sur une seule phrase. Précurseur du réalisme moderne et du style indirect libre.'},
+      {auteur:'Flaubert',q:'Quel mouvement littéraire incarne Flaubert ?',r:'Réalisme',ctx:'Avec Balzac et Zola, Flaubert est un pilier du Réalisme. Mais son style est plus esthète que celui de Zola.'},
+      // VICTOR HUGO
+      {auteur:'Victor Hugo',q:'En quelle année Victor Hugo est-il né ?',r:'1802',ctx:'26 février 1802, à Besançon. Il meurt en 1885 à 83 ans — une vie exceptionnellement longue.'},
+      {auteur:'Victor Hugo',q:'Combien d\'années Victor Hugo a-t-il vécu en exil ?',r:'19 ans (1851-1870)',ctx:'Exil à Jersey puis Guernesey après le coup d\'État de Napoléon III. Il y écrit Les Misérables et Les Châtiments.'},
+      {auteur:'Victor Hugo',q:'Quel est le mouvement littéraire de Victor Hugo ?',r:'Romantisme — chef de file',ctx:'Hugo est le chef de file du Romantisme français. Sa préface de Cromwell (1827) est le manifeste du mouvement.'},
+      {auteur:'Victor Hugo',q:'En quelle année Ruy Blas a-t-il été écrit ?',r:'1838',ctx:'Pièce en vers, en 5 actes. Créée au Théâtre de la Renaissance. Hugo y oppose le génie humble et la noblesse vide.'},
+      {auteur:'Victor Hugo',q:'Quelle tragédie personnelle Hugo a-t-il vécue en 1843 ?',r:'La mort de sa fille Léopoldine, noyée à 19 ans',ctx:'Elle se noie dans la Seine à Villequier avec son mari. Hugo l\'apprend en lisant un journal. Il lui dédie Demain dès l\'aube.'},
+      {auteur:'Victor Hugo',q:'Quel rôle politique Victor Hugo a-t-il joué ?',r:'Pair de France, député, sénateur — opposant à Napoléon III',ctx:'Il vote contre la Loi Falloux (1850) et condamne le coup d\'État de 1851 dans pamphlet Napoléon le Petit.'},
+    ];
+
+    let quizMode = 'procedes';
+
+    window.setQuizMode = function(mode) {
+      quizMode = mode;
+      document.getElementById('modeProcedes').classList.toggle('active', mode === 'procedes');
+      document.getElementById('modeAuteurs').classList.toggle('active', mode === 'auteurs');
+      document.getElementById('quizFilterRow').style.display = mode === 'procedes' ? 'flex' : 'none';
+      document.getElementById('quizFilterAuteurRow').style.display = mode === 'auteurs' ? 'flex' : 'none';
+      if (mode === 'procedes') {
+        document.getElementById('quizSetupIcon').textContent = '🎯';
+        document.getElementById('quizSetupTitle').textContent = 'Quiz Procédés';
+        document.getElementById('quizSetupSub').textContent = 'Une citation s\'affiche — retrouve le procédé, révèle la réponse, marque si tu savais ou non.';
+      } else {
+        document.getElementById('quizSetupIcon').textContent = '🧑‍🎨';
+        document.getElementById('quizSetupTitle').textContent = 'Quiz Auteurs';
+        document.getElementById('quizSetupSub').textContent = 'Une question biographique s\'affiche — âge, lieu de vie, anecdotes... révèle la réponse !';
+      }
+    };
+
     let deck = [], idx = 0, score = 0, missed = [];
 
     function shuffle(arr) {
@@ -5280,8 +5391,13 @@ Je le dis, vous pouvez vous confier, madame,
     }
 
     window.startQuiz = function() {
-      const filter = document.getElementById('quizFilter').value;
-      deck = shuffle(filter === 'all' ? [...allCards] : allCards.filter(c => c.titre === filter));
+      if (quizMode === 'auteurs') {
+        const filterA = document.getElementById('quizFilterAuteur').value;
+        deck = shuffle(filterA === 'all' ? [...bioCards] : bioCards.filter(c => c.auteur === filterA));
+      } else {
+        const filter = document.getElementById('quizFilter').value;
+        deck = shuffle(filter === 'all' ? [...allCards] : allCards.filter(c => c.titre === filter));
+      }
       idx = 0; score = 0; missed = [];
       document.getElementById('quizSetup').style.display = 'none';
       document.getElementById('quizEnd').style.display = 'none';
@@ -5306,10 +5422,19 @@ Je le dis, vous pouvez vous confier, madame,
 
     function showCard() {
       const c = deck[idx];
-      document.getElementById('quizTexteLabel').textContent = c.titre + ' — ' + c.auteur.split('·')[0].trim();
-      document.getElementById('quizCite').textContent = c.cite;
-      document.getElementById('quizNom').textContent = c.nom;
-      document.getElementById('quizEffet').textContent = c.effet;
+      if (quizMode === 'auteurs') {
+        document.getElementById('quizTexteLabel').textContent = '🧑‍🎨 ' + c.auteur;
+        document.getElementById('quizCite').textContent = c.q;
+        document.getElementById('quizNom').textContent = c.r;
+        document.getElementById('quizEffet').textContent = c.ctx;
+        document.getElementById('quizRevealBtn').textContent = '👁 Révéler la réponse';
+      } else {
+        document.getElementById('quizTexteLabel').textContent = c.titre + ' — ' + c.auteur.split('·')[0].trim();
+        document.getElementById('quizCite').textContent = c.cite;
+        document.getElementById('quizNom').textContent = c.nom;
+        document.getElementById('quizEffet').textContent = c.effet;
+        document.getElementById('quizRevealBtn').textContent = '👁 Révéler le procédé';
+      }
       document.getElementById('quizAnswer').style.display = 'none';
       document.getElementById('quizRevealBtn').style.display = 'inline-block';
       document.getElementById('quizCounter').textContent = (idx + 1) + ' / ' + deck.length;
