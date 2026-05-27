@@ -211,7 +211,20 @@
       border: 1px solid var(--border);
       border-radius: var(--radius) var(--radius) 0 0;
       margin-bottom: 0;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
     }
+    .seq-header:hover { background: var(--bg2); }
+    .seq-header .seq-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: transform 0.25s;
+    }
+    .seq-block.seq-open .seq-header .seq-arrow { transform: rotate(180deg); }
+    .seq-block:not(.seq-open) .seq-cards { display: none; }
+    .seq-block.seq-open .seq-cards { display: flex; }
     .seq-num {
       font-size: 0.72rem;
       font-weight: 800;
@@ -3908,13 +3921,30 @@ Je le dis, vous pouvez vous confier, madame,
     if (!container) return;
     container.innerHTML = '';
     let n = 1;
-    sequences.forEach(function(seq) {
+    sequences.forEach(function(seq, i) {
       const block = document.createElement('div');
-      block.className = 'seq-block';
+      block.className = 'seq-block' + (i === 0 ? ' seq-open' : '');
+
       const header = document.createElement('div');
       header.className = 'seq-header';
-      header.innerHTML = '<span class="seq-num">Séquence ' + seq.num + '</span><span class="seq-name">' + seq.name + '</span>';
+      header.innerHTML =
+        '<span class="seq-num">Séquence ' + seq.num + '</span>' +
+        '<span class="seq-name">' + seq.name + '</span>' +
+        '<span class="seq-arrow">▼</span>';
+
+      // clic sur le header → ouvre/ferme la séquence
+      header.addEventListener('click', function() {
+        const isOpen = block.classList.toggle('seq-open');
+        // ferme toutes les fiches de la séquence si on ferme le bloc
+        if (!isOpen) {
+          block.querySelectorAll('.texte-card.open').forEach(function(c) {
+            c.classList.remove('open');
+          });
+        }
+      });
+
       block.appendChild(header);
+
       const cards = document.createElement('div');
       cards.className = 'seq-cards';
       seq.ids.forEach(function(id) {
