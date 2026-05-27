@@ -2368,6 +2368,304 @@
       }
       .hero-orb { animation: none !important; }
     }
+
+    /* ══════════════════════════════════════════════════════
+       🎓 SIMULATEUR D'ORAL — styles
+       ══════════════════════════════════════════════════════ */
+
+    .sim-card { padding: 24px 22px 20px; }
+
+    /* ── Setup ── */
+    .sim-setup { margin-bottom: 20px; }
+    .sim-setup-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* Sélecteur de livre */
+    .sim-book-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .sim-book-btn {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .sim-book-btn:hover { color: var(--text); border-color: var(--accent); }
+    .sim-book-btn.active {
+      background: rgba(108,140,255,0.14);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Texte tiré au sort */
+    .sim-drawn-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sim-drawn-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-height: 52px;
+    }
+    .sim-drawn-num {
+      background: linear-gradient(135deg, var(--accent), #8860ff);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.78rem;
+      min-width: 28px; height: 28px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sim-drawn-info { flex: 1; min-width: 0; }
+    .sim-drawn-name { font-weight: 700; font-size: 0.9rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sim-drawn-sub  { font-size: 0.75rem; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sim-reroll-btn {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 1.1rem;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .sim-reroll-btn:hover { border-color: var(--accent); background: rgba(108,140,255,0.08); transform: rotate(20deg); }
+    .sim-reroll-btn:active { transform: rotate(180deg) scale(0.9); }
+
+    /* Axes */
+    .sim-drawn-axes {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sim-axe {
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 5px 10px;
+      background: var(--bg2);
+      border-radius: 6px;
+      border-left: 2px solid var(--border);
+      line-height: 1.4;
+    }
+    .sim-pb {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      font-weight: 600;
+      background: rgba(108,140,255,0.06);
+    }
+
+    /* ── Context panel ── */
+    .sim-context {
+      margin-top: 18px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    .sim-ctx-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .sim-ctx-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(108,140,255,0.14);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    .sim-ctx-header strong { font-size: 0.92rem; color: var(--text); }
+    .sim-ctx-sub { font-size: 0.78rem; color: var(--muted); }
+    .sim-ctx-pb {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(108,140,255,0.06);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 7px 10px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .sim-ctx-mvts { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+    .sim-ctx-mvt {
+      font-size: 0.77rem;
+      color: var(--muted);
+      padding: 4px 8px;
+      background: var(--bg3);
+      border-radius: 5px;
+      border-left: 2px solid var(--border);
+    }
+    .sim-ctx-tip {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 6px;
+    }
+    .sim-ctx-qs { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+    .sim-ctx-q {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      line-height: 1.45;
+    }
+    .sim-finish {
+      text-align: center;
+      padding: 16px 0 8px;
+    }
+    .sim-finish-icon  { font-size: 2.2rem; margin-bottom: 8px; }
+    .sim-finish-title { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .sim-finish-sub   { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+    .sim-finish-tip   { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+
+    /* ── Overlay grammaire ── */
+    .sim-gram-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 15, 0.8);
+      backdrop-filter: blur(6px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: simOverlayIn 0.3s ease both;
+    }
+    @keyframes simOverlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .sim-gram-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 26px 24px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 24px 80px -12px rgba(0,0,0,0.6);
+      animation: simBoxIn 0.32s cubic-bezier(0.2,0,0,1) both;
+    }
+    @keyframes simBoxIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .sim-gram-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .sim-gram-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      margin-bottom: 4px;
+    }
+    .sim-gram-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .sim-gram-pts {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent3);
+      background: rgba(108,255,184,0.08);
+      border: 1px solid rgba(108,255,184,0.2);
+      border-radius: 20px;
+      padding: 4px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .sim-gram-body {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--muted);
+      background: rgba(108,140,255,0.04);
+      border: 1px solid rgba(108,140,255,0.12);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .sim-gram-body strong { color: var(--text); }
+    .sim-gram-foot { display: flex; justify-content: flex-end; }
+    .sim-gram-continue {
+      background: linear-gradient(135deg, var(--accent), #8860ff);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .sim-gram-continue:hover { opacity: 0.88; }
+    .sim-gram-continue:active { transform: scale(0.96); }
+    .sim-gram-continue-sub {
+      opacity: 0.65;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* ── Light mode sim ── */
+    [data-theme="light"] .sim-drawn-box,
+    [data-theme="light"] .sim-reroll-btn,
+    [data-theme="light"] .sim-book-btn { background: var(--bg2); }
+    [data-theme="light"] .sim-axe { background: var(--bg3); color: var(--muted); }
+    [data-theme="light"] .sim-pb { color: var(--accent); background: rgba(74,108,247,0.07); }
+    [data-theme="light"] .sim-ctx-pb { color: var(--accent); background: rgba(74,108,247,0.06); }
+    [data-theme="light"] .sim-ctx-mvt { background: var(--bg3); color: var(--muted); }
+    [data-theme="light"] .sim-ctx-q { background: var(--bg2); color: var(--text); }
+    [data-theme="light"] .sim-gram-overlay { background: rgba(200,210,240,0.7); }
+    [data-theme="light"] .sim-gram-box { box-shadow: 0 24px 80px -12px rgba(0,0,0,0.2); }
+    [data-theme="light"] .sim-gram-body { color: var(--text); background: rgba(74,108,247,0.04); border-color: rgba(74,108,247,0.15); border-left-color: var(--accent); }
+
+    @media (max-width: 480px) {
+      .sim-gram-box { padding: 20px 16px 18px; }
+      .sim-gram-title { font-size: 1rem; }
+      .sim-gram-continue { padding: 11px 18px; font-size: 0.85rem; }
+      .sim-drawn-name { font-size: 0.82rem; }
+    }
   </style>
 </head>
 <body>
@@ -2421,9 +2719,30 @@
       </p>
     </div>
 
-    <!-- TIMER -->
-    <div class="timer-card" id="timerCard">
-      <div class="timer-title">⏱ Simulateur d'oral</div>
+    <!-- TIMER / SIMULATEUR -->
+    <div class="timer-card sim-card" id="timerCard">
+      <div class="timer-title">🎓 Simulateur d'oral</div>
+
+      <!-- ── SETUP (avant démarrage) ── -->
+      <div id="simSetup" class="sim-setup">
+        <div class="sim-setup-label">📚 Mon œuvre choisie</div>
+        <div class="sim-book-row" id="simBookRow"><!-- JS --></div>
+
+        <div class="sim-setup-label" style="margin-top:16px;">🎲 Texte tiré au sort</div>
+        <div class="sim-drawn-row">
+          <div class="sim-drawn-box">
+            <span class="sim-drawn-num" id="simDrawnNum"></span>
+            <div class="sim-drawn-info">
+              <div class="sim-drawn-name" id="simDrawnName"></div>
+              <div class="sim-drawn-sub"  id="simDrawnSub"></div>
+            </div>
+          </div>
+          <button class="sim-reroll-btn" onclick="simReroll()" title="Nouveau tirage aléatoire">🔀</button>
+        </div>
+        <div class="sim-drawn-axes" id="simDrawnAxes"></div>
+      </div>
+
+      <!-- ── PHASES ── -->
       <div class="timer-phases" id="timerPhases">
         <div class="timer-phase active" data-phase="0">
           <span class="tp-dot"></span>
@@ -2432,22 +2751,48 @@
         </div>
         <div class="timer-phase" data-phase="1">
           <span class="tp-dot"></span>
-          <span class="tp-label">Explication linéaire <span style="color:var(--accent3);font-weight:700;font-size:0.8em;">· 12 pts</span></span>
+          <span class="tp-label">Explication <span style="color:var(--accent3);font-weight:700;font-size:0.78em;">· 12 pts</span></span>
           <span class="tp-dur">12 min</span>
         </div>
         <div class="timer-phase" data-phase="2">
           <span class="tp-dot"></span>
-          <span class="tp-label">Entretien œuvre <span style="color:var(--accent3);font-weight:700;font-size:0.8em;">· 8 pts</span></span>
+          <span class="tp-label">Entretien <span style="color:var(--accent3);font-weight:700;font-size:0.78em;">· 8 pts</span></span>
           <span class="tp-dur">8 min</span>
         </div>
       </div>
+
       <div class="timer-display" id="timerDisplay">30:00</div>
       <div class="timer-phase-label" id="timerPhaseLabel">Préparation seul(e)</div>
       <div class="timer-bar-wrap"><div class="timer-bar" id="timerBar"></div></div>
       <div class="timer-controls">
         <button class="timer-btn timer-btn-reset" onclick="timerReset()" title="Recommencer">↺</button>
         <button class="timer-btn timer-btn-main" id="timerMainBtn" onclick="timerToggle()">▶ Démarrer</button>
-        <button class="timer-btn timer-btn-skip" onclick="timerSkip()" title="Passer à la phase suivante">⏭</button>
+        <button class="timer-btn timer-btn-skip" onclick="timerSkip()" title="Phase suivante">⏭</button>
+      </div>
+
+      <!-- ── CONTEXTE (pendant les phases) ── -->
+      <div id="simContext" class="sim-context" style="display:none">
+        <div id="simContextContent"></div>
+      </div>
+    </div>
+
+    <!-- ── OVERLAY : question de grammaire ── -->
+    <div id="simGramOverlay" class="sim-gram-overlay" style="display:none" aria-modal="true">
+      <div class="sim-gram-box">
+        <div class="sim-gram-top">
+          <div>
+            <div class="sim-gram-badge">Fin de l'explication linéaire</div>
+            <div class="sim-gram-title">❓ Question de grammaire</div>
+          </div>
+          <span class="sim-gram-pts">~2 min · inclus dans les 12 pts</span>
+        </div>
+        <div class="sim-gram-body" id="simGramText"></div>
+        <div class="sim-gram-foot">
+          <button class="sim-gram-continue" onclick="simContinueToPhase2()">
+            Passer à l'entretien →
+            <span class="sim-gram-continue-sub">8 min · 8 pts</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -6143,30 +6488,125 @@ Je le dis, vous pouvez vous confier, madame,
     });
   })();
 
-  // ── Timer ──
+  // ── Simulateur d'oral v2 ──
   (function() {
+
     const PHASES = [
       { label: 'Préparation seul(e)', secs: 30 * 60 },
-      { label: 'Explication linéaire + grammaire', secs: 12 * 60 },
+      { label: 'Explication linéaire', secs: 12 * 60 },
       { label: 'Entretien œuvre choisie', secs: 8 * 60 },
     ];
+
+    const BOOKS = [
+      { id: 'vague',   short: 'La Vague',   name: 'La Vague',           author: 'Todd Strasser' },
+      { id: 'ferme',   short: 'La Ferme',   name: 'La Ferme des Animaux', author: 'Orwell' },
+      { id: 'odyssee', short: "L'Odyssée",  name: "L'Odyssée",           author: 'Homère' },
+      { id: 'cyrano',  short: 'Cyrano',     name: 'Cyrano de Bergerac',  author: 'Rostand' },
+      { id: 'f451',    short: 'F. 451',     name: 'Fahrenheit 451',      author: 'Bradbury' },
+    ];
+
+    // ── State ──
     let phase = 0, remaining = PHASES[0].secs, running = false, interval = null;
+    let simBook = localStorage.getItem('simBook') || 'vague';
+    let simDrawn = null;
+    let gramInterstitialActive = false;
+    const texts = [];
+    const bookQs = {};
 
-    const display   = document.getElementById('timerDisplay');
-    const phaseLabel= document.getElementById('timerPhaseLabel');
-    const bar       = document.getElementById('timerBar');
-    const mainBtn   = document.getElementById('timerMainBtn');
-    const phaseDots = document.querySelectorAll('.timer-phase');
+    // ── DOM refs ──
+    const display    = document.getElementById('timerDisplay');
+    const phaseLabel = document.getElementById('timerPhaseLabel');
+    const bar        = document.getElementById('timerBar');
+    const mainBtn    = document.getElementById('timerMainBtn');
+    const phaseDots  = document.querySelectorAll('.timer-phase');
+    const setupEl    = document.getElementById('simSetup');
+    const ctxEl      = document.getElementById('simContext');
+    const ctxContent = document.getElementById('simContextContent');
+    const gramOverlay= document.getElementById('simGramOverlay');
+    const gramText   = document.getElementById('simGramText');
 
+    // ── Extract texts from DOM ──
+    document.querySelectorAll('.texte-card').forEach(card => {
+      const titre  = card.querySelector('.texte-titre')?.textContent.trim() || '';
+      const auteur = card.querySelector('.texte-auteur')?.textContent.trim() || '';
+      const axes   = [...card.querySelectorAll('.axe-item')].map(a => a.textContent.trim());
+      // Grab the grammaire-box but strip video links for the overlay
+      const gramBox = card.querySelector('.grammaire-box');
+      let gram = '';
+      if (gramBox) {
+        const clone = gramBox.cloneNode(true);
+        clone.querySelectorAll('.gram-video-link').forEach(el => el.remove());
+        gram = clone.innerHTML.trim();
+      }
+      const num = card.id.replace('t', '');
+      texts.push({ id: card.id, num, titre, auteur, axes, gram });
+    });
+
+    // ── Extract book questions from DOM ──
+    BOOKS.forEach(b => {
+      bookQs[b.id] = [];
+      // Standard format (.q-question)
+      document.querySelectorAll(`[data-for="${b.id}"] .q-question`).forEach(el => {
+        const t = el.textContent.trim();
+        if (t.length > 8) bookQs[b.id].push(t);
+      });
+      // F451 format (.q-q)
+      if (!bookQs[b.id].length) {
+        document.querySelectorAll(`[data-for="${b.id}"] .q-q`).forEach(el => {
+          const t = el.textContent.trim();
+          if (t.length > 10 && t.includes('?')) bookQs[b.id].push(t);
+        });
+      }
+    });
+
+    // ── Build book selector ──
+    const bookRow = document.getElementById('simBookRow');
+    BOOKS.forEach(b => {
+      const btn = document.createElement('button');
+      btn.className = 'sim-book-btn' + (b.id === simBook ? ' active' : '');
+      btn.dataset.book = b.id;
+      btn.textContent  = b.short;
+      btn.title        = `${b.name} — ${b.author}`;
+      btn.onclick = () => {
+        simBook = b.id;
+        try { localStorage.setItem('simBook', simBook); } catch(e) {}
+        bookRow.querySelectorAll('.sim-book-btn').forEach(x =>
+          x.classList.toggle('active', x.dataset.book === simBook));
+      };
+      bookRow.appendChild(btn);
+    });
+
+    // ── Draw random text ──
+    window.simReroll = function() {
+      if (!texts.length) return;
+      simDrawn = texts[Math.floor(Math.random() * texts.length)];
+      renderDrawn();
+    };
+
+    function renderDrawn() {
+      if (!simDrawn) return;
+      document.getElementById('simDrawnNum').textContent  = simDrawn.num;
+      document.getElementById('simDrawnName').textContent = simDrawn.titre;
+      document.getElementById('simDrawnSub').textContent  = simDrawn.auteur;
+
+      const axesEl = document.getElementById('simDrawnAxes');
+      if (axesEl && simDrawn.axes.length) {
+        axesEl.innerHTML = simDrawn.axes.map(a => {
+          const isPb = a.startsWith('Problématique');
+          return `<div class="sim-axe${isPb ? ' sim-pb' : ''}">${a}</div>`;
+        }).join('');
+      }
+    }
+
+    // ── Helpers ──
     function fmt(s) {
-      const m = Math.floor(s / 60), sec = s % 60;
-      return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+      return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
     }
 
     function beep(freq, dur) {
       try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
+        const ctx  = new (window.AudioContext || window.webkitAudioContext)();
+        const osc  = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.connect(gain); gain.connect(ctx.destination);
         osc.frequency.value = freq;
@@ -6182,13 +6622,14 @@ Je le dis, vous pouvez vous confier, madame,
       setTimeout(() => beep(1100, 0.5), 640);
     }
 
+    // ── Render timer ──
     function render() {
       display.textContent = fmt(remaining);
       const total = PHASES[phase].secs;
-      const pct = remaining / total * 100;
-      bar.style.width = pct + '%';
+      const pct   = remaining / total * 100;
+      bar.style.width      = pct + '%';
       bar.style.background = pct < 15 ? '#ff7070' : pct < 30 ? '#ffb86c' : 'var(--accent)';
-      display.className = 'timer-display' + (pct < 15 ? ' urgent' : pct < 30 ? ' warning' : '');
+      display.className    = 'timer-display' + (pct < 15 ? ' urgent' : pct < 30 ? ' warning' : '');
       phaseLabel.textContent = PHASES[phase].label;
       phaseDots.forEach((el, i) => {
         el.classList.toggle('active', i === phase);
@@ -6196,48 +6637,143 @@ Je le dis, vous pouvez vous confier, madame,
       });
     }
 
-    function tick() {
-      if (remaining > 0) { remaining--; render(); return; }
-      alertPhaseEnd();
-      if (phase < PHASES.length - 1) {
-        phase++;
-        remaining = PHASES[phase].secs;
-        render();
-      } else {
-        clearInterval(interval); running = false;
-        mainBtn.textContent = '✓ Terminé';
-        mainBtn.disabled = true;
-        beep(660, 0.4);
-        setTimeout(() => beep(880, 0.6), 450);
+    // ── Show contextual info ──
+    function showContext() {
+      if (!simDrawn) return;
+      ctxEl.style.display = 'block';
+
+      if (phase === 0 || phase === 1) {
+        const pb   = simDrawn.axes[0] || '';
+        const mvts = simDrawn.axes.slice(1);
+        ctxContent.innerHTML = `
+          <div class="sim-ctx-header">
+            <span class="sim-ctx-badge">${phase === 0 ? 'Ton texte du jour' : '📌 Rappel'}</span>
+            <strong>${simDrawn.titre}</strong>
+            <span class="sim-ctx-sub">${simDrawn.auteur}</span>
+          </div>
+          ${pb ? `<div class="sim-ctx-pb">${pb}</div>` : ''}
+          ${mvts.length ? `<div class="sim-ctx-mvts">${mvts.map(m =>
+            `<div class="sim-ctx-mvt">→ ${m}</div>`).join('')}</div>` : ''}
+          ${phase === 0
+            ? `<div class="sim-ctx-tip">💡 Prépare l'intro, les ${mvts.length} mouvements et la conclusion. Identifie les procédés clés.</div>`
+            : `<div class="sim-ctx-tip">💬 Lis le texte à voix haute, puis développe chaque mouvement.</div>`}
+        `;
+      } else if (phase === 2) {
+        const book = BOOKS.find(b => b.id === simBook);
+        const qs   = bookQs[simBook] || [];
+        const pool = [...qs].sort(() => Math.random() - 0.5).slice(0, 4);
+        ctxContent.innerHTML = `
+          <div class="sim-ctx-header">
+            <span class="sim-ctx-badge">Entretien — Œuvre choisie</span>
+            <strong>${book?.name || 'Ton œuvre'}</strong>
+            <span class="sim-ctx-sub">${book?.author || ''}</span>
+          </div>
+          <div class="sim-ctx-tip">L'examinateur peut te poser ces questions. Réponds avec conviction :</div>
+          <div class="sim-ctx-qs">
+            ${pool.map(q => `<div class="sim-ctx-q">❓ ${q}</div>`).join('')}
+            ${!pool.length ? '<div class="sim-ctx-tip">Prépare : résumé, thèmes, pourquoi tu l\'as choisi.</div>' : ''}
+          </div>
+        `;
       }
     }
 
+    // ── Grammar interstitial ──
+    function showGramInterstitial() {
+      gramInterstitialActive = true;
+      clearInterval(interval); running = false;
+      gramText.innerHTML = simDrawn?.gram || '<p>Question de grammaire sur le texte étudié.</p>';
+      gramOverlay.style.display = 'flex';
+      // Scroll to top to see overlay
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.simContinueToPhase2 = function() {
+      gramOverlay.style.display = 'none';
+      gramInterstitialActive = false;
+      phase = 2; remaining = PHASES[2].secs;
+      render(); showContext();
+      // Auto-start phase 2
+      running = true; mainBtn.textContent = '⏸ Pause';
+      interval = setInterval(tick, 1000);
+      alertPhaseEnd();
+    };
+
+    // ── Tick ──
+    function tick() {
+      if (remaining > 0) { remaining--; render(); return; }
+      alertPhaseEnd();
+      if (phase === 0) {
+        phase = 1; remaining = PHASES[1].secs;
+        render(); showContext();
+      } else if (phase === 1) {
+        clearInterval(interval); running = false;
+        showGramInterstitial();
+      } else {
+        clearInterval(interval); running = false;
+        mainBtn.textContent = '✓ Terminé !'; mainBtn.disabled = true;
+        beep(660, 0.4); setTimeout(() => beep(880, 0.6), 450);
+        ctxContent.innerHTML = `
+          <div class="sim-finish">
+            <div class="sim-finish-icon">🎉</div>
+            <div class="sim-finish-title">Simulation terminée !</div>
+            <div class="sim-finish-sub">Tu viens de faire un oral complet. Bravo !<br>Clique sur ↺ pour recommencer avec un nouveau texte.</div>
+          </div>`;
+      }
+    }
+
+    // ── Controls ──
     window.timerToggle = function() {
+      if (gramInterstitialActive) return;
       if (running) {
         clearInterval(interval); running = false;
         mainBtn.textContent = '▶ Reprendre';
       } else {
-        running = true;
-        mainBtn.textContent = '⏸ Pause';
+        // Premier démarrage : cacher le setup, montrer le contexte
+        if (phase === 0 && remaining === PHASES[0].secs && !ctxEl.style.display.match('block')) {
+          setupEl.style.display = 'none';
+          showContext();
+        }
+        running = true; mainBtn.textContent = '⏸ Pause';
         interval = setInterval(tick, 1000);
       }
     };
 
     window.timerReset = function() {
-      clearInterval(interval); running = false;
+      clearInterval(interval); running = false; gramInterstitialActive = false;
       phase = 0; remaining = PHASES[0].secs;
-      mainBtn.textContent = '▶ Démarrer';
-      mainBtn.disabled = false;
+      mainBtn.textContent = '▶ Démarrer'; mainBtn.disabled = false;
+      gramOverlay.style.display = 'none';
+      ctxEl.style.display = 'none';
+      setupEl.style.display = 'block';
+      simReroll();
       render();
     };
 
     window.timerSkip = function() {
-      if (phase < PHASES.length - 1) {
-        phase++; remaining = PHASES[phase].secs;
-        render(); beep(660, 0.2);
+      if (gramInterstitialActive) return;
+      beep(660, 0.2);
+      if (phase === 0) {
+        // Masquer setup si pas encore démarré
+        if (remaining === PHASES[0].secs) setupEl.style.display = 'none';
+        clearInterval(interval); running = false;
+        phase = 1; remaining = PHASES[1].secs;
+        render(); showContext();
+        // relancer si était en cours
+        if (mainBtn.textContent.includes('Pause')) {
+          running = true; interval = setInterval(tick, 1000);
+        }
+      } else if (phase === 1) {
+        clearInterval(interval); running = false;
+        showGramInterstitial();
+      } else {
+        clearInterval(interval); running = false;
+        mainBtn.textContent = '✓ Terminé !'; mainBtn.disabled = true;
+        ctxContent.innerHTML = `<div class="sim-finish"><div class="sim-finish-icon">🎉</div><div class="sim-finish-title">Simulation terminée !</div><div class="sim-finish-sub">Clique sur ↺ pour recommencer.</div></div>`;
       }
     };
 
+    // ── Init ──
+    simReroll();
     render();
   })();
 
