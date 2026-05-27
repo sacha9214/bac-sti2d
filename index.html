@@ -5374,8 +5374,7 @@ Je le dis, vous pouvez vous confier, madame,
     let n = 1;
     sequences.forEach(function(seq, i) {
       const block = document.createElement('div');
-      const isFirst = i === 0;
-      block.className = 'seq-block' + (isFirst ? ' seq-open' : '');
+      block.className = 'seq-block';
 
       const header = document.createElement('div');
       header.className = 'seq-header';
@@ -5414,12 +5413,6 @@ Je le dis, vous pouvez vous confier, madame,
       block.appendChild(cards);
       container.appendChild(block);
 
-      // séquence 1 : ouvre aussi toutes les fiches par défaut
-      if (isFirst) {
-        cardsInner.querySelectorAll('.texte-card').forEach(function(c) {
-          c.classList.add('open');
-        });
-      }
     });
   })();
 
