@@ -3923,7 +3923,8 @@ Je le dis, vous pouvez vous confier, madame,
     let n = 1;
     sequences.forEach(function(seq, i) {
       const block = document.createElement('div');
-      block.className = 'seq-block' + (i === 0 ? ' seq-open' : '');
+      const isFirst = i === 0;
+      block.className = 'seq-block' + (isFirst ? ' seq-open' : '');
 
       const header = document.createElement('div');
       header.className = 'seq-header';
@@ -3932,15 +3933,16 @@ Je le dis, vous pouvez vous confier, madame,
         '<span class="seq-name">' + seq.name + '</span>' +
         '<span class="seq-arrow">▼</span>';
 
-      // clic sur le header → ouvre/ferme la séquence
+      // clic sur le header → ouvre/ferme la séquence + toutes ses fiches
       header.addEventListener('click', function() {
         const isOpen = block.classList.toggle('seq-open');
-        // ferme toutes les fiches de la séquence si on ferme le bloc
-        if (!isOpen) {
-          block.querySelectorAll('.texte-card.open').forEach(function(c) {
+        block.querySelectorAll('.texte-card').forEach(function(c) {
+          if (isOpen) {
+            c.classList.add('open');
+          } else {
             c.classList.remove('open');
-          });
-        }
+          }
+        });
       });
 
       block.appendChild(header);
@@ -3956,6 +3958,13 @@ Je le dis, vous pouvez vous confier, madame,
       });
       block.appendChild(cards);
       container.appendChild(block);
+
+      // séquence 1 : ouvre aussi toutes les fiches par défaut
+      if (isFirst) {
+        cards.querySelectorAll('.texte-card').forEach(function(c) {
+          c.classList.add('open');
+        });
+      }
     });
   })();
 
