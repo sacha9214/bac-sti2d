@@ -958,7 +958,7 @@
     .q-item.open .q-arrow { transform: rotate(180deg); }
 
     /* Aliases simples pour les q-items sans arrow (F451) */
-    .q-q { font-weight: 600; color: var(--text); }
+    .q-q { font-weight: 600; color: var(--text); cursor: pointer; }
     .q-a {
       display: none;
       margin-top: 12px;
@@ -6053,6 +6053,75 @@ Je le dis, vous pouvez vous confier, madame,
         </div>
 
       </div><!-- /gram-sub-list -->
+
+      <!-- ── Exercice phrase complexe ── -->
+      <div class="section-label" style="margin-top:28px;">
+        <h3 style="font-size:1rem; color:var(--text);">✏️ Exercice — Identifier le type de phrase</h3>
+      </div>
+      <div class="card" style="background:rgba(108,140,255,0.04); border-color:rgba(108,140,255,0.2);">
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">Pour chaque phrase : <strong>1)</strong> dis si elle est simple ou complexe. Si complexe : <strong>2)</strong> précise juxtaposition / coordination / subordination, et <strong>3)</strong> si subordonnée, indique le type (relative, complétive, circonstancielle, interrogative indirecte).</p>
+        <div class="gram-racine-list">
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">1. « Gargantua étudie <u>et</u> il apprend vite. »</div>
+            <div class="q-a"><strong>Phrase complexe — coordination</strong> (conjonction de coordination <em>et</em>). Les deux propositions sont indépendantes et reliées par <em>et</em> (moyen mnémo : <em>mais ou et donc or ni car</em>).</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">2. « Rabelais est médecin <u>;</u> il comprend le corps humain. »</div>
+            <div class="q-a"><strong>Phrase complexe — juxtaposition</strong> (point-virgule). Les deux propositions sont reliées par la ponctuation seule, sans mot de liaison. On pourrait les séparer en deux phrases simples indépendantes.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">3. « Rabelais fait rire <u>pour que</u> ses messages passent mieux. »</div>
+            <div class="q-a"><strong>Phrase complexe — subordination</strong>. Type : <strong>subordonnée circonstancielle de but</strong> (locution conjonctive <em>pour que</em>). Question à poser : « Dans quel but ? ». On peut la déplacer : « Pour que ses messages passent mieux, Rabelais fait rire. »</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">4. « Je pense <u>que</u> ce poème est lyrique. »</div>
+            <div class="q-a"><strong>Phrase complexe — subordination</strong>. Type : <strong>subordonnée conjonctive complétive par « que »</strong>. Un verbe est devant (<em>pense</em>). Elle est COD du verbe principal. On la reconnaît car elle est introduite par <em>que</em> et suit directement un verbe.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">5. « C'est un oiseau <u>qui</u> plane avec majesté. »</div>
+            <div class="q-a"><strong>Phrase complexe — subordination</strong>. Type : <strong>subordonnée relative adjective</strong>. Pronom relatif <em>qui</em>, antécédent <em>oiseau</em>. Elle est adjective : on pourrait la supprimer (<em>C'est un oiseau</em>) sans changer le sens principal. Elle complète le GN.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">6. « <u>Bien que</u> le loup soit libre, il est craint de tous. »</div>
+            <div class="q-a"><strong>Phrase complexe — subordination</strong>. Type : <strong>subordonnée circonstancielle de concession</strong> (locution <em>bien que</em>). Elle associe deux idées qui s'opposent : être libre ≠ être craint. Elle est déplaçable (comme ici : placée en tête de phrase).</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">7. « L'albatros est majestueux dans les airs <u>:</u> il est gauche sur le pont. »</div>
+            <div class="q-a"><strong>Phrase complexe — juxtaposition</strong> (deux-points). Les deux propositions sont reliées par les deux-points qui instaurent un rapport d'opposition. Pas de mot de liaison. C'est Baudelaire qui utilise ce contraste pour symboliser le destin du poète.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">8. « Je me demande <u>si</u> Rimbaud a vraiment rompu avec la poésie. »</div>
+            <div class="q-a"><strong>Phrase complexe — subordination</strong>. Type : <strong>subordonnée interrogative indirecte</strong> (mot interrogatif <em>si</em>, verbe principal <em>demander</em>). Pas de point d'interrogation. Elle est COD du verbe principal. On peut la transformer en question directe : « Rimbaud a-t-il vraiment rompu avec la poésie ? »</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Exercice récapitulatif ── -->
+      <div class="section-label" style="margin-top:24px;">
+        <h3 style="font-size:1rem; color:var(--text);">✏️ Exercice — Textes du corpus</h3>
+      </div>
+      <div class="card" style="background:rgba(108,140,255,0.04); border-color:rgba(108,140,255,0.2);">
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">Ces phrases sont tirées ou inspirées des textes étudiés en classe. Même consigne : identifie le type de phrase et justifie.</p>
+        <div class="gram-racine-list">
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">A. « Le poète ressemble au prince des nuées <u>qui</u> hante la tempête. » <em>(Baudelaire, L'Albatros)</em></div>
+            <div class="q-a"><strong>Subordination — relative adjective</strong>. Pronom relatif <em>qui</em>, antécédent <em>prince des nuées</em>. Elle est adjective (supprimable). C'est la comparaison centrale du poème : Baudelaire s'identifie à l'albatros, lui-même identifié au prince des nuées.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">B. « La Boétie s'étonne <u>que</u> les hommes consentent à leur propre servitude. » <em>(Discours de la servitude volontaire)</em></div>
+            <div class="q-a"><strong>Subordination — complétive par « que »</strong>. Verbe <em>s'étonne</em> devant, prop. sub. introduite par <em>que</em>. COD du verbe principal. C'est le paradoxe central du <em>Discours</em> : la servitude n'est pas imposée, elle est choisie.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">C. « Des Grieux la vit <u>et</u> il perdit la raison. » <em>(Manon Lescaut, Abbé Prévost)</em></div>
+            <div class="q-a"><strong>Coordination</strong> (conjonction <em>et</em>). Deux propositions indépendantes unies par <em>et</em>. La structure binaire (voir / perdre la raison) mime la rapidité du coup de foudre — une juxtaposition aurait un effet plus brutal, la coordination est plus fluide.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">D. « <u>Parce qu'</u>il était médecin, Rabelais met le corps au centre de son œuvre. » <em>(cours)</em></div>
+            <div class="q-a"><strong>Subordination — circonstancielle de cause</strong> (locution <em>parce que</em>). La prop. sub. est placée en tête de phrase (déplaçable). Question à poser : « Pourquoi ? ». Elle est séparée de la principale par une virgule.</div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ══ 2. L'INTERROGATION ══ -->
@@ -6118,6 +6187,49 @@ Je le dis, vous pouvez vous confier, madame,
           </div>
         </div>
       </div>
+
+      <!-- ── Exercice interrogation ── -->
+      <div class="section-label" style="margin-top:28px;">
+        <h3 style="font-size:1rem; color:var(--text);">✏️ Exercice — Analyser une phrase interrogative</h3>
+      </div>
+      <div class="card" style="background:rgba(255,108,140,0.04); border-color:rgba(255,108,140,0.2);">
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">Pour chaque phrase : <strong>1)</strong> directe ou indirecte ? <strong>2)</strong> totale ou partielle ? <strong>3)</strong> comment est-elle formée ?</p>
+        <div class="gram-racine-list">
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">1. « Manges-tu à la cantine demain ? »</div>
+            <div class="q-a"><strong>Directe, totale.</strong> Formée par <strong>inversion du sujet et du verbe</strong> (pronom personnel <em>tu</em> placé après le verbe). Point d'interrogation. On peut répondre par oui ou non. ⚠️ Le tiret est obligatoire à l'inversion.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">2. « Est-ce que tu as lu Manon Lescaut ? »</div>
+            <div class="q-a"><strong>Directe, totale.</strong> Formée avec la formule <strong>« est-ce que »</strong> — l'ordre sujet-verbe est conservé. Point d'interrogation. On peut répondre par oui ou non. C'est le registre courant (ni littéraire, ni familier).</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">3. « Tu pars en voyage demain ? »</div>
+            <div class="q-a"><strong>Directe, totale.</strong> Formée par <strong>intonation montante</strong> (marque de l'oral). Même ordre qu'une phrase déclarative. Registre courant / familier. On la reconnaît à l'oral par la voix qui monte, à l'écrit par le point d'interrogation seul.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">4. « Pourquoi Cyrano refuse-t-il d'avouer son amour à Roxane ? »</div>
+            <div class="q-a"><strong>Directe, partielle.</strong> Mot interrogatif <strong>adverbial : « pourquoi »</strong>. On ne peut pas répondre par oui/non. Formation : mot interrogatif + inversion. ⚠️ Sujet = <em>Cyrano</em> (pas un pronom) : il faut ajouter un pronom de reprise (<em>-il</em>) après le verbe.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">5. « Nous pouvons nous demander comment La Boétie définit la liberté. »</div>
+            <div class="q-a"><strong>Indirecte.</strong> Pas de point d'interrogation — point simple. C'est une <strong>proposition subordonnée interrogative indirecte</strong> introduite par le mot interrogatif <em>comment</em>. Elle est COD du verbe principal <em>demander</em>. On peut la transformer : « Comment La Boétie définit-il la liberté ? »</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">6. « Qui a écrit le Discours de la servitude volontaire ? »</div>
+            <div class="q-a"><strong>Directe, partielle.</strong> Mot interrogatif <strong>pronominal : « qui »</strong>. Il est sujet du verbe <em>a écrit</em>, donc pas d'inversion (on n'inverse pas quand <em>qui</em> est sujet). Réponse partielle attendue : <em>La Boétie</em>.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">7. « Hélène aime-t-elle les glaces au chocolat ? » → Transforme en interrogative indirecte.</div>
+            <div class="q-a">→ « Je me demande <strong>si</strong> Hélène aime les glaces au chocolat. » L'interrogative totale directe (<em>est-ce que / inversion</em>) devient une sub. interrogative indirecte introduite par <strong>si</strong>. L'ordre redevient sujet-verbe. Pas de point d'interrogation.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">8. « Quel message Baudelaire transmet-il dans L'Albatros ? » → Transforme en interrogative indirecte.</div>
+            <div class="q-a">→ « Je me demande <strong>quel</strong> message Baudelaire transmet dans L'Albatros. » Le déterminant interrogatif <em>quel</em> reste en tête de la subordonnée. L'inversion disparaît. Pas de point d'interrogation. <em>Quel</em> s'accorde avec <em>message</em> (masculin singulier).</div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ══ 3. LA NÉGATION ══ -->
@@ -6232,6 +6344,32 @@ Je le dis, vous pouvez vous confier, madame,
         <div class="gram-tip" style="margin-top:12px;">💡 Le ne explétif peut être supprimé : « J'ai peur qu'il vienne » = même sens que « J'ai peur qu'il <strong>ne</strong> vienne ».</div>
       </div>
 
+      <!-- IV. Pragmatique -->
+      <div class="section-label" style="margin-top:24px;">
+        <h3 style="font-size:1rem; color:var(--text);">IV. Pragmatique de la négation</h3>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent3); background:rgba(108,255,184,0.04);">
+        <p style="font-size:0.92rem; line-height:1.7;">La négation peut prendre une <strong>portée argumentative</strong>, notamment quand un locuteur s'oppose à son interlocuteur. Dans un dialogue, une dispute ou un discours, la forme négative devient un <strong>outil de combat</strong> (le mot « pragmatique » renvoie, étymologiquement, à une <em>action dans le réel</em>). La phrase négative sert alors à :</p>
+        <div class="gram-type-grid" style="margin-top:14px; gap:10px;">
+          <div class="gram-type-card" style="border-left-color:var(--accent2);">
+            <div class="gram-type-title">Polémique</div>
+            <p class="gram-type-def">S'opposer violemment à une thèse adverse.</p>
+            <div class="gram-example">« Ce n'est pas de la liberté, c'est de la lâcheté. » (La Boétie)</div>
+          </div>
+          <div class="gram-type-card" style="border-left-color:var(--accent4);">
+            <div class="gram-type-title">Réfutation</div>
+            <p class="gram-type-def">Contredire un argument avec méthode.</p>
+            <div class="gram-example">« Non, merci ! » — Cyrano refuse catégoriquement, une seule négation suffit.</div>
+          </div>
+          <div class="gram-type-card" style="border-left-color:var(--accent5);">
+            <div class="gram-type-title">Contradiction</div>
+            <p class="gram-type-def">Invalider ce que l'autre vient de dire.</p>
+            <div class="gram-example">« Je ne t'ai jamais dit que je t'aimais. » (Musset, On ne badine pas)</div>
+          </div>
+        </div>
+        <div class="gram-tip" style="margin-top:12px;">💡 À l'oral du bac, si l'examinateur te demande <em>l'effet</em> d'une phrase négative, pense à cette dimension : est-elle polémique ? de réfutation ? ou simplement descriptive ?</div>
+      </div>
+
       <!-- Exercice Racine -->
       <div class="section-label" style="margin-top:28px;">
         <h3 style="font-size:1rem; color:var(--text);">🎭 Exercice — Phèdre, Racine (1677)</h3>
@@ -6241,24 +6379,66 @@ Je le dis, vous pouvez vous confier, madame,
 
         <div class="gram-racine-list">
           <div class="q-item">
-            <div class="q-q" onclick="this.classList.toggle('open')">1. « Ô désespoir ! ô crime ! » <em>(I, 3)</em></div>
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">1. « Ô désespoir ! ô crime ! » <em>(I, 3)</em></div>
             <div class="q-a">« <strong>Désespoir</strong> » = antonyme de « espoir », par dérivation préfixale (<em>préfixe négatif dé-</em>).</div>
           </div>
           <div class="q-item">
-            <div class="q-q" onclick="this.classList.toggle('open')">2. « Voyage infortuné ! Rivage malheureux. » <em>(I, 3)</em></div>
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">2. « Voyage infortuné ! Rivage malheureux. » <em>(I, 3)</em></div>
             <div class="q-a">« <strong>Infortuné</strong> » = antonyme de « fortuné » (préfixe <em>in-</em>) ; « <strong>malheureux</strong> » = antonyme de « heureux » (préfixe <em>mal-</em>). Négation lexicale par dérivation préfixale.</div>
           </div>
           <div class="q-item">
-            <div class="q-q" onclick="this.classList.toggle('open')">3. « Mes yeux ne voyaient plus, je ne pouvais parler. » <em>(I, 3)</em></div>
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">3. « Mes yeux ne voyaient plus, je ne pouvais parler. » <em>(I, 3)</em></div>
             <div class="q-a">« ne…<strong>plus</strong> » → négation de portée <em>partielle</em> (≠ « Mes yeux voyaient <em>encore</em> »). « Je <strong>ne</strong> pouvais parler » → <em>ne</em> seul, tour littéraire : économie du second adverbe (on aurait pu dire « ne pouvais <em>pas</em> parler »).</div>
           </div>
           <div class="q-item">
-            <div class="q-q" onclick="this.classList.toggle('open')">4. « Mais si pour concurrent je n'avais que mon frère. » <em>(II, 2)</em></div>
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">4. « Mais si pour concurrent je n'avais que mon frère. » <em>(II, 2)</em></div>
             <div class="q-a">« <strong>ne…que</strong> » = <em>négation restrictive</em> : correspond à « j'avais <em>seulement</em> mon frère ». Elle exclut « mon frère » des éléments niés (n'est pas une vraie négation).</div>
           </div>
           <div class="q-item">
-            <div class="q-q" onclick="this.classList.toggle('open')">5. « Je crains qu'un songe ne m'abuse. » <em>(II, 2)</em></div>
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">5. « Je crains qu'un songe ne m'abuse. » <em>(II, 2)</em></div>
             <div class="q-a">« <strong>ne</strong> » explétif : s'emploie seul après « craindre » sans sens négatif. Le locuteur craint que le songe l'abuse vraiment. Tour élégant, peut être supprimé sans changer le sens.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exercice corpus négation -->
+      <div class="section-label" style="margin-top:28px;">
+        <h3 style="font-size:1rem; color:var(--text);">📚 Exercice — Négation dans les textes du corpus</h3>
+      </div>
+      <div class="card" style="background:rgba(255,201,108,0.04); border-color:rgba(255,201,108,0.25);">
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:14px;">Repérez et analysez l'expression de la négation dans ces phrases extraites ou inspirées des textes étudiés en classe.</p>
+        <div class="gram-racine-list">
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">1. « L'albatros <u>ne</u> marche <u>plus</u> avec majesté sur le pont du navire. » <em>(d'après Baudelaire)</em></div>
+            <div class="q-a">Adverbes de négation <strong>ne…plus</strong> → négation de portée <strong>partielle</strong> (négation de « encore » : il marchait avec majesté dans les airs, mais plus maintenant). C'est le renversement tragique : la majesté du vol devient gaucherie à terre.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">2. « Les marins <u>ne</u> respectent <u>guère</u> la grandeur du poète. » <em>(d'après Baudelaire)</em></div>
+            <div class="q-a">Adverbes de négation <strong>ne…guère</strong> → portée <strong>totale</strong> (= ils ne respectent absolument pas). <em>Guère</em> = presque pas, dans un registre littéraire soutenu. C'est le thème central de L'Albatros : le génie est incompris de la foule vulgaire.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">3. « <u>Nul</u> homme <u>ne</u> devrait se soumettre sans comprendre pourquoi. » <em>(d'après La Boétie)</em></div>
+            <div class="q-a"><strong>ne + déterminant indéfini « nul »</strong> devant un nom → négation syntaxique de portée totale. <em>Nul</em> nie l'existence de tout homme qui se soumettrait. Tour élégant, registre soutenu. C'est le cœur du <em>Discours de la servitude volontaire</em>.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">4. « Des Grieux <u>n'</u>avait <u>jamais</u> ressenti une telle émotion. » <em>(d'après Manon Lescaut)</em></div>
+            <div class="q-a">Adverbes de négation <strong>ne…jamais</strong> → portée <strong>totale</strong> (aucune fois dans le passé). L'adverbe <em>jamais</em> marque l'absolu — le coup de foudre pour Manon est une expérience totalement inédite pour Des Grieux.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">5. « Il craignait que le destin <u>ne</u> les séparât à jamais. » <em>(d'après Manon Lescaut)</em></div>
+            <div class="q-a"><strong>« ne » explétif</strong> : employé seul, après le verbe de crainte <em>craindre</em>, sans sens négatif. Le personnage craint que la séparation arrive réellement. Tour littéraire élégant — peut être supprimé sans changer le sens : « Il craignait que le destin les séparât » = même sens.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">6. « Il <u>n'</u>y a <u>rien</u> de plus triste que l'exil. » <em>(d'après Rimbaud, Ma Bohème)</em></div>
+            <div class="q-a"><strong>ne + pronom indéfini « rien »</strong> → négation syntaxique de portée partielle (négation de « quelque chose »). <em>Rien</em> porte sur le complément — c'est une comparaison superlative négative. La négation renforce l'intensité de la tristesse.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">7. « Camille et Perdican <u>ne</u> s'aiment <u>pas</u>, ils se le prouvent <u>sans</u> cesse. » <em>(d'après Musset, On ne badine pas)</em></div>
+            <div class="q-a">Deux négations : <strong>ne…pas</strong> (négation syntaxique standard, portée totale) + <strong>sans</strong> (négation lexicale, préposition privative). La juxtaposition des deux formes renforce le paradoxe mussetien : le refus de l'amour est lui-même une preuve d'amour. Dimension pragmatique : polémique.</div>
+          </div>
+          <div class="q-item">
+            <div class="q-q" onclick="this.parentElement.classList.toggle('open')">8. « Non, merci ! » <em>(Cyrano de Bergerac, Rostand, Acte II)</em></div>
+            <div class="q-a">L'adverbe <strong>« Non »</strong> seul forme une phrase négative. C'est la réponse à une proposition de mécénat. Dimension <strong>pragmatique</strong> : réfutation absolue, refus catégorique. Cette formule est emblématique du refus de Cyrano de toute compromission — sa liberté est dans ce « Non » qui tient lieu de tout discours.</div>
           </div>
         </div>
       </div>
