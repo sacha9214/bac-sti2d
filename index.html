@@ -20,6 +20,7 @@
       --accent3: #6cffb8;
       --accent4: #ffc96c;
       --accent5: #ff7043;
+      --accent6: #c96cff;
       --text: #e8eaf6;
       --muted: #8890aa;
       --border: #2e3250;
@@ -37,6 +38,7 @@
       --accent3: #0da86a;
       --accent4: #c47e00;
       --accent5: #e84e1b;
+      --accent6: #8e44ad;
       --text: #1a1d2e;
       --muted: #42495e;
       --border: #b0bcd6;
@@ -210,7 +212,7 @@
     /* ── Book selector ── */
     .book-selector {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin: 20px 0 4px;
     }
@@ -3608,6 +3610,12 @@ Je le dis, vous pouvez vous confier, madame,
       <div class="book-title">Fahrenheit 451</div>
       <div class="book-author">Ray Bradbury</div>
     </div>
+    <div class="book-card" data-book="lettre" style="--bk-accent: var(--accent6);">
+      <div class="book-check">✓</div>
+      <div class="book-emoji">💌</div>
+      <div class="book-title">Lettre d'une inconnue</div>
+      <div class="book-author">Stefan Zweig</div>
+    </div>
   </div>
 
   <!-- ══════════ LA VAGUE ══════════ -->
@@ -5538,6 +5546,284 @@ Je le dis, vous pouvez vous confier, madame,
     </div>
   </section>
 
+  <nav class="subnav" data-for="lettre" hidden>
+    <a href="#resume-lettre">Résumé</a>
+    <a href="#persos-lettre">Personnages</a>
+    <a href="#themes-lettre">Thèmes</a>
+    <a href="#presentation-lettre">Ma présentation</a>
+    <a href="#pourquoi-lettre">Pourquoi ce livre</a>
+    <a href="#questions-lettre">Questions probables</a>
+    <a href="#liens-lettre">Liens avec l'œuvre</a>
+    <a href="#conseils-lettre">Conseils</a>
+  </nav>
+
+  <section id="resume-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">📖</span><h2>Résumé de l'œuvre</h2></div>
+    <div class="resume-box">
+      Une femme mourante écrit à R., un écrivain célèbre de Vienne, une longue lettre qu'il recevra après sa mort. Elle lui raconte leur histoire — sa dévotion absolue depuis ses 13 ans, voisine de palier qu'il ne remarquait pas. Ils ont eu trois nuits ensemble au fil des ans : à chaque fois, R. ne la reconnaît pas. Elle a eu de lui un fils en secret, qu'elle a élevé seule au prix de sa dignité, et qui vient de mourir de maladie. Morte à son tour, elle lui dit enfin tout. R. lira la lettre, troublé, mais n'aura aucun souvenir d'elle.
+    </div>
+    <div style="margin-top:20px;" class="card">
+      <div style="display:flex;gap:32px;flex-wrap:wrap;">
+        <div><div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Auteur</div><div style="font-weight:700;">Stefan Zweig</div></div>
+        <div><div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Publication</div><div style="font-weight:700;">1922</div></div>
+        <div><div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Siècle</div><div style="font-weight:700;">XXe siècle</div></div>
+        <div><div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Genre</div><div style="font-weight:700;">Novella / Récit épistolaire</div><div style="font-size:.85rem;color:var(--muted);">Modernisme autrichien</div></div>
+        <div><div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px;">Lieu / Époque</div><div style="font-weight:700;">Vienne, début du XXe siècle</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="persos-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">👤</span><h2>Personnages principaux</h2></div>
+    <div class="card-grid cols-2">
+      <div class="perso-card">
+        <div class="perso-role">Narratrice / L'inconnue</div>
+        <div class="perso-name">La femme (anonyme)</div>
+        <div class="perso-desc">Elle n'est jamais nommée. Depuis ses 13 ans elle aime R. d'une passion absolue et secrète, traversant toute sa vie — l'adolescence, la misère, la prostitution par nécessité — sans jamais lui révéler son identité. Sa mort lui donne enfin la parole.</div>
+      </div>
+      <div class="perso-card" style="border-color:rgba(201,108,255,0.35);">
+        <div class="perso-role">L'écrivain / L'oublieux</div>
+        <div class="perso-name" style="color:var(--accent6);">R.</div>
+        <div class="perso-desc">Célèbre écrivain viennois, charmant et séduisant. Il collectionne les aventures sans les mémoriser. Il représente le génie artistique égoïste : il crée des émotions dans ses livres mais est incapable de les ressentir dans sa vie. Il ne reconnaît jamais la femme malgré trois rencontres.</div>
+      </div>
+      <div class="perso-card" style="border-color:rgba(201,108,255,0.2);">
+        <div class="perso-role">Fils secret</div>
+        <div class="perso-name">L'enfant</div>
+        <div class="perso-desc">Né de R. sans que celui-ci le sache, il est le seul lien concret entre la femme et l'homme qu'elle aime. Élevé dans la dignité grâce aux sacrifices de sa mère, il meurt jeune de la fièvre. Sa mort est le déclencheur de la lettre et de l'aveu posthume.</div>
+      </div>
+      <div class="perso-card" style="border-color:rgba(201,108,255,0.2);">
+        <div class="perso-role">Le mari bourgeois</div>
+        <div class="perso-name">L'homme riche (Stephan)</div>
+        <div class="perso-desc">Il épouse la femme et lui offre une vie confortable. Elle ne l'aime pas. Il incarne le mariage de raison — la sécurité matérielle sans passion. La femme l'accepte pour donner une vie décente à son fils, tout en continuant d'aimer R. en secret.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">💡</span><h2>Thèmes principaux</h2></div>
+    <div class="card-grid cols-2">
+      <div class="theme-card"><div class="theme-num">1</div><div class="theme-content"><h3>L'amour absolu et non partagé</h3><p>La femme éprouve une passion totale et exclusive — une dévotion quasi-religieuse — face à l'indifférence absolue de R. Zweig explore le paradoxe d'un amour qui existe sans réciprocité et qui se nourrit de lui-même.</p></div></div>
+      <div class="theme-card"><div class="theme-num">2</div><div class="theme-content"><h3>L'anonymat et l'identité</h3><p>La narratrice reste « inconnue » — elle n'a pas de nom dans le texte. Ce choix est central : elle a existé pour R. sans jamais exister à ses yeux. L'anonymat est à la fois sa condamnation et son ultime pouvoir (elle contrôle la révélation).</p></div></div>
+      <div class="theme-card"><div class="theme-num">3</div><div class="theme-content"><h3>La mémoire et l'oubli</h3><p>Contraste radical : elle se souvient de chaque instant avec une précision absolue, lui oublie tout dès le lendemain. Zweig fait de l'oubli masculin une forme d'irresponsabilité morale — ne pas se souvenir, c'est nier l'existence de l'autre.</p></div></div>
+      <div class="theme-card"><div class="theme-num">4</div><div class="theme-content"><h3>La condition féminine</h3><p>La femme est réduite à l'invisibilité sociale. Elle doit se prostituer pour survivre, se marier sans amour pour son enfant, aimer sans pouvoir le dire. Zweig dresse un portrait lucide de la domination masculine au début du XXe siècle.</p></div></div>
+      <div class="theme-card"><div class="theme-num">5</div><div class="theme-content"><h3>La maternité sacrificielle</h3><p>L'enfant est le seul lien concret de la femme à R. Elle sacrifie tout pour lui offrir une vie digne. Sa mort brise le dernier fil qui la retenait au monde — d'où la décision d'écrire enfin cette lettre.</p></div></div>
+      <div class="theme-card"><div class="theme-num">6</div><div class="theme-content"><h3>L'aveu posthume comme libération</h3><p>La lettre est écrite au moment de mourir — c'est la seule situation où la femme peut enfin parler sans risquer de perdre R. L'écriture devient un acte de liberté ultime : elle dit tout, sans rien attendre en retour.</p></div></div>
+    </div>
+  </section>
+
+  <section id="presentation-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">🎤</span><h2>Construire ma présentation (~2 min)</h2></div>
+    <div class="card">
+      <div class="timeline" style="border:none; padding:0;">
+        <div class="prez-step">
+          <div class="prez-step-num">1</div>
+          <div class="prez-step-content">
+            <h3>Titre, auteur, genre</h3>
+            <div class="prez-example">
+              "J'ai choisi <em>Lettre d'une inconnue</em>, une novella de l'Autrichien Stefan Zweig publiée en 1922. C'est un récit épistolaire — l'œuvre entière est la lettre qu'une femme mourante écrit à l'homme qu'elle a aimé toute sa vie sans qu'il le sache."
+            </div>
+          </div>
+        </div>
+        <div class="prez-step">
+          <div class="prez-step-num">2</div>
+          <div class="prez-step-content">
+            <h3>Le sujet + résumé rapide</h3>
+            <div class="prez-example">
+              "Une femme écrit à R., un écrivain célèbre de Vienne : elle lui raconte qu'elle l'aime depuis ses 13 ans, qu'ils ont eu trois nuits ensemble sans qu'il la reconnaisse jamais, qu'elle a eu de lui un fils mort récemment. Elle-même est mourante. R. lira cette lettre après sa mort — et n'aura aucun souvenir d'elle."
+            </div>
+          </div>
+        </div>
+        <div class="prez-step">
+          <div class="prez-step-num">3</div>
+          <div class="prez-step-content">
+            <h3>Pourquoi tu l'as choisi</h3>
+            <div class="prez-example">"Ce qui m'a frappé, c'est le paradoxe central : une femme qui aime de manière absolue, totale, sacrificielle — et un homme qui l'a croisée plusieurs fois sans jamais la voir. Ce vertige entre la mémoire parfaite et l'oubli complet dit quelque chose de très fort sur la façon dont les gens s'ignorent."</div>
+          </div>
+        </div>
+        <div class="prez-step">
+          <div class="prez-step-num">4</div>
+          <div class="prez-step-content">
+            <h3>Ce que ça t'a apporté</h3>
+            <div class="prez-example">
+              "Ce texte m'a appris que la forme épistolaire peut être le dispositif le plus puissant qui soit — on entend une seule voix, mais elle dessine en creux un personnage absent et aveugle. J'ai aussi réfléchi différemment à ce que signifie être vu par quelqu'un."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px; border-left: 3px solid var(--accent6); background: rgba(201,108,255,0.04);">
+      <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent6); margin-bottom:10px;">Citations clés à connaître</div>
+      <p style="font-style:italic; line-height:1.8; color:var(--text);">
+        « Je t'ai aimé avant de te connaître. » — La femme<br>
+        « Tu ne m'as jamais reconnue. » — Leitmotiv de la lettre<br>
+        « Tu m'as donné tout le bonheur du monde, et tu ne savais pas que c'était moi. » — La femme
+      </p>
+      <p style="font-size:0.82rem; color:var(--muted); margin-top:6px;">Trois formulations à avoir en tête — elles résument le paradoxe du roman.</p>
+    </div>
+  </section>
+
+  <section id="pourquoi-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">❓</span><h2>Pourquoi j'ai choisi ce livre ?</h2></div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:20px;">Choisis l'angle qui te parle le plus — l'important c'est d'être sincère.</p>
+    <div class="card-grid" style="grid-template-columns: 1fr;">
+      <div class="angle-card">
+        <div class="angle-emoji">💌</div>
+        <div class="angle-text">
+          <h3>Une voix unique et bouleversante</h3>
+          <p>L'œuvre entière est un monologue — on n'entend qu'elle. Pourtant, à travers sa lettre, Zweig dessine en creux un homme absent, un enfant mort, toute une vie. Cette économie narrative m'a impressionné : tout est dit avec une voix seule.</p>
+        </div>
+      </div>
+      <div class="angle-card">
+        <div class="angle-emoji">👁️</div>
+        <div class="angle-text">
+          <h3>Le paradoxe de l'invisibilité</h3>
+          <p>Elle a tout donné. Il n'a rien vu. Ce vertige — être présent sans exister aux yeux de l'autre — m'a frappé. Ce n'est pas une histoire d'amour ordinaire : c'est une réflexion sur la reconnaissance et l'invisibilité sociale.</p>
+        </div>
+      </div>
+      <div class="angle-card">
+        <div class="angle-emoji">🧠</div>
+        <div class="angle-text">
+          <h3>La mémoire comme vérité</h3>
+          <p>Elle se souvient de tout avec une précision absolue. Lui oublie tout. Zweig pose une question profonde : une relation peut-elle exister si elle n'est vécue que d'un seul côté ? La mémoire est-elle la seule preuve que quelque chose a eu lieu ?</p>
+        </div>
+      </div>
+      <div class="angle-card">
+        <div class="angle-emoji">⚖️</div>
+        <div class="angle-text">
+          <h3>Un regard critique sur son époque</h3>
+          <p>Zweig peint la Vienne du début du XXe siècle : la condition des femmes, le mariage de raison, le monde bourgeois. Le roman est aussi un document sur ce qu'on imposait aux femmes — l'invisibilité, le sacrifice, le silence — que la mort seule peut enfin briser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">💬</span><h2>Questions probables de l'examinateur</h2></div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:20px;">Clique sur une question pour voir une piste de réponse.</p>
+    <div class="q-group">
+      <div class="q-group-title">Sur l'œuvre elle-même</div>
+      <div class="q-item" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Quel est le genre de cette œuvre ? Qu'apporte la forme épistolaire ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">C'est une novella (court roman) au format épistolaire : l'œuvre entière est une lettre. Ce dispositif crée une intimité totale — on entre dans la conscience de la narratrice, sans filtre. La forme épistolaire est aussi tragique : la femme parle à quelqu'un qui ne peut pas répondre, qui ne la verra jamais écrire. C'est un monologue déguisé en dialogue — la solitude absolue habillée de mots adressés.</div>
+      </div>
+      <div class="q-item" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Pourquoi la narratrice reste-t-elle anonyme ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">Son anonymat est le cœur du roman. Elle est littéralement « l'inconnue » — de R., du lecteur, du monde. Zweig en fait un choix symbolique fort : cette femme a vécu en invisible et meurt invisible. Mais en signant « ton inconnue », elle retourne l'invisibilité en revendication : son identité est d'être celle qu'il n'a jamais vue. C'est à la fois sa tragédie et sa façon d'exister enfin dans sa vérité.</div>
+      </div>
+      <div class="q-item" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Pourquoi R. oublie-t-il la femme à chaque fois qu'il la rencontre ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">L'oubli de R. n'est pas accidentel — il est constitutif de son personnage. Zweig dessine un artiste égocentrique : il crée des émotions dans ses livres mais ne les éprouve pas dans sa vie. Les femmes sont pour lui des aventures interchangeables, sans passé ni avenir. Cet oubli est une forme de violence morale — pas intentionnelle, mais réelle. Il incarne l'irresponsabilité du génie trop occupé par lui-même pour voir ceux qui l'entourent.</div>
+      </div>
+      <div class="q-item" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Quel rôle joue l'enfant dans le roman ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">L'enfant est le seul lien matériel entre la femme et R. — il est la preuve vivante de leur histoire. Pour la mère, il est tout : la raison de survivre, de travailler, de se sacrifier. Sa mort brise le dernier fil qui la retenait au monde et déclenche l'écriture de la lettre. Symboliquement, il représente aussi ce que R. ne saura jamais : une vie entière construite autour de lui, dans l'ombre.</div>
+      </div>
+      <div class="q-item" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Pourquoi la femme n'a-t-elle jamais avoué son amour à R. de son vivant ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">C'est l'un des ressorts psychologiques les plus forts du texte. La femme a peur que l'aveu la détruise : si R. répond par l'indifférence ou la pitié, l'illusion s'effondre. Elle préfère un amour fantôme mais pur à une réalité cruelle. Il y a aussi une forme d'orgueil : elle ne veut pas mendier de la reconnaissance. La mort lève enfin cette censure — elle n'a plus rien à perdre.</div>
+      </div>
+    </div>
+    <div class="q-group">
+      <div class="q-group-title">Questions plus larges et personnelles</div>
+      <div class="q-item large" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">En quoi ce roman interroge-t-il la condition féminine ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">Zweig montre une femme réduite au silence par son époque : elle ne peut ni déclarer son amour, ni garder son enfant sans honte sociale, ni vivre sans se marier ou se prostituer. Son anonymat est aussi social — les femmes de sa condition n'existent pas aux yeux des hommes de pouvoir. La lettre est un acte de résistance : elle se réapproprie son histoire et impose son point de vue à celui qui ne l'a jamais vu.</div>
+      </div>
+      <div class="q-item large" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Que dit ce roman sur la relation entre art et vie ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">R. est un grand écrivain capable de toucher des milliers de lecteurs avec ses émotions — mais il est incapable d'en vivre une lui-même. Zweig pose une question dérangeante : l'artiste serait-il plus doué pour représenter la vie que pour la vivre ? L'art peut-il coexister avec l'empathie ? R. n'est pas un monstre — il est simplement absenté de lui-même, absorbé dans sa création au détriment des autres.</div>
+      </div>
+      <div class="q-item large" onclick="toggle(this)">
+        <div class="q-header"><div class="q-question">Pourquoi cette lettre est-elle aussi une forme de vengeance ?</div><div class="q-arrow">▼</div></div>
+        <div class="q-answer">En révélant à R. tout ce qu'il a manqué — un enfant, une vie entière d'amour, une femme qui lui a tout sacrifié — la lettre lui inflige une culpabilité qu'il ne pourra jamais réparer. R. ne peut ni remercier, ni demander pardon, ni rattraper quoi que ce soit : la femme est morte. C'est une vengeance silencieuse et définitive : elle le condamne à savoir, sans pouvoir agir.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="liens-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">🔗</span><h2>Liens avec l'œuvre</h2></div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:24px;">Citer ces références pendant l'entretien montre une vraie culture générale.</p>
+    <div class="lien-block" style="margin-bottom:32px;">
+      <div class="lien-header">
+        <div class="lien-tag film">Adaptation cinématographique</div>
+        <h3 class="lien-title">Letter from an Unknown Woman — Max Ophüls (1948)</h3>
+        <div class="lien-meta">Film noir américain · 86 min · avec Joan Fontaine</div>
+      </div>
+      <div class="lien-body">
+        <div class="lien-col">
+          <div class="lien-sub">Le lien</div>
+          <p>Max Ophüls adapte fidèlement la novella de Zweig dans ce film noir devenu culte. Joan Fontaine incarne l'inconnue avec une intensité bouleversante. Le film conserve la structure épistolaire (la lettre est lue en voix off pendant le film) et le cadre viennois. C'est l'une des adaptations littéraires les plus réussies du cinéma classique.</p>
+        </div>
+        <div class="lien-col">
+          <div class="lien-sub">Ce qui change</div>
+          <p>Ophüls ancre l'histoire dans le Vienne fin XIXe, plus opulent. La mise en scène (les travellings de caméra fluides, signature d'Ophüls) traduit visuellement la mémoire de la narratrice. Le film ajoute une dimension mélancolique par la valse viennoise — une musique qui tourne sans jamais revenir.</p>
+        </div>
+      </div>
+      <div class="lien-quote">
+        <div class="lien-quote-icon">💬</div>
+        <div><strong>À dire à l'oral :</strong> "Il existe une adaptation cinématographique de Max Ophüls (1948) qui traduit parfaitement la structure épistolaire en lisant la lettre en voix off pendant le film — ce dispositif montre à quel point la forme originale de Zweig était déjà cinématographique."</div>
+      </div>
+    </div>
+    <div class="lien-block" style="margin-bottom:32px;">
+      <div class="lien-header">
+        <div class="lien-tag milgram">Intertexte littéraire</div>
+        <h3 class="lien-title">Phèdre — Jean Racine (1677)</h3>
+        <div class="lien-meta">Jean Racine · tragédie classique en vers</div>
+      </div>
+      <div class="lien-body">
+        <div class="lien-col">
+          <div class="lien-sub">Le lien</div>
+          <p>Dans Phèdre comme dans Lettre d'une inconnue, une femme éprouve une passion impossible qu'elle n'a pas choisie et qui la détruit. Les deux œuvres explorent la passion amoureuse comme une force qui dépasse la volonté — une fatalité. Phèdre avouera son amour avant de mourir (comme la lettre) — l'aveu ultime comme libération et comme condamnation.</p>
+        </div>
+        <div class="lien-col">
+          <div class="lien-sub">La différence clé</div>
+          <div class="diff-list">
+            <div class="diff-item"><div class="diff-dot" style="background:var(--accent6)"></div><div>Phèdre : amour <strong>incestueux et coupable</strong> — elle se sait monstrueuse</div></div>
+            <div class="diff-item"><div class="diff-dot" style="background:var(--accent6)"></div><div>L'inconnue : amour <strong>pur mais invisible</strong> — elle est la seule à souffrir</div></div>
+            <div class="diff-item"><div class="diff-dot" style="background:var(--accent6)"></div><div>Les deux : <strong>la mort comme seule issue</strong> à une passion impossible</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lien-quote" style="border-color: rgba(201,108,255,0.3); background: rgba(201,108,255,0.05);">
+        <div class="lien-quote-icon">💬</div>
+        <div><strong>À dire à l'oral :</strong> "On peut rapprocher L'inconnue de Phèdre de Racine : dans les deux cas, une femme porte une passion impossible qu'elle ne révèle qu'au bord de la mort, et l'aveu final est à la fois une libération et une condamnation."</div>
+      </div>
+    </div>
+    <div class="lien-block">
+      <div class="lien-header">
+        <div class="lien-tag milgram">Parallèle littéraire</div>
+        <h3 class="lien-title">La Princesse de Clèves — Madame de Lafayette (1678)</h3>
+        <div class="lien-meta">Madame de Lafayette · roman classique</div>
+      </div>
+      <div class="lien-body">
+        <div class="lien-col">
+          <div class="lien-sub">Le lien</div>
+          <p>La Princesse de Clèves et l'inconnue de Zweig partagent une même structure : une femme qui choisit de taire son amour pour s'y tenir. La Princesse refuse M. de Nemours même devenu libre, pour préserver la pureté de son sentiment. L'inconnue tait son identité pour ne pas risquer la vérité de R. Dans les deux cas, le silence est un acte de maîtrise paradoxal — dominer sa passion par la retenue.</p>
+        </div>
+        <div class="lien-col">
+          <div class="lien-sub">Ce qui distingue</div>
+          <p>La Princesse choisit le renoncement par vertu et clairvoyance. L'inconnue de Zweig, elle, ne renonce pas — elle aime jusqu'au bout, mais en secret. La différence est de nature : retenue morale chez Lafayette, invisibilité subie chez Zweig. L'une choisit le silence, l'autre y est condamnée.</p>
+        </div>
+      </div>
+      <div class="lien-quote" style="border-color: rgba(201,108,255,0.3); background: rgba(201,108,255,0.05);">
+        <div class="lien-quote-icon">💬</div>
+        <div><strong>À dire à l'oral :</strong> "Comme la Princesse de Clèves, l'inconnue de Zweig choisit de taire son amour — mais là où la Princesse le fait par vertu, l'inconnue y est condamnée par son invisibilité sociale. Ce sont deux formes opposées du silence amoureux féminin."</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conseils-lettre" data-for="lettre" hidden>
+    <div class="section-label"><span class="section-icon">✅</span><h2>Conseils pour l'oral</h2></div>
+    <div class="tip-list">
+      <div class="tip"><div class="tip-icon">💌</div><div><strong>Explique la forme épistolaire dès le départ</strong> : l'œuvre entière est une lettre — ce n'est pas un détail, c'est le dispositif central. La forme crée l'intimité, la tragédie, et l'absence de réponse possible.</div></div>
+      <div class="tip"><div class="tip-icon">👁️</div><div><strong>Prépare le paradoxe central</strong> : une femme qui aime absolument / un homme qui oublie absolument. C'est la tension de tout le roman et la question la plus probable de l'examinateur.</div></div>
+      <div class="tip"><div class="tip-icon">🧠</div><div><strong>Situe Zweig dans son contexte</strong> : autrichien, Vienne 1922 (juste après la Première Guerre mondiale), il écrira cette œuvre avant son exil et son suicide en 1942. Ce contexte éclaire le deuil et la mélancolie du texte.</div></div>
+      <div class="tip"><div class="tip-icon">⚖️</div><div><strong>Ne réduis pas R. à un monstre</strong> : il n'est pas cruel, il est absent à lui-même. L'examinateur appréciera une lecture nuancée — le génie égocentrique n'est pas le même chose que la méchanceté.</div></div>
+      <div class="tip"><div class="tip-icon">🎭</div><div><strong>Fais le lien avec Phèdre</strong> si tu l'as vu en cours : passion impossible, aveu au bord de la mort, le silence comme unique protection. C'est un rapprochement qui montre de la culture littéraire.</div></div>
+      <div class="tip"><div class="tip-icon">📌</div><div><strong>La lettre comme vengeance douce</strong> : en révélant tout ce que R. a manqué, la femme lui inflige une culpabilité définitive qu'il ne pourra jamais réparer. C'est un angle fort que peu d'élèves voient — ça marque l'examinateur.</div></div>
+    </div>
+  </section>
+
   </div><!-- /panel-livre -->
 
   <!-- QUIZ -->
@@ -5585,6 +5871,7 @@ Je le dis, vous pouvez vous confier, madame,
           <option value="odyssee">L'Odyssée</option>
           <option value="cyrano">Cyrano de Bergerac</option>
           <option value="f451">Fahrenheit 451</option>
+          <option value="lettre">Lettre d'une inconnue</option>
         </select>
       </div>
 
@@ -6731,7 +7018,7 @@ Je le dis, vous pouvez vous confier, madame,
   (function() {
     const cards = document.querySelectorAll('#bookSelector .book-card');
     const blocks = livrePanel.querySelectorAll('[data-for]');
-    const VALID = ['vague', 'ferme', 'odyssee', 'cyrano', 'f451'];
+    const VALID = ['vague', 'ferme', 'odyssee', 'cyrano', 'f451', 'lettre'];
 
     function selectBook(book) {
       if (!VALID.includes(book)) book = 'vague';
@@ -6803,6 +7090,7 @@ Je le dis, vous pouvez vous confier, madame,
       { id: 'odyssee', short: "L'Odyssée",  name: "L'Odyssée",           author: 'Homère' },
       { id: 'cyrano',  short: 'Cyrano',     name: 'Cyrano de Bergerac',  author: 'Rostand' },
       { id: 'f451',    short: 'F. 451',     name: 'Fahrenheit 451',      author: 'Bradbury' },
+      { id: 'lettre',  short: "L'inconnue", name: "Lettre d'une inconnue", author: 'Zweig' },
     ];
 
     // ── State ──
@@ -7103,6 +7391,7 @@ Je le dis, vous pouvez vous confier, madame,
       {id:'odyssee',  name:"L'Odyssée"},
       {id:'cyrano',   name:'Cyrano de Bergerac'},
       {id:'f451',     name:'Fahrenheit 451'},
+      {id:'lettre',   name:"Lettre d'une inconnue"},
     ];
     const bookQuizCards = {};
     BOOKS_INFO.forEach(b => {
