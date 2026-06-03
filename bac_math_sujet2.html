@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Révisions Bac 1eSTI2D – Sujet 2</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #222535;
+      --border: #2e3148;
+      --accent: #6c63ff;
+      --accent2: #ff6584;
+      --accent3: #43e97b;
+      --accent4: #f7971e;
+      --text: #e8eaf6;
+      --muted: #8b90b0;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1d27 0%, #12142a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    nav a:hover { background: var(--accent); border-color: var(--accent); }
+    nav a.active { background: var(--accent); border-color: var(--accent); }
+
+    /* Tab switcher */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      background: var(--bg);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.75rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: -1px;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Course cards */
+    .cours-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .cours-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .cours-header:hover { background: var(--surface2); }
+
+    .cours-body {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .cours-section.open .cours-body { display: block; }
+    .cours-section.open .chevron { transform: rotate(90deg); }
+
+    .cours-block {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cours-block:last-child { border-bottom: none; }
+
+    .cours-block h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .cours-block p, .cours-block li {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 0.3rem;
+    }
+
+    .cours-block ul { padding-left: 1.2rem; }
+
+    .definition-box {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 0.6rem 0.9rem;
+      margin: 0.5rem 0;
+      font-size: 0.87rem;
+    }
+
+    .theorem-box {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent3);
+      border-radius: 0 6px 6px 0;
+      padding: 0.6rem 0.9rem;
+      margin: 0.5rem 0;
+      font-size: 0.87rem;
+    }
+
+    .formula {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.7rem;
+      display: inline-block;
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.55rem;
+      color: var(--muted);
+    }
+
+    /* Graph layout */
+    .graph-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      justify-content: center;
+    }
+    .graph-single { margin-top: 0.75rem; }
+    .graph-wrap { flex: 1 1 200px; min-width: 0; }
+    .graph-caption {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* Sign / variation tables */
+    .sign-table { margin-top: 0.5rem; overflow-x: auto; }
+    .sign-table table {
+      border-collapse: collapse;
+      font-size: 0.83rem;
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+    }
+    .sign-table td {
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.6rem;
+      text-align: center;
+      min-width: 28px;
+    }
+    .sign-table td:first-child {
+      text-align: left;
+      color: var(--muted);
+      font-style: italic;
+      min-width: 80px;
+    }
+    .sign-table .pos { color: #43e97b; font-weight: 700; }
+    .sign-table .neg { color: #ff6584; font-weight: 700; }
+    .sign-table .zero { color: var(--muted); font-weight: 700; }
+    .sign-table .arr { color: var(--accent); font-size: 1rem; }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Section cards */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .section-header:hover { background: var(--surface2); }
+
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .icon-auto { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .icon-suites { background: linear-gradient(135deg, #f7971e, #ffd200); }
+    .icon-fonctions { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+    .icon-proba { background: linear-gradient(135deg, #ff6584, #ff8e53); }
+
+    .section-title {
+      flex: 1;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .badge {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+    }
+
+    .progress-ring {
+      font-size: 0.78rem;
+      color: var(--muted);
+      min-width: 50px;
+      text-align: right;
+    }
+
+    .chevron {
+      color: var(--muted);
+      transition: transform 0.25s;
+      font-size: 0.9rem;
+    }
+
+    .section.open .chevron { transform: rotate(90deg); }
+
+    .section-body {
+      display: none;
+      padding: 0;
+    }
+
+    .section.open .section-body { display: block; }
+
+    /* Questions */
+    .question-list {
+      list-style: none;
+    }
+
+    .question-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.8rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .question-item:last-child { border-bottom: none; }
+    .question-item:hover { background: var(--surface2); }
+
+    .q-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+    }
+
+    .question-item.done .q-check {
+      background: var(--accent3);
+      border-color: var(--accent3);
+      color: #000;
+    }
+
+    .q-num {
+      color: var(--muted);
+      font-size: 0.8rem;
+      min-width: 24px;
+      margin-top: 1px;
+    }
+
+    .q-text {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+
+    .question-item.done .q-text {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    /* Sub-section headers inside a section */
+    .sub-label {
+      background: var(--surface2);
+      padding: 0.5rem 1.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Math formatting hints */
+    .math { font-family: 'Georgia', serif; font-style: italic; }
+    .frac { display: inline-block; text-align: center; vertical-align: middle; font-size: 0.85em; }
+    .frac > span { display: block; }
+    .frac .num { border-bottom: 1px solid currentColor; padding: 0 2px; }
+    .frac .den { padding: 0 2px; }
+
+    /* Progress bar at top of section */
+    .progress-bar-wrap {
+      height: 3px;
+      background: var(--border);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.3s;
+    }
+
+    /* Summary strip */
+    .summary-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Reset button */
+    .reset-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.35rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .reset-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.2rem; }
+      .container { padding: 1rem 0.75rem 3rem; }
+      .question-item { padding: 0.7rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Révisions Baccalauréat 1eSTI2D — Sujet 2</h1>
+  <p>Mathématiques · Cochez chaque question au fur et à mesure</p>
+  <nav>
+    <a href="#" onclick="switchTab('exercices');return false;" id="nav-exercices" class="active">Exercices</a>
+    <a href="#" onclick="switchTab('cours');return false;" id="nav-cours">Fiches de cours</a>
+  </nav>
+</header>
+
+<div id="tab-exercices" class="tab-panel active">
+<div class="container">
+
+  <!-- Global progress -->
+  <div class="summary-strip" id="global-summary">
+    <div class="stat">
+      <div class="stat-num" id="done-count">0</div>
+      <div class="stat-label">questions faites</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="total-count">0</div>
+      <div class="stat-label">total</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="pct-count">0%</div>
+      <div class="stat-label">avancement</div>
+    </div>
+    <div>
+      <button class="reset-btn" onclick="resetAll()">Réinitialiser</button>
+    </div>
+  </div>
+
+  <!-- AUTOMATISMES -->
+  <div class="section open" id="automatismes">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pb-auto"></div></div>
+    <div class="section-header" onclick="toggleSection('automatismes')">
+      <div class="section-icon icon-auto">⚡</div>
+      <div class="section-title">Automatismes</div>
+      <div class="badge">Calcul rapide</div>
+      <div class="progress-ring" id="pr-auto">0/12</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="section-body">
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">1.</div><div class="q-text">Calculer 80% de 30</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">2.</div><div class="q-text">Calculer <span class="math">2/9</span> de 180</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">3.</div><div class="q-text">À quelle proportion correspond 20% de 45% ?</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">4.</div><div class="q-text">Quel est le taux d'évolution réciproque de 50% ?</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">5.</div><div class="q-text">Comparer <span class="math">3/7</span> et <span class="math">5/6</span></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">6.</div><div class="q-text">Calculer <span class="math">x = 3/4 − 2/7 × 8/3</span></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">7.</div><div class="q-text">Exprimer 3⁴ × 3⁻² / 9 sous la forme <span class="math">aᵇ</span></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">8.</div><div class="q-text">Quel est l'ordre de grandeur de 167 935 017 815 ?</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">9.</div><div class="q-text">Convertir 13 m/s en km/h</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">10.</div><div class="q-text">Convertir 7 jours en secondes</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">11.</div><div class="q-text">Résoudre <span class="math">2x + 4 &lt; 8x − 6</span></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">12.</div><div class="q-text">Isoler <span class="math">R</span> dans l'expression <span class="math">PV = nRT</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROBLÈME 1 : SUITES -->
+  <div class="section open" id="suites">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pb-suites"></div></div>
+    <div class="section-header" onclick="toggleSection('suites')">
+      <div class="section-icon icon-suites">📈</div>
+      <div class="section-title">Problème 1 — Suites</div>
+      <div class="badge">9 questions</div>
+      <div class="progress-ring" id="pr-suites">0/9</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="section-body">
+      <div class="sub-label">🐕 Jouets du chien (suite fonctionnelle)</div>
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">1.</div><div class="q-text">Modéliser par une suite définie par une relation <strong>fonctionnelle</strong> (6 jouets au jour 0, perd 0,5 jouet/jour)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">2.</div><div class="q-text">Déterminer le terme de la suite au rang 2</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">3.</div><div class="q-text">Représenter graphiquement cette suite</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">4.</div><div class="q-text">Conjecturer si la suite est <strong>géométrique</strong> (justifier)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">5.</div><div class="q-text">Conjecturer si la suite est <strong>arithmétique</strong> (justifier)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">6.</div><div class="q-text">Déterminer la <strong>raison</strong> de cette suite</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">7.</div><div class="q-text">Déterminer le sens de variation à l'aide de la raison</div></li>
+      </ul>
+      <div class="sub-label">🐡 Poisson globe (suite par récurrence)</div>
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">8.</div><div class="q-text">Modéliser par une suite définie par une <strong>relation de récurrence</strong> (diamètre +20%/seconde)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">9.</div><div class="q-text">Déterminer le sens de variation à l'aide de la raison</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROBLÈME 2 : FONCTIONS -->
+  <div class="section open" id="fonctions">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pb-fonctions"></div></div>
+    <div class="section-header" onclick="toggleSection('fonctions')">
+      <div class="section-icon icon-fonctions">🦋</div>
+      <div class="section-title">Problème 2 — Fonctions</div>
+      <div class="badge">15 questions</div>
+      <div class="progress-ring" id="pr-fonctions">0/15</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="section-body">
+      <div class="sub-label">🪲 Scarabée en forêt — altitude f(t) = t³ − ⅓t − 2t² + 4</div>
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">1.</div><div class="q-text">Modéliser par une fonction (cube du temps − tiers du temps + 4 − double du carré)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">2.</div><div class="q-text">Représenter graphiquement cette fonction</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">3.</div><div class="q-text">Déterminer les instants où le coléoptère est à <strong>6 cm</strong> d'altitude (valeur approchée au 10ième)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">4.</div><div class="q-text">Déterminer les instants où le coléoptère est <strong>au-dessus de 5 cm</strong> (au 10ième)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">5.</div><div class="q-text">Déterminer les instants où le coléoptère est <strong>en dessous de 3 cm</strong> (au 10ième)</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">6.</div><div class="q-text">Calculer le <strong>taux de variation</strong> entre la 0ième et la 3ième seconde</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">7.</div><div class="q-text">Interpréter ce taux de variation</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">8.</div><div class="q-text">Le nombre dérivé à la 1ère seconde vaut −4/3 : interpréter <strong>géométriquement</strong></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">9.</div><div class="q-text">Construire la <strong>tangente</strong> en t = −4/3 à la courbe</div></li>
+      </ul>
+      <div class="sub-label">📐 k(x) = 2x³ − 12x² + 22x − 12</div>
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">10.</div><div class="q-text">Vérifier que <span class="math">1</span> est une <strong>racine</strong> de ce polynôme</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">11.</div><div class="q-text">Factoriser sous la forme <span class="math">a(x − x₁)(x − x₂)(x − x₃)</span></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">12.</div><div class="q-text">Citer toutes les racines du polynôme</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">13.</div><div class="q-text">Étudier le <strong>signe</strong> de <span class="math">k</span></div></li>
+      </ul>
+      <div class="sub-label">📐 l(x) = 3x² − 6x</div>
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">14.</div><div class="q-text">Déterminer les <strong>variations</strong> de <span class="math">l</span> et ses extremums</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">15.</div><div class="q-text">Résoudre <span class="math">x³ = 125</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROBLÈME 3 : PROBABILITÉS -->
+  <div class="section open" id="probabilites">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pb-proba"></div></div>
+    <div class="section-header" onclick="toggleSection('probabilites')">
+      <div class="section-icon icon-proba">🎲</div>
+      <div class="section-title">Problème 3 — Probabilités</div>
+      <div class="badge">3 questions</div>
+      <div class="progress-ring" id="pr-proba">0/3</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="section-body">
+      <div class="sub-label">🍫 Consommateur (ski chocolat 60%, soda 30%)</div>
+      <ul class="question-list">
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">1.</div><div class="q-text">Représenter cette expérience par un <strong>arbre de probabilités</strong></div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">2.</div><div class="q-text">Déterminer les probabilités des différents événements possibles</div></li>
+        <li class="question-item" onclick="toggleDone(this)"><div class="q-check">✓</div><div class="q-num">3.</div><div class="q-text">A-t-on une situation modélisée par une <strong>loi de Bernoulli</strong> ? Justifier</div></li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /tab-exercices -->
+
+<!-- ===================== FICHES DE COURS ===================== -->
+<div id="tab-cours" class="tab-panel">
+<div class="container">
+
+  <!-- SUITES -->
+  <div class="cours-section open" id="cours-suites">
+    <div class="cours-header" onclick="toggleCours('cours-suites')">
+      <div class="section-icon icon-suites">📈</div>
+      <div class="section-title">Suites numériques</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="cours-body">
+
+      <div class="cours-block">
+        <h4>Définition</h4>
+        <div class="definition-box">Une suite numérique associe à tout entier naturel <em>n</em> un réel noté <em>u(n)</em> ou <em>uₙ</em>.</div>
+        <ul style="margin-top:0.5rem">
+          <li><strong>Relation fonctionnelle</strong> : u(n) exprimé directement en fonction de n</li>
+          <li><strong>Relation de récurrence</strong> : u(n+1) exprimé en fonction de u(n), avec un terme initial</li>
+        </ul>
+      </div>
+
+      <div class="cours-block">
+        <h4>Représentation graphique — Nuage de points M(n ; u(n))</h4>
+        <div class="definition-box">Les abscisses sont les entiers n, les ordonnées sont les termes u(n).</div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="139.0" y1="150.0" x2="139.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="333.0" y1="150.0" x2="333.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="42.0" y1="150.0" x2="42.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="42.0,4.0 39.0,8.0 45.0,8.0" fill="#8b90b0"/><text x="139.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="236.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="333.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="430.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">4</text><text x="32.0" y="118.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">1</text><text x="32.0" y="84.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="32.0" y="49.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="32.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="444.0" y="154.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="start">n</text><text x="46.0" y="2.0" fill="#8b90b0" font-size="9" font-family="sans-serif" text-anchor="start">u(n)</text><circle cx="42.0" cy="115.5" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="139.0" cy="98.2" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="236.0" cy="81.0" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="333.0" cy="63.8" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="430.0" cy="46.5" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/>
+</svg><div class="graph-caption">u(n) = 1 + 0,5×n &nbsp;(croissante, a=0,5&gt;0)</div></div>
+          <div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="171.3" y1="150.0" x2="171.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="300.7" y1="150.0" x2="300.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="438.0" y2="81.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,81.0 434.0,78.0 434.0,84.0" fill="#8b90b0"/><line x1="42.0" y1="150.0" x2="42.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="42.0,4.0 39.0,8.0 45.0,8.0" fill="#8b90b0"/><text x="171.3" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="300.7" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="430.0" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="32.0" y="153.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-2</text><text x="32.0" y="118.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-1</text><text x="32.0" y="49.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">1</text><text x="32.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="444.0" y="85.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="start">n</text><text x="46.0" y="2.0" fill="#8b90b0" font-size="9" font-family="sans-serif" text-anchor="start">v(n)</text><circle cx="42.0" cy="46.5" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="171.3" cy="81.0" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="300.7" cy="115.5" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="430.0" cy="150.0" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/>
+</svg><div class="graph-caption">v(n) = 1 − n &nbsp;(décroissante, a=−1&lt;0)</div></div>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Sens de variation</h4>
+        <div class="theorem-box">
+          u est <strong>croissante</strong> si u(n+1) − u(n) ≥ 0 pour tout n<br>
+          u est <strong>décroissante</strong> si u(n+1) − u(n) ≤ 0 pour tout n
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Suite arithmétique — raison <em>a</em></h4>
+        <div class="definition-box">On passe d'un terme au suivant en <strong>ajoutant</strong> toujours le même réel <em>a</em>.<br>
+        Relation de récurrence : <span class="formula">u(n+1) = u(n) + a</span></div>
+        <ul>
+          <li>Si a &gt; 0 → <strong>croissante</strong> &nbsp;|&nbsp; Si a &lt; 0 → <strong>décroissante</strong></li>
+          <li>Représentée par des <strong>points alignés</strong> (croissance linéaire)</li>
+        </ul>
+        <div class="graph-single"><div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="139.0" y1="150.0" x2="139.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="333.0" y1="150.0" x2="333.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="42.0" y1="150.0" x2="42.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="42.0,4.0 39.0,8.0 45.0,8.0" fill="#8b90b0"/><text x="139.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="236.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="333.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="430.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">4</text><text x="32.0" y="118.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">1</text><text x="32.0" y="84.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="32.0" y="49.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="32.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="444.0" y="154.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="start">n</text><polyline points="42.0,115.5 139.0,98.2 236.0,81.0 333.0,63.8 430.0,46.5" fill="none" stroke="#f7971e" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/><circle cx="42.0" cy="115.5" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="139.0" cy="98.2" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="236.0" cy="81.0" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="333.0" cy="63.8" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="430.0" cy="46.5" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/>
+</svg><div class="graph-caption">Suite arithmétique : points alignés (raison a = 0,5)</div></div></div>
+        <p style="margin-top:0.5rem"><strong>Prouver par le calcul :</strong> si u(n+1) − u(n) = a (constante) pour tout n, la suite est arithmétique de raison a.</p>
+      </div>
+
+      <div class="cours-block">
+        <h4>Suite géométrique — raison <em>q</em></h4>
+        <div class="definition-box">On passe d'un terme au suivant en <strong>multipliant</strong> par le même réel non nul <em>q</em>.<br>
+        Relation de récurrence : <span class="formula">u(n+1) = u(n) × q</span><br>
+        Modélise un <strong>taux d'évolution constant</strong> → croissance exponentielle.</div>
+        <ul>
+          <li>Si q &gt; 1 → <strong>croissante</strong> &nbsp;|&nbsp; Si 0 &lt; q &lt; 1 → <strong>décroissante</strong></li>
+        </ul>
+        <div class="graph-row">
+          <div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="171.3" y1="150.0" x2="171.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="300.7" y1="150.0" x2="300.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="104.0" x2="430.0" y2="104.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="58.0" x2="430.0" y2="58.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="42.0" y1="150.0" x2="42.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="42.0,4.0 39.0,8.0 45.0,8.0" fill="#8b90b0"/><text x="171.3" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="300.7" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="430.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="32.0" y="107.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="32.0" y="61.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">6</text><text x="32.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">9</text><text x="444.0" y="154.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="start">n</text><polyline points="42.0,134.7 48.5,134.1 54.9,133.6 61.4,133.0 67.9,132.4 74.3,131.8 80.8,131.1 87.3,130.5 93.7,129.8 100.2,129.1 106.7,128.3 113.1,127.6 119.6,126.8 126.1,125.9 132.5,125.1 139.0,124.2 145.5,123.3 151.9,122.4 158.4,121.4 164.9,120.4 171.3,119.3 177.8,118.3 184.3,117.1 190.7,116.0 197.2,114.8 203.7,113.5 210.1,112.2 216.6,110.9 223.1,109.5 229.5,108.1 236.0,106.6 242.5,105.1 248.9,103.5 255.4,101.9 261.9,100.2 268.3,98.4 274.8,96.6 281.3,94.7 287.7,92.8 294.2,90.8 300.7,88.7 307.1,86.5 313.6,84.3 320.1,81.9 326.5,79.5 333.0,77.1 339.5,74.5 345.9,71.8 352.4,69.1 358.9,66.2 365.3,63.3 371.8,60.2 378.3,57.0 384.7,53.8 391.2,50.4 397.7,46.9 404.1,43.2 410.6,39.4 417.1,35.5 423.5,31.5 430.0,27.3" fill="none" stroke="#6c63ff" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/><circle cx="42.0" cy="134.7" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="48.0" y="129.7" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">(0,1)</text><circle cx="171.3" cy="119.3" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="177.3" y="114.3" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">(1,2)</text><circle cx="300.7" cy="88.7" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="306.7" y="83.7" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">(2,4)</text><circle cx="430.0" cy="27.3" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="436.0" y="22.3" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">(3,8)</text>
+</svg><div class="graph-caption">u(n) = 2ⁿ &nbsp;(géométrique, q=2&gt;1 → croissante)</div></div>
+          <div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="171.3" y1="150.0" x2="171.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="300.7" y1="150.0" x2="300.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="122.4" x2="430.0" y2="122.4" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="94.8" x2="430.0" y2="94.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="67.2" x2="430.0" y2="67.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="39.6" x2="430.0" y2="39.6" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="42.0" y1="150.0" x2="42.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="42.0,4.0 39.0,8.0 45.0,8.0" fill="#8b90b0"/><text x="171.3" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="300.7" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="430.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="32.0" y="125.4" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">1</text><text x="32.0" y="97.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="32.0" y="70.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="32.0" y="42.6" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="32.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">5</text><text x="444.0" y="154.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="start">n</text><polyline points="42.0,39.6 48.5,41.2 54.9,42.7 61.4,44.3 67.9,45.8 74.3,47.3 80.8,48.7 87.3,50.2 93.7,51.6 100.2,53.0 106.7,54.4 113.1,55.8 119.6,57.1 126.1,58.4 132.5,59.7 139.0,61.0 145.5,62.3 151.9,63.5 158.4,64.8 164.9,66.0 171.3,67.2 177.8,68.4 184.3,69.5 190.7,70.7 197.2,71.8 203.7,72.9 210.1,74.0 216.6,75.1 223.1,76.2 229.5,77.3 236.0,78.3 242.5,79.3 248.9,80.3 255.4,81.3 261.9,82.3 268.3,83.3 274.8,84.2 281.3,85.2 287.7,86.1 294.2,87.0 300.7,87.9 307.1,88.8 313.6,89.7 320.1,90.5 326.5,91.4 333.0,92.2 339.5,93.0 345.9,93.8 352.4,94.7 358.9,95.4 365.3,96.2 371.8,97.0 378.3,97.7 384.7,98.5 391.2,99.2 397.7,100.0 404.1,100.7 410.6,101.4 417.1,102.1 423.5,102.8 430.0,103.4" fill="none" stroke="#6c63ff" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/><circle cx="42.0" cy="39.6" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="48.0" y="34.6" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">4.0</text><circle cx="171.3" cy="67.2" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="177.3" y="62.2" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">3.0</text><circle cx="300.7" cy="87.9" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="306.7" y="82.9" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">2.25</text><circle cx="430.0" cy="103.4" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="436.0" y="98.4" fill="#e8eaf6" font-size="9" font-family="Georgia,serif" font-style="italic">1.6875</text>
+</svg><div class="graph-caption">v(n) = 4×0,75ⁿ &nbsp;(géométrique, 0&lt;q=0,75&lt;1 → décroissante)</div></div>
+        </div>
+        <p style="margin-top:0.5rem"><strong>Prouver par le calcul :</strong> si u(n+1)/u(n) = q (constante) pour tout n, la suite est géométrique de raison q.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FONCTIONS DEGRÉ 2 -->
+  <div class="cours-section open" id="cours-deg2">
+    <div class="cours-header" onclick="toggleCours('cours-deg2')">
+      <div class="section-icon icon-fonctions">📐</div>
+      <div class="section-title">Fonctions polynômes de degré 2</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="cours-body">
+
+      <div class="cours-block">
+        <h4>Formes et paraboles</h4>
+        <div class="theorem-box">Si a &gt; 0 → parabole tournée vers le <strong>haut</strong> (∪) &nbsp;|&nbsp; Si a &lt; 0 → vers le <strong>bas</strong> (∩)</div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="106.7" y1="150.0" x2="106.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="171.3" y1="150.0" x2="171.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="300.7" y1="150.0" x2="300.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="365.3" y1="150.0" x2="365.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="136.2" x2="430.0" y2="136.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="94.8" x2="430.0" y2="94.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="53.4" x2="430.0" y2="53.4" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="136.2" x2="438.0" y2="136.2" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,136.2 434.0,133.2 434.0,139.2" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><text x="228.0" y="152.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">0</text><text x="106.7" y="152.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-2</text><text x="171.3" y="152.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-1</text><text x="300.7" y="152.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="365.3" y="152.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="226.0" y="97.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="226.0" y="56.4" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">6</text><text x="226.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">9</text><polyline points="42.0,12.0 45.9,16.9 49.8,21.7 53.6,26.5 57.5,31.1 61.4,35.6 65.3,40.0 69.2,44.3 73.0,48.6 76.9,52.7 80.8,56.7 84.7,60.6 88.6,64.5 92.4,68.2 96.3,71.8 100.2,75.3 104.1,78.8 108.0,82.1 111.8,85.3 115.7,88.5 119.6,91.5 123.5,94.4 127.4,97.3 131.2,100.0 135.1,102.6 139.0,105.2 142.9,107.6 146.8,109.9 150.6,112.2 154.5,114.3 158.4,116.3 162.3,118.3 166.2,120.1 170.0,121.8 173.9,123.5 177.8,125.0 181.7,126.5 185.6,127.8 189.4,129.0 193.3,130.2 197.2,131.2 201.1,132.2 205.0,133.0 208.8,133.8 212.7,134.4 216.6,135.0 220.5,135.4 224.4,135.8 228.2,136.0 232.1,136.2 236.0,136.2 239.9,136.2 243.8,136.0 247.6,135.8 251.5,135.4 255.4,135.0 259.3,134.4 263.2,133.8 267.0,133.0 270.9,132.2 274.8,131.2 278.7,130.2 282.6,129.0 286.4,127.8 290.3,126.5 294.2,125.0 298.1,123.5 302.0,121.8 305.8,120.1 309.7,118.3 313.6,116.3 317.5,114.3 321.4,112.2 325.2,109.9 329.1,107.6 333.0,105.2 336.9,102.6 340.8,100.0 344.6,97.3 348.5,94.4 352.4,91.5 356.3,88.5 360.2,85.3 364.0,82.1 367.9,78.8 371.8,75.3 375.7,71.8 379.6,68.2 383.4,64.5 387.3,60.6 391.2,56.7 395.1,52.7 399.0,48.6 402.8,44.3 406.7,40.0 410.6,35.6 414.5,31.1 418.4,26.5 422.2,21.7 426.1,16.9 430.0,12.0" fill="none" stroke="#6c63ff" stroke-width="2.5"/><circle cx="236.0" cy="136.2" r="4" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="370.3" y="76.0" fill="#6c63ff" font-size="11" font-family="Georgia,serif" font-style="italic">f(x)=x²</text><text x="241.0" y="7.0" fill="#ff6584" font-size="10">a&gt;0 → ∪</text>
+</svg><div class="graph-caption">a &gt; 0 → tournée vers le haut</div></div>
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="106.7" y1="150.0" x2="106.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="171.3" y1="150.0" x2="171.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="300.7" y1="150.0" x2="300.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="365.3" y1="150.0" x2="365.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="108.6" x2="430.0" y2="108.6" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="67.2" x2="430.0" y2="67.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="25.8" x2="430.0" y2="25.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="25.8" x2="438.0" y2="25.8" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,25.8 434.0,22.8 434.0,28.8" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><text x="228.0" y="41.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">0</text><text x="106.7" y="41.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-2</text><text x="171.3" y="41.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-1</text><text x="300.7" y="41.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="365.3" y="41.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="224.0" y="153.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-9</text><text x="224.0" y="111.6" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-6</text><text x="224.0" y="70.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-3</text><polyline points="42.0,150.0 45.9,145.1 49.8,140.3 53.6,135.5 57.5,130.9 61.4,126.4 65.3,122.0 69.2,117.7 73.0,113.4 76.9,109.3 80.8,105.3 84.7,101.4 88.6,97.5 92.4,93.8 96.3,90.2 100.2,86.7 104.1,83.2 108.0,79.9 111.8,76.7 115.7,73.5 119.6,70.5 123.5,67.6 127.4,64.7 131.2,62.0 135.1,59.4 139.0,56.8 142.9,54.4 146.8,52.1 150.6,49.8 154.5,47.7 158.4,45.7 162.3,43.7 166.2,41.9 170.0,40.2 173.9,38.5 177.8,37.0 181.7,35.5 185.6,34.2 189.4,33.0 193.3,31.8 197.2,30.8 201.1,29.8 205.0,29.0 208.8,28.2 212.7,27.6 216.6,27.0 220.5,26.6 224.4,26.2 228.2,26.0 232.1,25.8 236.0,25.8 239.9,25.8 243.8,26.0 247.6,26.2 251.5,26.6 255.4,27.0 259.3,27.6 263.2,28.2 267.0,29.0 270.9,29.8 274.8,30.8 278.7,31.8 282.6,33.0 286.4,34.2 290.3,35.5 294.2,37.0 298.1,38.5 302.0,40.2 305.8,41.9 309.7,43.7 313.6,45.7 317.5,47.7 321.4,49.8 325.2,52.1 329.1,54.4 333.0,56.8 336.9,59.4 340.8,62.0 344.6,64.7 348.5,67.6 352.4,70.5 356.3,73.5 360.2,76.7 364.0,79.9 367.9,83.2 371.8,86.7 375.7,90.2 379.6,93.8 383.4,97.5 387.3,101.4 391.2,105.3 395.1,109.3 399.0,113.4 402.8,117.7 406.7,122.0 410.6,126.4 414.5,130.9 418.4,135.5 422.2,140.3 426.1,145.1 430.0,150.0" fill="none" stroke="#6c63ff" stroke-width="2.5"/><circle cx="236.0" cy="25.8" r="4" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="370.3" y="76.0" fill="#6c63ff" font-size="11" font-family="Georgia,serif" font-style="italic">f(x)=−x²</text><text x="79.3" y="117.4" fill="#ff6584" font-size="10">a&lt;0 → ∩</text>
+</svg><div class="graph-caption">a &lt; 0 → tournée vers le bas</div></div>
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="80.8" y1="150.0" x2="80.8" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="158.4" y1="150.0" x2="158.4" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="313.6" y1="150.0" x2="313.6" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="391.2" y1="150.0" x2="391.2" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="127.0" x2="430.0" y2="127.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="104.0" x2="430.0" y2="104.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="58.0" x2="430.0" y2="58.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="35.0" x2="430.0" y2="35.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="104.0" x2="438.0" y2="104.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,104.0 434.0,101.0 434.0,107.0" fill="#8b90b0"/><line x1="80.8" y1="150.0" x2="80.8" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="80.8,4.0 77.8,8.0 83.8,8.0" fill="#8b90b0"/><text x="158.4" y="120.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="236.0" y="120.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="313.6" y="120.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="391.2" y="120.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">4</text><text x="70.8" y="153.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-2</text><text x="70.8" y="130.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-1</text><text x="70.8" y="84.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">1</text><text x="70.8" y="61.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="70.8" y="38.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="70.8" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><polyline points="42.0,-16.8 45.9,-11.1 49.8,-5.5 53.6,-0.0 57.5,5.3 61.4,10.6 65.3,15.7 69.2,20.7 73.0,25.6 76.9,30.3 80.8,35.0 84.7,39.5 88.6,44.0 92.4,48.3 96.3,52.5 100.2,56.6 104.1,60.5 108.0,64.4 111.8,68.1 115.7,71.7 119.6,75.2 123.5,78.6 127.4,81.9 131.2,85.1 135.1,88.1 139.0,91.1 142.9,93.9 146.8,96.6 150.6,99.2 154.5,101.6 158.4,104.0 162.3,106.2 166.2,108.4 170.0,110.4 173.9,112.3 177.8,114.1 181.7,115.7 185.6,117.3 189.4,118.7 193.3,120.0 197.2,121.2 201.1,122.3 205.0,123.3 208.8,124.2 212.7,124.9 216.6,125.6 220.5,126.1 224.4,126.5 228.2,126.8 232.1,126.9 236.0,127.0 239.9,126.9 243.8,126.8 247.6,126.5 251.5,126.1 255.4,125.6 259.3,124.9 263.2,124.2 267.0,123.3 270.9,122.3 274.8,121.2 278.7,120.0 282.6,118.7 286.4,117.3 290.3,115.7 294.2,114.1 298.1,112.3 302.0,110.4 305.8,108.4 309.7,106.2 313.6,104.0 317.5,101.6 321.4,99.2 325.2,96.6 329.1,93.9 333.0,91.1 336.9,88.1 340.8,85.1 344.6,81.9 348.5,78.6 352.4,75.2 356.3,71.7 360.2,68.1 364.0,64.4 367.9,60.5 371.8,56.6 375.7,52.5 379.6,48.3 383.4,44.0 387.3,39.5 391.2,35.0 395.1,30.3 399.0,25.6 402.8,20.7 406.7,15.7 410.6,10.6 414.5,5.3 418.4,-0.0 422.2,-5.5 426.1,-11.1 430.0,-16.8" fill="none" stroke="#6c63ff" stroke-width="2.5"/><circle cx="158.4" cy="104.0" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><circle cx="313.6" cy="104.0" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="144.4" y="96.0" fill="#ff6584" font-size="11" font-family="Georgia,serif" font-style="italic">x₁</text><text x="318.6" y="96.0" fill="#ff6584" font-size="11" font-family="Georgia,serif" font-style="italic">x₂</text><circle cx="236.0" cy="127.0" r="4" fill="#43e97b" stroke="#0f1117" stroke-width="1.5"/><text x="242.0" y="131.0" fill="#43e97b" font-size="9" font-family="Georgia,serif" font-style="italic">min</text>
+</svg><div class="graph-caption">f(x) = (x−x₁)(x−x₂) avec x₁=1, x₂=3</div></div>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Racines et signe</h4>
+        <div class="definition-box">Les racines x₁ et x₂ sont les solutions de f(x) = 0.<br>
+        Le signe alterne autour des racines, selon le signe de a.</div>
+        <div class="sign-table">
+          <table>
+            <tr><td>x</td><td>−∞</td><td></td><td>x₁</td><td></td><td>x₂</td><td></td><td>+∞</td></tr>
+            <tr><td>f(x) si a&gt;0</td><td class="pos">+</td><td></td><td class="zero">0</td><td></td><td class="neg">−</td><td></td><td class="pos">+</td></tr>
+            <tr><td>f(x) si a&lt;0</td><td class="neg">−</td><td></td><td class="zero">0</td><td></td><td class="pos">+</td><td></td><td class="neg">−</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Extremum</h4>
+        <div class="theorem-box">Un polynôme de degré 2 admet un extremum pour l'abscisse :<br>
+        <span class="formula">x_ext = (x₁ + x₂) / 2</span></div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Vérifier qu'une valeur est racine / factoriser</h4>
+        <ul>
+          <li>Substituer la valeur dans f(x) et vérifier que le résultat est 0</li>
+          <li>Si x₁ est racine connue : f(x) = a(x − x₁)(x − x₂)</li>
+          <li>Résoudre x² = c (c &gt; 0) : <span class="formula">x = √c ou x = −√c</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FONCTIONS DEGRÉ 3 -->
+  <div class="cours-section open" id="cours-deg3">
+    <div class="cours-header" onclick="toggleCours('cours-deg3')">
+      <div class="section-icon icon-fonctions">📐</div>
+      <div class="section-title">Fonctions polynômes de degré 3</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="cours-body">
+
+      <div class="cours-block">
+        <h4>Propriétés</h4>
+        <ul>
+          <li>f(x) = ax³ est strictement croissante si a &gt; 0, décroissante si a &lt; 0</li>
+          <li>Forme factorisée a(x−x₁)(x−x₂)(x−x₃) → 3 racines, signe alterne</li>
+        </ul>
+        <div class="graph-row">
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="139.0" y1="150.0" x2="139.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="333.0" y1="150.0" x2="333.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="438.0" y2="81.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,81.0 434.0,78.0 434.0,84.0" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><text x="42.0" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-2</text><text x="139.0" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-1</text><text x="333.0" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="430.0" y="97.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="226.0" y="153.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-8</text><text x="226.0" y="118.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-4</text><text x="226.0" y="49.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="226.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">8</text><polyline points="42.0,150.0 45.9,145.9 49.8,142.0 53.6,138.3 57.5,134.7 61.4,131.3 65.3,128.0 69.2,124.9 73.0,121.9 76.9,119.0 80.8,116.3 84.7,113.7 88.6,111.3 92.4,109.0 96.3,106.8 100.2,104.7 104.1,102.7 108.0,100.8 111.8,99.1 115.7,97.4 119.6,95.9 123.5,94.5 127.4,93.1 131.2,91.9 135.1,90.7 139.0,89.6 142.9,88.6 146.8,87.7 150.6,86.9 154.5,86.1 158.4,85.4 162.3,84.8 166.2,84.2 170.0,83.7 173.9,83.3 177.8,82.9 181.7,82.5 185.6,82.2 189.4,82.0 193.3,81.7 197.2,81.6 201.1,81.4 205.0,81.3 208.8,81.2 212.7,81.1 216.6,81.1 220.5,81.0 224.4,81.0 228.2,81.0 232.1,81.0 236.0,81.0 239.9,81.0 243.8,81.0 247.6,81.0 251.5,81.0 255.4,80.9 259.3,80.9 263.2,80.8 267.0,80.7 270.9,80.6 274.8,80.4 278.7,80.3 282.6,80.0 286.4,79.8 290.3,79.5 294.2,79.1 298.1,78.7 302.0,78.3 305.8,77.8 309.7,77.2 313.6,76.6 317.5,75.9 321.4,75.1 325.2,74.3 329.1,73.4 333.0,72.4 336.9,71.3 340.8,70.1 344.6,68.9 348.5,67.5 352.4,66.1 356.3,64.6 360.2,62.9 364.0,61.2 367.9,59.3 371.8,57.3 375.7,55.2 379.6,53.0 383.4,50.7 387.3,48.3 391.2,45.7 395.1,43.0 399.0,40.1 402.8,37.1 406.7,34.0 410.6,30.7 414.5,27.3 418.4,23.7 422.2,20.0 426.1,16.1 430.0,12.0" fill="none" stroke="#6c63ff" stroke-width="2.5"/><text x="318.6" y="32.9" fill="#6c63ff" font-size="11" font-family="Georgia,serif" font-style="italic">f(x)=x³</text><text x="64.4" y="119.1" fill="#43e97b" font-size="10">a&gt;0 → croissante</text>
+</svg><div class="graph-caption">f(x) = x³ (a &gt; 0, strictement croissante)</div></div>
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="90.5" y1="150.0" x2="90.5" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="187.5" y1="150.0" x2="187.5" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="284.5" y1="150.0" x2="284.5" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="381.5" y1="150.0" x2="381.5" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="130.3" x2="430.0" y2="130.3" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="110.6" x2="430.0" y2="110.6" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="90.9" x2="430.0" y2="90.9" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="71.1" x2="430.0" y2="71.1" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="51.4" x2="430.0" y2="51.4" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="31.7" x2="430.0" y2="31.7" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="90.9" x2="438.0" y2="90.9" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,90.9 434.0,87.9 434.0,93.9" fill="#8b90b0"/><line x1="187.5" y1="150.0" x2="187.5" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="187.5,4.0 184.5,8.0 190.5,8.0" fill="#8b90b0"/><text x="90.5" y="106.9" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-1</text><text x="284.5" y="106.9" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="381.5" y="106.9" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="177.5" y="153.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-3</text><text x="177.5" y="133.3" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-2</text><text x="177.5" y="113.6" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">-1</text><text x="177.5" y="74.1" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">1</text><text x="177.5" y="54.4" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="177.5" y="34.7" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="177.5" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><polyline points="42.0,177.1 45.9,168.0 49.8,159.4 53.6,151.1 57.5,143.2 61.4,135.7 65.3,128.6 69.2,121.9 73.0,115.5 76.9,109.4 80.8,103.7 84.7,98.3 88.6,93.3 92.4,88.5 96.3,84.1 100.2,80.0 104.1,76.2 108.0,72.6 111.8,69.4 115.7,66.4 119.6,63.7 123.5,61.3 127.4,59.1 131.2,57.1 135.1,55.4 139.0,53.9 142.9,52.6 146.8,51.6 150.6,50.7 154.5,50.1 158.4,49.6 162.3,49.3 166.2,49.2 170.0,49.3 173.9,49.5 177.8,49.9 181.7,50.4 185.6,51.1 189.4,51.8 193.3,52.7 197.2,53.8 201.1,54.9 205.0,56.1 208.8,57.5 212.7,58.9 216.6,60.4 220.5,61.9 224.4,63.5 228.2,65.2 232.1,66.9 236.0,68.7 239.9,70.5 243.8,72.3 247.6,74.1 251.5,75.9 255.4,77.8 259.3,79.6 263.2,81.4 267.0,83.2 270.9,85.0 274.8,86.7 278.7,88.4 282.6,90.1 286.4,91.6 290.3,93.1 294.2,94.6 298.1,95.9 302.0,97.2 305.8,98.4 309.7,99.4 313.6,100.4 317.5,101.2 321.4,101.9 325.2,102.5 329.1,102.9 333.0,103.2 336.9,103.3 340.8,103.2 344.6,103.0 348.5,102.6 352.4,102.0 356.3,101.3 360.2,100.3 364.0,99.1 367.9,97.6 371.8,96.0 375.7,94.1 379.6,92.0 383.4,89.6 387.3,87.0 391.2,84.1 395.1,81.0 399.0,77.5 402.8,73.8 406.7,69.8 410.6,65.5 414.5,60.9 418.4,55.9 422.2,50.6 426.1,45.0 430.0,39.1" fill="none" stroke="#6c63ff" stroke-width="2.5"/><circle cx="90.5" cy="90.9" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="95.5" y="80.9" fill="#ff6584" font-size="11" font-family="Georgia,serif" font-style="italic">x₁</text><circle cx="284.5" cy="90.9" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="289.5" y="80.9" fill="#ff6584" font-size="11" font-family="Georgia,serif" font-style="italic">x₂</text><circle cx="381.5" cy="90.9" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="386.5" y="80.9" fill="#ff6584" font-size="11" font-family="Georgia,serif" font-style="italic">x₃</text>
+</svg><div class="graph-caption">3 racines distinctes → alternance de signe</div></div>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Racine cubique</h4>
+        <div class="definition-box">Pour tout réel k, il existe une unique solution à x³ = k :<br>
+        la <strong>racine cubique</strong> de k, notée k^(1/3) ou ∛k.</div>
+        <p>x³ = 8 ⟺ x = 2 &nbsp;&nbsp;|&nbsp;&nbsp; x³ = 125 ⟺ x = 5</p>
+      </div>
+
+      <div class="cours-block">
+        <h4>Tableau de signe (a &gt; 0, 3 racines distinctes)</h4>
+        <div class="sign-table">
+          <table>
+            <tr><td>x</td><td>−∞</td><td></td><td>x₁</td><td></td><td>x₂</td><td></td><td>x₃</td><td></td><td>+∞</td></tr>
+            <tr><td>f(x)</td><td class="neg">−</td><td></td><td class="zero">0</td><td></td><td class="pos">+</td><td></td><td class="zero">0</td><td></td><td class="neg">−</td><td></td><td class="pos">+</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DÉRIVATION -->
+  <div class="cours-section open" id="cours-deriv">
+    <div class="cours-header" onclick="toggleCours('cours-deriv')">
+      <div class="section-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">∂</div>
+      <div class="section-title">Dérivation</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="cours-body">
+
+      <div class="cours-block">
+        <h4>Taux de variation</h4>
+        <div class="definition-box">Le taux de variation de f entre a et x :<br>
+        <span class="formula">T(x) = [f(x) − f(a)] / (x − a) = Δy/Δx</span><br>
+        C'est le coefficient directeur de la droite (AM).</div>
+        <div class="graph-single"><div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="139.0" y1="150.0" x2="139.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="333.0" y1="150.0" x2="333.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="122.4" x2="430.0" y2="122.4" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="94.8" x2="430.0" y2="94.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="67.2" x2="430.0" y2="67.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="39.6" x2="430.0" y2="39.6" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="42.0" y1="150.0" x2="42.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="42.0,4.0 39.0,8.0 45.0,8.0" fill="#8b90b0"/><text x="139.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="236.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="333.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">3</text><text x="430.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">4</text><text x="32.0" y="125.4" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="32.0" y="97.8" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="32.0" y="70.2" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">6</text><text x="32.0" y="42.6" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">8</text><text x="32.0" y="15.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">10</text><text x="444.0" y="154.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="start">x</text><polyline points="42.0,150.0 45.1,150.0 48.2,149.9 51.3,149.9 54.4,149.8 57.5,149.6 60.6,149.5 63.7,149.3 66.8,149.1 69.9,148.9 73.0,148.6 76.1,148.3 79.2,148.0 82.4,147.6 85.5,147.2 88.6,146.8 91.7,146.4 94.8,145.9 97.9,145.4 101.0,144.9 104.1,144.3 107.2,143.8 110.3,143.2 113.4,142.5 116.5,141.9 119.6,141.2 122.7,140.4 125.8,139.7 128.9,138.9 132.0,138.1 135.1,137.3 138.2,136.4 141.3,135.5 144.4,134.6 147.5,133.7 150.6,132.7 153.7,131.7 156.8,130.7 160.0,129.6 163.1,128.5 166.2,127.4 169.3,126.2 172.4,125.1 175.5,123.9 178.6,122.6 181.7,121.4 184.8,120.1 187.9,118.8 191.0,117.4 194.1,116.1 197.2,114.7 200.3,113.2 203.4,111.8 206.5,110.3 209.6,108.8 212.7,107.3 215.8,105.7 218.9,104.1 222.0,102.5 225.1,100.8 228.2,99.1 231.3,97.4 234.4,95.7 237.6,93.9 240.7,92.1 243.8,90.3 246.9,88.4 250.0,86.6 253.1,84.7 256.2,82.7 259.3,80.8 262.4,78.8 265.5,76.7 268.6,74.7 271.7,72.6 274.8,70.5 277.9,68.4 281.0,66.2 284.1,64.0 287.2,61.8 290.3,59.6 293.4,57.3 296.5,55.0 299.6,52.7 302.7,50.3 305.8,47.9 308.9,45.5 312.0,43.0 315.2,40.6 318.3,38.1 321.4,35.5 324.5,33.0 327.6,30.4 330.7,27.8 333.8,25.1 336.9,22.5 340.0,19.8 343.1,17.0 346.2,14.3 349.3,11.5 352.4,8.7" fill="none" stroke="#6c63ff" stroke-width="2.5"/><line x1="114.8" y1="150.0" x2="333.0" y2="25.8" stroke="#f7971e" stroke-width="1.8" stroke-dasharray="5,3"/><line x1="139.0" y1="136.2" x2="333.0" y2="136.2" stroke="#ff6584" stroke-width="1" stroke-dasharray="3,2"/><line x1="333.0" y1="136.2" x2="333.0" y2="25.8" stroke="#ff6584" stroke-width="1" stroke-dasharray="3,2"/><text x="241.0" y="131.2" fill="#ff6584" font-size="10">Δx</text><text x="337.0" y="81.0" fill="#ff6584" font-size="10">Δy</text><circle cx="139.0" cy="136.2" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="333.0" cy="25.8" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="125.0" y="133.2" fill="#e8eaf6" font-size="11" font-family="Georgia,serif" font-style="italic">A</text><text x="338.0" y="21.8" fill="#e8eaf6" font-size="11" font-family="Georgia,serif" font-style="italic">M</text><text x="192.5" y="99.8" fill="#f7971e" font-size="9" font-style="italic">sécante AM</text><text x="258.4" y="76.2" fill="#6c63ff" font-size="10" font-style="italic">f</text>
+</svg><div class="graph-caption">T(x) = [f(x)−f(a)]/(x−a) = Δy/Δx = coeff. dir. de (AM)</div></div></div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Nombre dérivé — tangente</h4>
+        <div class="definition-box">Le nombre dérivé f'(a) est la <strong>limite</strong> du taux de variation quand x → a.<br>
+        C'est le coefficient directeur de la <strong>tangente</strong> à la courbe en A(a ; f(a)).</div>
+        <div class="graph-single"><div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="106.7" y1="150.0" x2="106.7" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="365.3" y1="150.0" x2="365.3" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="127.0" x2="430.0" y2="127.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="104.0" x2="430.0" y2="104.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="58.0" x2="430.0" y2="58.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="35.0" x2="430.0" y2="35.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="106.7" y1="150.0" x2="106.7" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="106.7,4.0 103.7,8.0 109.7,8.0" fill="#8b90b0"/><text x="236.0" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="365.3" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="96.7" y="130.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="96.7" y="107.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">3</text><text x="96.7" y="84.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="96.7" y="61.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">5</text><text x="96.7" y="38.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">6</text><polyline points="42.0,121.2 45.5,121.9 49.0,122.4 52.5,123.0 56.0,123.5 59.5,123.9 63.0,124.4 66.4,124.8 69.9,125.1 73.4,125.5 76.9,125.8 80.4,126.1 83.9,126.3 87.4,126.5 90.9,126.7 94.4,126.8 97.9,126.9 101.4,127.0 104.9,127.0 108.3,127.0 111.8,127.0 115.3,126.9 118.8,126.8 122.3,126.7 125.8,126.5 129.3,126.3 132.8,126.1 136.3,125.8 139.8,125.5 143.3,125.2 146.8,124.8 150.3,124.4 153.7,124.0 157.2,123.5 160.7,123.0 164.2,122.4 167.7,121.9 171.2,121.3 174.7,120.6 178.2,120.0 181.7,119.3 185.2,118.5 188.7,117.8 192.2,117.0 195.6,116.1 199.1,115.2 202.6,114.3 206.1,113.4 209.6,112.4 213.1,111.4 216.6,110.4 220.1,109.3 223.6,108.2 227.1,107.1 230.6,105.9 234.1,104.7 237.6,103.4 241.0,102.2 244.5,100.9 248.0,99.5 251.5,98.1 255.0,96.7 258.5,95.3 262.0,93.8 265.5,92.3 269.0,90.8 272.5,89.2 276.0,87.6 279.5,85.9 282.9,84.3 286.4,82.6 289.9,80.8 293.4,79.0 296.9,77.2 300.4,75.4 303.9,73.5 307.4,71.6 310.9,69.7 314.4,67.7 317.9,65.7 321.4,63.6 324.9,61.5 328.3,59.4 331.8,57.3 335.3,55.1 338.8,52.9 342.3,50.6 345.8,48.4 349.3,46.1 352.8,43.7 356.3,41.3 359.8,38.9 363.3,36.5 366.8,34.0 370.2,31.5 373.7,28.9 377.2,26.3 380.7,23.7 384.2,21.1 387.7,18.4 391.2,15.7" fill="none" stroke="#6c63ff" stroke-width="2.5"/><line x1="106.7" y1="150.0" x2="430.0" y2="35.0" stroke="#ff6584" stroke-width="2"/><line x1="42.0" y1="138.5" x2="430.0" y2="69.5" stroke="#f7971e" stroke-width="1.5" stroke-dasharray="5,3"/><circle cx="106.7" cy="127.0" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><circle cx="236.0" cy="104.0" r="5" fill="#4facfe" stroke="#0f1117" stroke-width="1.5"/><text x="56.7" y="122.0" fill="#e8eaf6" font-size="11" font-family="Georgia,serif" font-style="italic">A(0;2)</text><text x="242.0" y="98.0" fill="#e8eaf6" font-size="11" font-family="Georgia,serif" font-style="italic">B(1;3)</text><text x="381.3" y="50.0" fill="#ff6584" font-size="10" font-style="italic">tangente g</text><text x="381.3" y="79.1" fill="#f7971e" font-size="10" font-style="italic">sécante (AB)</text><text x="329.5" y="63.5" fill="#6c63ff" font-size="10" font-style="italic">f</text>
+</svg><div class="graph-caption">f'(1) = 2 = coeff. dir. de la tangente en B(1; 3)</div></div></div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Formules de dérivation</h4>
+        <div class="tag-row">
+          <span class="tag">constante → 0</span>
+          <span class="tag">x → 1</span>
+          <span class="tag">x² → 2x</span>
+          <span class="tag">x³ → 3x²</span>
+          <span class="tag">xⁿ → n·xⁿ⁻¹</span>
+          <span class="tag">(u+v)' = u'+v'</span>
+          <span class="tag">(ku)' = ku'</span>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Équation de la tangente</h4>
+        <div class="theorem-box">Tangente à la courbe de f au point d'abscisse a :<br>
+        <span class="formula">y = f'(a)(x − a) + f(a)</span></div>
+        <p style="margin-top:0.5rem">Cas f'(a) = 0 → tangente horizontale :</p>
+        <div class="graph-row">
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="80.8" y1="150.0" x2="80.8" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="158.4" y1="150.0" x2="158.4" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="313.6" y1="150.0" x2="313.6" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="391.2" y1="150.0" x2="391.2" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="132.8" x2="430.0" y2="132.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="98.2" x2="430.0" y2="98.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="63.8" x2="430.0" y2="63.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="29.2" x2="430.0" y2="29.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="98.2" x2="438.0" y2="98.2" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,98.2 434.0,95.2 434.0,101.2" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><polyline points="42.0,24.9 45.9,29.2 49.8,33.4 53.6,37.5 57.5,41.5 61.4,45.4 65.3,49.3 69.2,53.0 73.0,56.7 76.9,60.3 80.8,63.8 84.7,67.2 88.6,70.5 92.4,73.7 96.3,76.9 100.2,79.9 104.1,82.9 108.0,85.8 111.8,88.6 115.7,91.3 119.6,93.9 123.5,96.5 127.4,98.9 131.2,101.3 135.1,103.6 139.0,105.8 142.9,107.9 146.8,109.9 150.6,111.9 154.5,113.7 158.4,115.5 162.3,117.2 166.2,118.8 170.0,120.3 173.9,121.7 177.8,123.0 181.7,124.3 185.6,125.5 189.4,126.5 193.3,127.5 197.2,128.4 201.1,129.3 205.0,130.0 208.8,130.6 212.7,131.2 216.6,131.7 220.5,132.1 224.4,132.4 228.2,132.6 232.1,132.7 236.0,132.8 239.9,132.7 243.8,132.6 247.6,132.4 251.5,132.1 255.4,131.7 259.3,131.2 263.2,130.6 267.0,130.0 270.9,129.3 274.8,128.4 278.7,127.5 282.6,126.5 286.4,125.5 290.3,124.3 294.2,123.0 298.1,121.7 302.0,120.3 305.8,118.8 309.7,117.2 313.6,115.5 317.5,113.7 321.4,111.9 325.2,109.9 329.1,107.9 333.0,105.8 336.9,103.6 340.8,101.3 344.6,98.9 348.5,96.5 352.4,93.9 356.3,91.3 360.2,88.6 364.0,85.8 367.9,82.9 371.8,79.9 375.7,76.9 379.6,73.7 383.4,70.5 387.3,67.2 391.2,63.8 395.1,60.3 399.0,56.7 402.8,53.0 406.7,49.3 410.6,45.4 414.5,41.5 418.4,37.5 422.2,33.4 426.1,29.2 430.0,24.9" fill="none" stroke="#6c63ff" stroke-width="2.5"/><line x1="80.8" y1="132.8" x2="391.2" y2="132.8" stroke="#ff6584" stroke-width="2"/><circle cx="236.0" cy="132.8" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="241.0" y="124.8" fill="#ff6584" font-size="10">minimum</text><text x="241.0" y="150.8" fill="#ff6584" font-size="9">f'(0)=0</text>
+</svg><div class="graph-caption">Minimum : tangente horizontale</div></div>
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="80.8" y1="150.0" x2="80.8" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="158.4" y1="150.0" x2="158.4" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="313.6" y1="150.0" x2="313.6" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="391.2" y1="150.0" x2="391.2" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="132.8" x2="430.0" y2="132.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="98.2" x2="430.0" y2="98.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="63.8" x2="430.0" y2="63.8" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="29.2" x2="430.0" y2="29.2" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="98.2" x2="438.0" y2="98.2" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,98.2 434.0,95.2 434.0,101.2" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><polyline points="42.0,171.6 45.9,167.3 49.8,163.1 53.6,159.0 57.5,155.0 61.4,151.1 65.3,147.2 69.2,143.5 73.0,139.8 76.9,136.2 80.8,132.8 84.7,129.3 88.6,126.0 92.4,122.8 96.3,119.6 100.2,116.6 104.1,113.6 108.0,110.7 111.8,107.9 115.7,105.2 119.6,102.6 123.5,100.0 127.4,97.6 131.2,95.2 135.1,92.9 139.0,90.7 142.9,88.6 146.8,86.6 150.6,84.6 154.5,82.8 158.4,81.0 162.3,79.3 166.2,77.7 170.0,76.2 173.9,74.8 177.8,73.5 181.7,72.2 185.6,71.0 189.4,70.0 193.3,69.0 197.2,68.1 201.1,67.2 205.0,66.5 208.8,65.9 212.7,65.3 216.6,64.8 220.5,64.4 224.4,64.1 228.2,63.9 232.1,63.8 236.0,63.8 239.9,63.8 243.8,63.9 247.6,64.1 251.5,64.4 255.4,64.8 259.3,65.3 263.2,65.9 267.0,66.5 270.9,67.2 274.8,68.1 278.7,69.0 282.6,70.0 286.4,71.0 290.3,72.2 294.2,73.5 298.1,74.8 302.0,76.2 305.8,77.7 309.7,79.3 313.6,81.0 317.5,82.8 321.4,84.6 325.2,86.6 329.1,88.6 333.0,90.7 336.9,92.9 340.8,95.2 344.6,97.6 348.5,100.0 352.4,102.6 356.3,105.2 360.2,107.9 364.0,110.7 367.9,113.6 371.8,116.6 375.7,119.6 379.6,122.8 383.4,126.0 387.3,129.3 391.2,132.8 395.1,136.2 399.0,139.8 402.8,143.5 406.7,147.2 410.6,151.1 414.5,155.0 418.4,159.0 422.2,163.1 426.1,167.3 430.0,171.6" fill="none" stroke="#6c63ff" stroke-width="2.5"/><line x1="80.8" y1="63.8" x2="391.2" y2="63.8" stroke="#ff6584" stroke-width="2"/><circle cx="236.0" cy="63.8" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="241.0" y="79.8" fill="#ff6584" font-size="10">maximum</text><text x="241.0" y="53.8" fill="#ff6584" font-size="9">f'(0)=0</text>
+</svg><div class="graph-caption">Maximum : tangente horizontale</div></div>
+          <div class="graph-wrap">
+<svg width="220" height="178" viewBox="0 0 220 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="220" height="178" rx="8" fill="#222535"/>
+  <line x1="42.0" y1="150.0" x2="42.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="139.0" y1="150.0" x2="139.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="333.0" y1="150.0" x2="333.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="430.0" y1="150.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="438.0" y2="81.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,81.0 434.0,78.0 434.0,84.0" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><polyline points="42.0,219.0 45.9,210.9 49.8,203.1 53.6,195.6 57.5,188.5 61.4,181.6 65.3,175.0 69.2,168.8 73.0,162.8 76.9,157.1 80.8,151.7 84.7,146.5 88.6,141.6 92.4,136.9 96.3,132.5 100.2,128.3 104.1,124.4 108.0,120.7 111.8,117.2 115.7,113.9 119.6,110.8 123.5,107.9 127.4,105.2 131.2,102.7 135.1,100.4 139.0,98.2 142.9,96.3 146.8,94.4 150.6,92.8 154.5,91.2 158.4,89.8 162.3,88.6 166.2,87.4 170.0,86.4 173.9,85.5 177.8,84.7 181.7,84.0 185.6,83.4 189.4,82.9 193.3,82.5 197.2,82.1 201.1,81.8 205.0,81.6 208.8,81.4 212.7,81.2 216.6,81.1 220.5,81.1 224.4,81.0 228.2,81.0 232.1,81.0 236.0,81.0 239.9,81.0 243.8,81.0 247.6,81.0 251.5,80.9 255.4,80.9 259.3,80.8 263.2,80.6 267.0,80.4 270.9,80.2 274.8,79.9 278.7,79.5 282.6,79.1 286.4,78.6 290.3,78.0 294.2,77.3 298.1,76.5 302.0,75.6 305.8,74.6 309.7,73.4 313.6,72.2 317.5,70.8 321.4,69.2 325.2,67.6 329.1,65.7 333.0,63.8 336.9,61.6 340.8,59.3 344.6,56.8 348.5,54.1 352.4,51.2 356.3,48.1 360.2,44.8 364.0,41.3 367.9,37.6 371.8,33.7 375.7,29.5 379.6,25.1 383.4,20.4 387.3,15.5 391.2,10.3 395.1,4.9 399.0,-0.8 402.8,-6.8 406.7,-13.0 410.6,-19.6 414.5,-26.5 418.4,-33.6 422.2,-41.1 426.1,-48.9 430.0,-57.0" fill="none" stroke="#6c63ff" stroke-width="2.5"/><line x1="90.5" y1="81.0" x2="381.5" y2="81.0" stroke="#ff6584" stroke-width="2"/><circle cx="236.0" cy="81.0" r="5" fill="#ff6584" stroke="#0f1117" stroke-width="1.5"/><text x="241.0" y="71.0" fill="#ff6584" font-size="10">pt d'inflexion</text><text x="241.0" y="99.0" fill="#ff6584" font-size="9">f'(0)=0</text>
+</svg><div class="graph-caption">Point d'inflexion : tangente horizontale</div></div>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Variations selon le signe de la dérivée</h4>
+        <div class="theorem-box">
+          f'(x) ≥ 0 sur I ⟺ f <strong>croissante</strong> sur I<br>
+          f'(x) ≤ 0 sur I ⟺ f <strong>décroissante</strong> sur I<br>
+          f' s'annule en changeant de signe → f admet un <strong>extremum</strong>
+        </div>
+        <div class="graph-single"><div class="graph-wrap">
+<svg width="440" height="178" viewBox="0 0 440 178" style="max-width:100%;display:block;margin:auto">
+  <rect width="440" height="178" rx="8" fill="#222535"/>
+  <line x1="80.8" y1="150.0" x2="80.8" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="158.4" y1="150.0" x2="158.4" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="236.0" y1="150.0" x2="236.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="313.6" y1="150.0" x2="313.6" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="391.2" y1="150.0" x2="391.2" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="430.0" y2="150.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="115.5" x2="430.0" y2="115.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="81.0" x2="430.0" y2="81.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="46.5" x2="430.0" y2="46.5" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="12.0" x2="430.0" y2="12.0" stroke="#2e3148" stroke-width="0.5"/><line x1="42.0" y1="150.0" x2="438.0" y2="150.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="438.0,150.0 434.0,147.0 434.0,153.0" fill="#8b90b0"/><line x1="236.0" y1="150.0" x2="236.0" y2="4.0" stroke="#8b90b0" stroke-width="1.2"/><polygon points="236.0,4.0 233.0,8.0 239.0,8.0" fill="#8b90b0"/><text x="80.8" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-2</text><text x="158.4" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">-1</text><text x="313.6" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">1</text><text x="391.2" y="166.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="middle">2</text><text x="226.0" y="118.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">2</text><text x="226.0" y="84.0" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">4</text><text x="226.0" y="49.5" fill="#8b90b0" font-size="10" font-family="sans-serif" text-anchor="end">6</text><polyline points="42.0,7.7 45.9,12.0 49.8,16.1 53.6,20.2 57.5,24.2 61.4,28.2 65.3,32.0 69.2,35.8 73.0,39.4 76.9,43.0 80.8,46.5 84.7,49.9 88.6,53.2 92.4,56.5 96.3,59.6 100.2,62.7 104.1,65.6 108.0,68.5 111.8,71.3 115.7,74.1 119.6,76.7 123.5,79.2 127.4,81.7 131.2,84.1 135.1,86.3 139.0,88.5 142.9,90.7 146.8,92.7 150.6,94.6 154.5,96.5 158.4,98.2 162.3,99.9 166.2,101.5 170.0,103.0 173.9,104.5 177.8,105.8 181.7,107.0 185.6,108.2 189.4,109.3 193.3,110.3 197.2,111.2 201.1,112.0 205.0,112.7 208.8,113.4 212.7,113.9 216.6,114.4 220.5,114.8 224.4,115.1 228.2,115.3 232.1,115.5 236.0,115.5 239.9,115.5 243.8,115.3 247.6,115.1 251.5,114.8 255.4,114.4 259.3,113.9 263.2,113.4 267.0,112.7 270.9,112.0 274.8,111.2 278.7,110.3 282.6,109.3 286.4,108.2 290.3,107.0 294.2,105.8 298.1,104.5 302.0,103.0 305.8,101.5 309.7,99.9 313.6,98.2 317.5,96.5 321.4,94.6 325.2,92.7 329.1,90.7 333.0,88.5 336.9,86.3 340.8,84.1 344.6,81.7 348.5,79.2 352.4,76.7 356.3,74.1 360.2,71.3 364.0,68.5 367.9,65.6 371.8,62.7 375.7,59.6 379.6,56.5 383.4,53.2 387.3,49.9 391.2,46.5 395.1,43.0 399.0,39.4 402.8,35.8 406.7,32.0 410.6,28.2 414.5,24.2 418.4,20.2 422.2,16.1 426.1,12.0 430.0,7.7" fill="none" stroke="#6c63ff" stroke-width="2.5"/><text x="111.6" y="62.7" fill="#ff6584" font-size="14">↘</text><text x="344.4" y="62.7" fill="#43e97b" font-size="14">↗</text><circle cx="236.0" cy="115.5" r="5" fill="#43e97b" stroke="#0f1117" stroke-width="1.5"/><text x="242.0" y="109.5" fill="#43e97b" font-size="9" font-family="Georgia,serif" font-style="italic">min(0;2)</text><text x="114.6" y="84.0" fill="#ff6584" font-size="9">f'&lt;0</text><text x="324.1" y="84.0" fill="#43e97b" font-size="9">f'&gt;0</text>
+</svg><div class="graph-caption">f(x)=x²+2 : f'(x)=2x &lt; 0 sur ]−∞;0[ et &gt; 0 sur ]0;+∞[</div></div></div>
+        <div class="sign-table" style="margin-top:0.75rem">
+          <table>
+            <tr><td>x</td><td>−∞</td><td></td><td>0</td><td></td><td>+∞</td></tr>
+            <tr><td>f'(x) = 2x</td><td class="neg">−</td><td></td><td class="zero">0</td><td></td><td class="pos">+</td></tr>
+            <tr><td>f(x) = x²+2</td><td></td><td class="arr">↘</td><td class="zero">2</td><td class="arr">↗</td><td></td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROBABILITÉS -->
+  <div class="cours-section open" id="cours-proba">
+    <div class="cours-header" onclick="toggleCours('cours-proba')">
+      <div class="section-icon icon-proba">🎲</div>
+      <div class="section-title">Probabilités &amp; Variables aléatoires</div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="cours-body">
+
+      <div class="cours-block">
+        <h4>Probabilités conditionnelles</h4>
+        <div class="definition-box">La probabilité de B sachant A, notée P_A(B) :<br>
+        <span class="formula">P_A(B) = Card(A∩B) / Card(A)</span> (en équiprobabilité)</div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Tests diagnostiques</h4>
+        <ul>
+          <li><strong>Faux positif</strong> : test positif alors que le patient est non malade</li>
+          <li><strong>Faux négatif</strong> : test négatif alors que le patient est malade</li>
+          <li><strong>Sensibilité</strong> : P_M(T) — P(test positif | malade)</li>
+          <li><strong>Spécificité</strong> : P_M̄(T̄) — P(test négatif | non malade)</li>
+        </ul>
+      </div>
+
+      <div class="cours-block">
+        <h4>Variable aléatoire discrète</h4>
+        <div class="definition-box">X associe un nombre à chaque issue. La somme des P(X = xᵢ) vaut toujours 1.</div>
+        <p><strong>Espérance</strong> : <span class="formula">E(X) = Σ pᵢ × xᵢ</span></p>
+      </div>
+
+      <div class="cours-block">
+        <h4>Loi de Bernoulli</h4>
+        <div class="definition-box">Deux issues : <strong>succès S</strong> (prob. p) et <strong>échec E</strong> (prob. q = 1−p).<br>
+        X = 1 (succès) ou 0 (échec). <span class="formula">E(X) = p</span></div>
+        <div class="sign-table">
+          <table>
+            <tr><td>Issue</td><td>Succès</td><td>Échec</td></tr>
+            <tr><td>x</td><td>1</td><td>0</td></tr>
+            <tr><td>P(X=x)</td><td class="pos">p</td><td class="neg">q = 1−p</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="cours-block">
+        <h4>Échantillons et fréquences</h4>
+        <div class="definition-box">Pour un échantillon de taille n d'une loi de Bernoulli de paramètre p :<br>
+        <span class="formula">s = √(p(1−p) / n)</span></div>
+        <p>Environ 68% des fréquences observées f appartiennent à <span class="formula">[p − s ; p + s]</span>.<br>
+        Plus n est grand, plus s est petit → fréquences proches de p.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /tab-cours -->
+
+<script>
+  // Section groups: id → { pb, pr, total }
+  const sections = {
+    automatismes: { pb: 'pb-auto', pr: 'pr-auto', total: 12 },
+    suites:       { pb: 'pb-suites', pr: 'pr-suites', total: 9 },
+    fonctions:    { pb: 'pb-fonctions', pr: 'pr-fonctions', total: 15 },
+    probabilites: { pb: 'pb-proba', pr: 'pr-proba', total: 3 },
+  };
+
+  const STORAGE_KEY = 'bac_sti2d_s2_done';
+
+  function getSectionId(item) {
+    return item.closest('.section').id;
+  }
+
+  function toggleDone(item) {
+    item.classList.toggle('done');
+    saveState();
+    updateProgress();
+  }
+
+  function toggleSection(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  function updateProgress() {
+    let totalDone = 0, totalAll = 0;
+    for (const [id, cfg] of Object.entries(sections)) {
+      const items = document.querySelectorAll(`#${id} .question-item`);
+      const done = [...items].filter(i => i.classList.contains('done')).length;
+      const total = items.length;
+      const pct = total ? (done / total * 100) : 0;
+      document.getElementById(cfg.pb).style.width = pct + '%';
+      document.getElementById(cfg.pr).textContent = `${done}/${total}`;
+      totalDone += done;
+      totalAll += total;
+    }
+    document.getElementById('done-count').textContent = totalDone;
+    document.getElementById('total-count').textContent = totalAll;
+    document.getElementById('pct-count').textContent =
+      totalAll ? Math.round(totalDone / totalAll * 100) + '%' : '0%';
+  }
+
+  function saveState() {
+    const done = [...document.querySelectorAll('.question-item.done')].map((el, _, all) => {
+      return [...document.querySelectorAll('.question-item')].indexOf(el);
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(done));
+  }
+
+  function loadState() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const indices = JSON.parse(raw);
+    const items = [...document.querySelectorAll('.question-item')];
+    indices.forEach(i => { if (items[i]) items[i].classList.add('done'); });
+  }
+
+  function resetAll() {
+    if (!confirm('Réinitialiser toute la progression ?')) return;
+    document.querySelectorAll('.question-item.done').forEach(el => el.classList.remove('done'));
+    localStorage.removeItem(STORAGE_KEY);
+    updateProgress();
+  }
+
+  // Tab switching
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById('nav-' + tab).classList.add('active');
+  }
+
+  function toggleCours(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  loadState();
+  updateProgress();
+</script>
+</body>
+</html>
