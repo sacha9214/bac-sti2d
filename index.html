@@ -1031,6 +1031,10 @@
     }
 
     /* PASSAGE ORAL */
+    .po-wrap { margin-top: 18px; }
+    .po-wrap .passage-oral { display: none; }
+    .po-wrap.open .passage-oral { display: block; margin-top: 10px; }
+    .po-wrap.open .texte-extrait-toggle-arrow { transform: rotate(180deg); }
     .passage-oral {
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -2959,7 +2963,8 @@ Exilé sur le sol au milieu <span class="annot" data-p="10">des huées</span>,
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Propositions subordonnées relatives introduites par « Qui » — ex : « Qui suivent, indolents compagnons de voyage » (v.3) — relative déterminative, antécédent « albatros », fonction sujet. Même construction : « Qui hante la tempête et se rit de l'archer ».</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=BwY76iFw16k" target="_blank" rel="noopener">▶ Analyse Mediaclasse — L'Albatros</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t1">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t1')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -2996,6 +3001,7 @@ Exilé sur le sol au milieu <span class="annot" data-p="10">des huées</span>,
                 <div class="po-line"><strong>Ouverture.</strong> Le poète maudit, incompris des hommes, traverse tout le recueil : on pourrait le rapprocher de « Bénédiction » (ouverture du recueil) ou de l'« Art poétique » de Verlaine, autre poète maudit.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3065,7 +3071,8 @@ Sourirait un enfant malade, <span class="annot" data-p="7">il fait un somme</spa
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Propositions subordonnées relatives introduites par « où » — ex : « où chante une rivière » (v.1), « où la lumière pleut » (v.8) — antécédents « trou de verdure » et « lit vert ». Le pronom relatif « où » indique une circonstance de lieu ; ces relatives soulignent l'immersion du dormeur dans la Nature. Même question que pour L'Albatros (relatives en « qui »/« où »).</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=DwUFPvmgDLE" target="_blank" rel="noopener">▶ Analyse Mediaclasse — Le Dormeur du Val</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t2">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t2')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3102,6 +3109,7 @@ Sourirait un enfant malade, <span class="annot" data-p="7">il fait un somme</spa
                 <div class="po-line"><strong>Ouverture.</strong> On pourrait rapprocher ce poème d'un autre texte engagé contre la guerre, comme « Le Mal » de Rimbaud (même recueil) ou, plus tard, des poèmes des tranchées d'Apollinaire.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3169,7 +3177,8 @@ De mes souliers blessés, un pied près de mon cœur !</div>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Propositions subordonnées relatives à valeur temporelle introduites par « où » — ex : « Ces bons soirs de septembre où je sentais des gouttes » (v.9-10) — le pronom relatif « où » remplace « quand/pendant lesquels » ; antécédent « soirs ». Identifiez la fonction et la valeur : lieu ou temps ?</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=Fe2WFlAuayQ" target="_blank" rel="noopener">▶ Analyse Mediaclasse — Ma Bohème</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t3">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t3')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3206,6 +3215,7 @@ De mes souliers blessés, un pied près de mon cœur !</div>
                 <div class="po-line"><strong>Ouverture.</strong> On peut prolonger avec « Sensation » de Rimbaud, qui célèbre la même communion avec la nature, ou avec la figure du poète-vagabond chez Verlaine.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3302,7 +3312,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Analyse du discours indirect libre — ex : « L'attaquer, le mettre en quartiers, / Sire Loup l'eût fait volontiers » (v.5-6) : les pensées du loup sont rapportées sans verbe introducteur ni guillemets. Identifier le mode et le temps (conditionnel passé 2e forme = subjonctif plus-que-parfait) et sa valeur (hypothétique/irréel du passé).</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=3JkCa7EYRuA" target="_blank" rel="noopener">▶ Analyse Mediaclasse — Le Loup et le Chien</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t4">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t4')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3339,6 +3350,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut rapprocher cette fable du « Loup et l'Agneau » (sur la loi du plus fort) ou de la réflexion de La Boétie sur la servitude volontaire, au programme.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3394,7 +3406,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Propositions interrogatives directes — ex : « Comment appellerons-nous ce vice ? », « N'est-ce pas honteux ? », « Nommerons-nous cela lâcheté ? » — identifier le type (totale/partielle), le mode (indicatif futur : valeur de délibération), et la fonction rhétorique (question sans réponse attendue = interpellation du lecteur).</div>
           <a class="gram-video-link" href="https://www.youtube.com/playlist?list=PLfmMMoptA1rW6B8me4L_I0WdDTknRutSL" target="_blank" rel="noopener">▶ Playlist Mediaclasse — La Boétie</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t5">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t5')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3431,6 +3444,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut prolonger avec l'autre extrait du <em>Discours</em> (« Le pouvoir de l'habitude ») ou avec le « Contrat social » de Rousseau, qui pense lui aussi la liberté politique.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3483,7 +3497,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Propositions subordonnées circonstancielles de condition — ex : « si bon que soit le naturel, il se perd s'il n'est entretenu » — mode subjonctif après « si bon que » (concession) et indicatif dans la conditionnelle réelle. Identifier les conjonctions de subordination et les modes utilisés.</div>
           <a class="gram-video-link" href="https://www.youtube.com/playlist?list=PLfmMMoptA1rW6B8me4L_I0WdDTknRutSL" target="_blank" rel="noopener">▶ Playlist Mediaclasse — La Boétie</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t6">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t6')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3520,6 +3535,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut rapprocher ce texte des <em>Essais</em> de Montaigne, ami de La Boétie, qui réfléchit lui aussi au poids de la coutume sur les hommes.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3573,7 +3589,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">La proposition participiale — ex : « étant à me promener avec mon ami » — a une valeur à la fois temporelle (= comme je me promenais) et causale. Elle peut être transformée en subordonnée circonstancielle de temps introduite par « comme » ou « lorsque ». Identifier sa fonction et sa valeur dans le passage.</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=zcGUMtqwNXw" target="_blank" rel="noopener">▶ Explication linéaire — Manon Lescaut, la rencontre</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t7">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t7')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3610,6 +3627,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut comparer cette rencontre à celle de <em>L'Éducation sentimentale</em> de Flaubert (au programme), autre coup de foudre idéalisé d'un jeune héros.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3666,7 +3684,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">La prétérition — figure par laquelle on dit qu'on ne va pas parler de quelque chose tout en le disant quand même : « N'exigez point de moi que je vous décrive mes sentiments… » puis Des Grieux les décrit aussitôt. Identifier les marques grammaticales : négation + impératif, puis le paradoxe rhétorique. Ou : analyser les valeurs du passé simple ponctuel vs imparfait duratif dans le récit de l'enterrement.</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=UkcIZMWs440" target="_blank" rel="noopener">▶ Explication linéaire — La mort de Manon</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t8">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t8')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3703,6 +3722,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut rapprocher cette mort sublimée de celle de Marguerite dans <em>La Dame aux camélias</em> de Dumas fils, autre héroïne aimée jusque dans la mort.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3760,7 +3780,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Analyse des propositions subordonnées relatives et circonstancielles (« qui nous amenait l'un vers l'autre », « qui nous aurait conduits à toi »). Identification du mode conditionnel passé et de sa valeur hypothétique.</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=vvlokI5Jhrg" target="_blank" rel="noopener">▶ Explication linéaire — On ne badine, acte III sc.3</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t9">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t9')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3797,6 +3818,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut prolonger avec le dénouement de la pièce (la mort de Rosette) ou avec le marivaudage chez Marivaux, où le jeu de l'amour reste, lui, sans victime.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3857,7 +3879,8 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Alternance imparfait (second plan/descriptif) et passé simple (premier plan/actions ponctuelles) — ex : « Elle était assise » (IMP descriptif) vs « elle leva la tête ; il fléchit » (PS actions soudaines). Expliquer la valeur aspectuelle de chaque temps et l'effet produit sur le rythme narratif.</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=iu8U3LSJTP0" target="_blank" rel="noopener">▶ Analyse — L'Éducation sentimentale, Flaubert</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t10">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t10')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -3894,6 +3917,7 @@ Cela dit, maître Loup s'enfuit, et court encor.</span>
                 <div class="po-line"><strong>Ouverture.</strong> On peut comparer cette scène à la rencontre de <em>Manon Lescaut</em> (au programme), ou à la cristallisation amoureuse théorisée par Stendhal dans <em>De l'amour</em>.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3975,7 +3999,8 @@ Je le dis, vous pouvez vous confier, madame,
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Analyse de la proposition subordonnée causale introduite par « puisque » (« Je suis plus que le roi puisque la reine m'aime ! »). Valeur causale, mode indicatif, effet rhétorique de l'évidence.</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=dx_DIvYTbbw" target="_blank" rel="noopener">▶ Analyse Mediaclasse — Ruy Blas</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t11">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t11')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -4012,6 +4037,7 @@ Je le dis, vous pouvez vous confier, madame,
                 <div class="po-line"><strong>Ouverture.</strong> On peut rapprocher Ruy Blas du héros d'<em>Hernani</em>, autre proscrit hugolien, ou de la théorie du drame exposée dans la <em>Préface de Cromwell</em>.</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -4063,7 +4089,8 @@ Je le dis, vous pouvez vous confier, madame,
           <div class="texte-section-title">Question de grammaire possible</div>
           <div class="grammaire-box">Analyse du subjonctif imparfait (« se contemplassent ») : formation, valeur dans la subordonnée de but. Identifier la proposition principale et la valeur hypothétique du mode.</div>
           <a class="gram-video-link" href="https://www.youtube.com/watch?v=oy8qf4duTbA" target="_blank" rel="noopener">▶ Explication linéaire — On ne badine, acte II sc.5</a>
-          <div class="texte-section-title">🎤 Passage oral — déroulé minute par minute</div>
+          <div class="po-wrap" id="po-t12">
+          <button class="texte-extrait-toggle" onclick="toggleExtrait('po-t12')">🎤 Passage oral — déroulé minute par minute <span class="texte-extrait-toggle-arrow">▼</span></button>
           <div class="passage-oral">
             <div class="prez-step">
               <div class="prez-step-num">1</div>
@@ -4100,6 +4127,7 @@ Je le dis, vous pouvez vous confier, madame,
                 <div class="po-line"><strong>Ouverture.</strong> On peut rapprocher ce « grandeur et misère » de la pensée de Pascal sur la condition humaine, ou prolonger avec l'aveu de Perdican et Camille (« Nous nous aimons ! »).</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
