@@ -1,25 +1,27 @@
-# Oral du bac de français 2026 — 1re STI2D
+# French Baccalaureate Oral Exam 2026 — STI2D Track
 
-Site de révision complet pour l'oral anticipé de français : explications linéaires, œuvre choisie, grammaire, quiz et simulateur d'oral.
+A complete revision site for the French baccalaureate oral exam in French literature: close readings, set books, grammar, quizzes and a mock oral.
 
-**[Ouvrir le site →](https://sacha9214.github.io/bac-sti2d/)**
+**[Open the site →](https://sacha9214.github.io/bac-sti2d/)**
 
-![Page d'accueil](docs/apercu.png)
+![Home page](docs/apercu.png)
 
-## Contenu
+## Content
 
-| Onglet | Ce qu'on y trouve |
+| Tab | What's inside |
 |---|---|
-| **L'épreuve** | Déroulement et barème de l'oral, simulateur d'oral chronométré |
-| **Mes textes** | 12 explications linéaires : problématique, mouvements, procédés, question de grammaire |
-| **Grammaire** | Négation, interrogation, phrase complexe, transformations types de l'oral, phrases clés du corpus analysées |
-| **Les livres** | Fiches complètes de *La Vague*, *1984*, *Fahrenheit 451*, *La Ferme des animaux*, *L'Odyssée*, *Cyrano de Bergerac*, *Lettre d'une inconnue* : résumé, personnages, thèmes, présentation, questions probables de l'examinateur |
-| **Quiz** | Procédés littéraires, auteurs, livres |
+| **L'épreuve** (the exam) | How the oral works and how it is graded, timed mock oral |
+| **Mes textes** (my texts) | 12 close readings: central question, structure, literary devices, grammar question |
+| **Grammaire** (grammar) | Negation, interrogatives, complex sentences, standard oral transformations, key sentences from the texts analyzed |
+| **Les livres** (books) | Full study sheets for *La Vague* (The Wave), *1984*, *Fahrenheit 451*, *Animal Farm*, *The Odyssey*, *Cyrano de Bergerac*, *Letter from an Unknown Woman*: summary, characters, themes, presentation, likely examiner questions |
+| **Quiz** | Literary devices, authors, books |
 
-Une section **Écoute** lit les révisions à voix haute avec la synthèse vocale du navigateur (Web Speech API).
+An **Écoute** (listen) section reads the revision notes aloud using the browser's speech synthesis (Web Speech API).
 
-Le fichier [`bac_math_sujet2.html`](https://sacha9214.github.io/bac-sti2d/bac_math_sujet2.html) contient la première version des révisions de mathématiques ; la version complète, avec 104 questions, est dans [bac-math-sti2d](https://github.com/sacha9214/bac-math-sti2d).
+The file [`bac_math_sujet2.html`](https://sacha9214.github.io/bac-sti2d/bac_math_sujet2.html) holds the first version of the maths revision; the full version, with 104 questions, lives in [bac-math-sti2d](https://github.com/sacha9214/bac-math-sti2d).
+
+The site itself is in French, like the exam.
 
 ## Stack
 
-HTML, CSS et JavaScript sans dépendance, hébergé sur GitHub Pages. Une variante pour la 1re générale existe : [bac-premiere-generale](https://github.com/sacha9214/bac-premiere-generale).
+Dependency-free HTML, CSS and JavaScript, hosted on GitHub Pages. A general-track version is available: [bac-premiere-generale](https://github.com/sacha9214/bac-premiere-generale).
